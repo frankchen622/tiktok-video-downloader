@@ -162,7 +162,7 @@ img { display: block; max-width: 100%; }
 }
 
 .hero-sub-title {
-  color: var(--muted);
+  color: rgba(255,255,255,.65);
   font-weight: 400;
 }
 

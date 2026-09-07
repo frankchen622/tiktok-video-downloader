@@ -55,8 +55,23 @@ async def parse_video(request: Request, body: ParseRequest):
         "quiet": True,
         "no_warnings": True,
         "extract_flat": False,
-        # Request a non-watermarked format when available
-        "format": "download_addr-0/bestvideo+bestaudio/best",
+        # Try no-watermark format first, fall back to best available
+        "format": "download_addr-0/bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio/best[ext=mp4]/best",
+        # Mimic a real browser to avoid bot detection
+        "http_headers": {
+            "User-Agent": (
+                "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) "
+                "AppleWebKit/605.1.15 (KHTML, like Gecko) "
+                "Version/17.0 Mobile/15E148 Safari/604.1"
+            ),
+            "Referer": "https://www.tiktok.com/",
+            "Accept-Language": "en-US,en;q=0.9",
+        },
+        # Retry on transient failures
+        "retries": 3,
+        "socket_timeout": 30,
+        # Suppress the "merge output format" warning
+        "merge_output_format": "mp4",
     }
 
     loop = asyncio.get_event_loop()
@@ -68,36 +83,61 @@ async def parse_video(request: Request, body: ParseRequest):
     try:
         info = await loop.run_in_executor(None, _extract)
     except yt_dlp.utils.DownloadError as e:
-        raise HTTPException(status_code=400, detail=f"Could not parse video: {str(e)}")
+        err = str(e)
+        # Surface a cleaner message for common cases
+        if "Unable to download" in err or "HTTP Error" in err:
+            raise HTTPException(
+                status_code=400,
+                detail="TikTok blocked this request. Try again in a moment or use a different link.",
+            )
+        raise HTTPException(status_code=400, detail=f"Could not parse video: {err}")
     except Exception as e:
-        raise HTTPException(status_code=500, detail="Unexpected error while parsing video")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
 
-    # Collect available formats
+    # Collect available formats — prefer higher resolution, skip audio-only
     formats = []
-    seen = set()
+    seen_urls = set()
     for f in info.get("formats") or []:
-        if not f.get("url"):
+        furl = f.get("url")
+        if not furl or furl in seen_urls:
             continue
-        label = f.get("format_note") or f.get("height") or f.get("format_id", "")
-        label = str(label)
-        if label in seen:
+        # Skip audio-only streams in the list (keep them only as MP3 option)
+        if f.get("vcodec") == "none" and f.get("acodec") != "none":
             continue
-        seen.add(label)
+        seen_urls.add(furl)
+        height = f.get("height") or 0
+        label = f.get("format_note") or (f"{height}p" if height else f.get("format_id", "video"))
         formats.append({
             "label": label,
-            "url": f["url"],
+            "url": furl,
             "ext": f.get("ext", "mp4"),
             "filesize": f.get("filesize"),
+            "height": height,
         })
 
-    # Best single URL fallback
-    best_url = info.get("url") or (formats[0]["url"] if formats else None)
+    # Sort by resolution descending
+    formats.sort(key=lambda x: x.get("height") or 0, reverse=True)
+
+    # Best single URL: prefer the top-quality format URL, fall back to info["url"]
+    best_url = (formats[0]["url"] if formats else None) or info.get("url")
+
+    # Thumbnail: prefer a high-res one if multiple are available
+    thumbnails = info.get("thumbnails") or []
+    thumbnail = info.get("thumbnail", "")
+    if thumbnails:
+        best_thumb = max(
+            (t for t in thumbnails if t.get("url")),
+            key=lambda t: (t.get("width") or 0) * (t.get("height") or 0),
+            default=None,
+        )
+        if best_thumb:
+            thumbnail = best_thumb["url"]
 
     return {
         "title": info.get("title", ""),
-        "author": info.get("uploader", ""),
-        "thumbnail": info.get("thumbnail", ""),
+        "author": info.get("uploader", "") or info.get("creator", ""),
+        "thumbnail": thumbnail,
         "duration": info.get("duration"),
         "video_url": best_url,
-        "formats": formats[:8],  # Cap to avoid huge payloads
+        "formats": formats[:6],
     }
