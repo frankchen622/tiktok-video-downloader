@@ -1,35 +1,40 @@
 /* =====================
-   DESIGN TOKENS
+   DESIGN TOKENS — TikTok palette
+   Primary:   Cyan  #69C9D0  (logo teal shadow)
+   Secondary: Pink  #EE1D52  (logo red shadow)
+   Base:      Black #010101  (logo background)
    ===================== */
 :root {
-  /* Neutral ramp (OKLCH-inspired lightness steps) */
-  --n-50:  #f8f8f9;
-  --n-100: #f0f0f2;
-  --n-200: #e2e2e6;
-  --n-300: #c8c8cf;
-  --n-400: #a0a0aa;
-  --n-500: #737380;
-  --n-600: #525259;
-  --n-700: #3a3a40;
-  --n-800: #242428;
-  --n-900: #141416;
+  /* Neutral ramp — off-black to off-white */
+  --n-50:  #f9f9f9;
+  --n-100: #f0f0f0;
+  --n-200: #e0e0e0;
+  --n-300: #c4c4c4;
+  --n-400: #9a9a9a;
+  --n-500: #6e6e6e;
+  --n-600: #4e4e4e;
+  --n-700: #323232;
+  --n-800: #1c1c1c;
+  --n-900: #0d0d0d;
 
-  /* Accent — TikTok-flavored teal/pink split, primary is teal */
-  --accent:        #00c8a0;
-  --accent-light:  #e0faf4;
-  --accent-dark:   #009e7e;
-  --accent-2:      #ff3b5c; /* secondary — danger/CTA variant */
+  /* TikTok brand accents */
+  --accent:        #69C9D0; /* cyan — primary CTA */
+  --accent-light:  #e6f8f9; /* cyan tint for hero bg */
+  --accent-dark:   #44b0b8; /* darker cyan for hover */
+  --accent-2:      #EE1D52; /* pink — secondary / step numbers */
+  --accent-2-light:#fde8ed;
+  --accent-2-dark: #c9103e;
 
-  /* Semantic roles */
+  /* Semantic surface roles */
   --surface:       #ffffff;
-  --surface-raised:#f8f8f9;
-  --border:        #e2e2e6;
-  --muted:         #737380;
-  --body:          #242428;
-  --heading:       #141416;
+  --surface-raised:#f9f9f9;
+  --border:        #e0e0e0;
+  --muted:         #6e6e6e;
+  --body:          #1c1c1c;
+  --heading:       #0d0d0d;
 
-  --danger:        #e03e3e;
-  --danger-bg:     #fdeaea;
+  --danger:        #EE1D52;
+  --danger-bg:     #fde8ed;
   --success:       #16a34a;
   --success-bg:    #dcfce7;
 
@@ -74,24 +79,27 @@
   --dur:  160ms;
 }
 
-/* Dark mode */
+/* Dark mode — TikTok's natural home is dark */
 @media (prefers-color-scheme: dark) {
   :root {
-    --surface:       #18181b;
-    --surface-raised:#232326;
-    --border:        #333338;
-    --muted:         #8888a0;
-    --body:          #e4e4ea;
-    --heading:       #f4f4f8;
-    --n-50:  #18181b;
-    --n-100: #232326;
-    --accent:       #00d4aa;
-    --accent-light: #0a2e26;
-    --accent-dark:  #00b890;
-    --danger-bg:    #2e1a1a;
-    --success-bg:   #0d2318;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,.3), 0 0 0 1px var(--border);
-    --shadow-md: 0 4px 16px rgba(0,0,0,.4), 0 0 0 1px var(--border);
+    --surface:       #121212;
+    --surface-raised:#1e1e1e;
+    --border:        #2e2e2e;
+    --muted:         #888888;
+    --body:          #e8e8e8;
+    --heading:       #f5f5f5;
+    --n-50:  #121212;
+    --n-100: #1e1e1e;
+    /* accents stay vivid in dark — slightly lighter cyan */
+    --accent:        #7dd4da;
+    --accent-light:  #0d2a2c;
+    --accent-dark:   #55bfc7;
+    --accent-2:      #f2365f;
+    --accent-2-light:#2e0d16;
+    --danger-bg:     #2e0d16;
+    --success-bg:    #0d2318;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.4), 0 0 0 1px var(--border);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.5), 0 0 0 1px var(--border);
   }
 }
 
@@ -187,7 +195,11 @@ img { display: block; max-width: 100%; }
 .hero {
   padding: var(--sp-20) 0 var(--sp-16);
   text-align: center;
-  background: linear-gradient(160deg, var(--accent-light) 0%, var(--surface) 60%);
+  /* TikTok: dark base with cyan + pink glow */
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 50%, rgba(105,201,208,.13) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 35% at 80% 50%, rgba(238,29,82,.10) 0%, transparent 70%),
+    var(--surface);
 }
 
 .hero-inner { max-width: 680px; margin: 0 auto; }
@@ -463,7 +475,7 @@ img { display: block; max-width: 100%; }
 .step-num {
   font-size: var(--scale-3xl);
   font-weight: 800;
-  color: var(--accent);
+  color: var(--accent-2); /* TikTok pink for step numbers */
   line-height: 1;
   flex-shrink: 0;
   font-variant-numeric: tabular-nums;
