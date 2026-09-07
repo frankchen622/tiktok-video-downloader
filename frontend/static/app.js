@@ -1,21 +1,21 @@
 (() => {
   'use strict';
 
-  const form      = document.getElementById('downloaderForm');
-  const input     = document.getElementById('videoUrl');
-  const submitBtn = document.getElementById('submitBtn');
-  const btnText   = submitBtn.querySelector('.btn-text');
-  const btnSpinner= submitBtn.querySelector('.btn-spinner');
-  const urlError  = document.getElementById('urlError');
+  const form       = document.getElementById('downloaderForm');
+  const input      = document.getElementById('videoUrl');
+  const submitBtn  = document.getElementById('submitBtn');
+  const btnText    = submitBtn.querySelector('.btn-text');
+  const btnSpinner = submitBtn.querySelector('.btn-spinner');
+  const urlError   = document.getElementById('urlError');
 
-  const resultSection = document.getElementById('resultSection');
+  const resultCard    = document.getElementById('resultCard');
   const resultThumb   = document.getElementById('resultThumb');
   const resultTitle   = document.getElementById('resultTitle');
   const resultAuthor  = document.getElementById('resultAuthor');
   const resultActions = document.getElementById('resultActions');
 
-  const errorSection  = document.getElementById('errorSection');
-  const errorMessage  = document.getElementById('errorMessage');
+  const errorCard    = document.getElementById('errorCard');
+  const errorMessage = document.getElementById('errorMessage');
 
   // ── Helpers ────────────────────────────────────────────────────────────────
 
@@ -25,16 +25,16 @@
     btnSpinner.hidden  = !on;
   }
 
-  function hideAll() {
-    resultSection.hidden = true;
-    errorSection.hidden  = true;
+  function hideResults() {
+    resultCard.hidden = true;
+    errorCard.hidden  = true;
     urlError.textContent = '';
   }
 
   function showError(msg) {
     errorMessage.textContent = msg;
-    errorSection.hidden = false;
-    resultSection.hidden = true;
+    errorCard.hidden  = false;
+    resultCard.hidden = true;
   }
 
   function formatSize(bytes) {
@@ -49,7 +49,6 @@
     a.href = href;
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
-    // Use download attribute as a hint — works when same-origin; cross-origin falls back to tab
     a.download = '';
     a.textContent = label;
     return a;
@@ -59,7 +58,7 @@
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    hideAll();
+    hideResults();
 
     const url = input.value.trim();
     if (!url) {
@@ -111,38 +110,43 @@
     }
 
     // Meta
+    resultAuthor.textContent = data.author ? `User: @${data.author}` : '';
     resultTitle.textContent  = data.title  || 'TikTok Video';
-    resultAuthor.textContent = data.author ? `@${data.author}` : '';
 
-    // Action buttons
+    // Buttons — matches reference image layout
     resultActions.innerHTML = '';
 
     if (data.video_url) {
       resultActions.appendChild(
-        makeDlBtn('⬇ Download Video (Best)', data.video_url, true)
+        makeDlBtn('Download Without Watermark', data.video_url, true)
       );
     }
 
-    // Additional formats
+    // Watermark version from formats fallback (second format if exists)
     if (data.formats && data.formats.length > 1) {
-      data.formats.slice(0, 5).forEach((f) => {
-        const size  = formatSize(f.filesize);
-        const label = `${f.label}${size ? ` · ${size}` : ''} .${f.ext}`;
-        resultActions.appendChild(makeDlBtn(label, f.url));
-      });
+      const wm = data.formats[1];
+      resultActions.appendChild(
+        makeDlBtn('Download with Watermark', wm.url, false)
+      );
+    } else if (data.video_url) {
+      // Show as alternate quality link
+      resultActions.appendChild(
+        makeDlBtn('Download MP4', data.video_url, false)
+      );
     }
 
-    // Thumbnail download
+    // Thumbnail
     if (data.thumbnail) {
-      resultActions.appendChild(makeDlBtn('🖼 Download Thumbnail', data.thumbnail));
+      resultActions.appendChild(
+        makeDlBtn('🖼 Save Thumbnail', data.thumbnail, false)
+      );
     }
 
-    resultSection.hidden = false;
-    resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    resultCard.hidden = false;
+    resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
-  // ── Paste shortcut ─────────────────────────────────────────────────────────
-  // Auto-submit when user pastes directly into the input
+  // ── Auto-submit on paste ───────────────────────────────────────────────────
   input.addEventListener('paste', () => {
     setTimeout(() => {
       if (input.value.trim().startsWith('http')) {
