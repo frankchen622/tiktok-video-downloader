@@ -15,7 +15,6 @@
   const resultActions = document.getElementById('resultActions');
 
   const errorCard    = document.getElementById('errorCard');
-  const errorMessage = document.getElementById('errorMessage');
 
   // ── Helpers ────────────────────────────────────────────────────────────────
 
@@ -28,11 +27,12 @@
   function hideResults() {
     resultCard.hidden = true;
     errorCard.hidden  = true;
+    errorCard.textContent = '';
     urlError.textContent = '';
   }
 
   function showError(msg) {
-    errorMessage.textContent = msg;
+    errorCard.textContent = msg;
     errorCard.hidden  = false;
     resultCard.hidden = true;
   }
