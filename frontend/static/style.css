@@ -410,76 +410,163 @@
    PAGE CONTENT (for legal/info pages)
    ===================== */
 .page-content {
-  padding: var(--sp-16) 0;
+  padding: var(--sp-20) 0 var(--sp-16);
   min-height: 60vh;
+  background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+}
+
+.page-content .container {
+  max-width: 900px;
 }
 
 .page-content h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 800;
   color: var(--heading);
-  margin-bottom: var(--sp-3);
-  letter-spacing: -0.02em;
+  margin-bottom: var(--sp-4);
+  letter-spacing: -0.03em;
+  text-align: center;
 }
 
 .page-date {
   color: var(--muted);
   font-size: 0.875rem;
-  margin-bottom: var(--sp-8);
+  margin-bottom: var(--sp-10);
+  text-align: center;
+  font-style: italic;
 }
 
 .content-card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  padding: var(--sp-10);
-  box-shadow: var(--shadow-md);
+  border-radius: var(--r-xl);
+  padding: var(--sp-12) var(--sp-10);
+  box-shadow: var(--shadow-lg);
+  line-height: 1.8;
+}
+
+.content-card > p:first-child {
+  font-size: 1.125rem;
+  line-height: 1.9;
+  color: var(--text);
+  margin-bottom: var(--sp-8);
+  padding-bottom: var(--sp-6);
+  border-bottom: 2px solid var(--surface);
 }
 
 .content-card h2 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: var(--heading);
-  margin-top: var(--sp-8);
-  margin-bottom: var(--sp-4);
+  margin-top: var(--sp-12);
+  margin-bottom: var(--sp-5);
+  padding-top: var(--sp-8);
+  border-top: 1px solid var(--border);
+  letter-spacing: -0.01em;
 }
 
-.content-card h2:first-child {
+.content-card h2:first-of-type {
   margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 
 .content-card h3 {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--heading);
-  margin-top: var(--sp-6);
-  margin-bottom: var(--sp-3);
+  margin-top: var(--sp-8);
+  margin-bottom: var(--sp-4);
+  letter-spacing: -0.01em;
 }
 
 .content-card p {
   color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: var(--sp-4);
+  line-height: 1.8;
+  margin-bottom: var(--sp-5);
+  font-size: 1rem;
+}
+
+.content-card p strong {
+  color: var(--heading);
+  font-weight: 600;
 }
 
 .content-card ul, .content-card ol {
-  margin-left: var(--sp-6);
-  margin-bottom: var(--sp-4);
+  margin-left: var(--sp-8);
+  margin-bottom: var(--sp-6);
   color: var(--text-secondary);
+  padding-left: var(--sp-4);
+}
+
+.content-card ul {
+  list-style-type: disc;
+}
+
+.content-card ol {
+  list-style-type: decimal;
 }
 
 .content-card li {
-  margin-bottom: var(--sp-2);
-  line-height: 1.6;
+  margin-bottom: var(--sp-3);
+  line-height: 1.8;
+  padding-left: var(--sp-2);
+}
+
+.content-card li strong {
+  color: var(--heading);
+  font-weight: 600;
+}
+
+.content-card li::marker {
+  color: var(--brand-red);
 }
 
 .content-card a {
   color: var(--brand-red);
   text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: all var(--dur) var(--ease);
 }
 
 .content-card a:hover {
   color: var(--brand-cyan);
+  text-decoration-thickness: 2px;
+}
+
+.content-card a[target="_blank"]::after {
+  content: " ↗";
+  font-size: 0.75em;
+  opacity: 0.6;
+}
+
+/* Section dividers */
+.content-card h2 + h3 {
+  margin-top: var(--sp-6);
+}
+
+.content-card h3 + p,
+.content-card h3 + ul,
+.content-card h3 + ol {
+  margin-top: var(--sp-3);
+}
+
+/* Better spacing for nested lists */
+.content-card ul ul,
+.content-card ol ul,
+.content-card ul ol,
+.content-card ol ol {
+  margin-top: var(--sp-3);
+  margin-bottom: var(--sp-3);
+}
+
+/* Contact info styling */
+.content-card p > a[href^="mailto"] {
+  font-weight: 500;
+  padding: 2px 4px;
+  background: var(--accent-light);
+  border-radius: 4px;
 }
 
 /* =====================
@@ -540,5 +627,52 @@
   .footer-content {
     grid-template-columns: 1fr;
     gap: var(--sp-8);
+  }
+  
+  /* Legal pages mobile optimization */
+  .page-content h1 {
+    font-size: 2rem;
+  }
+  
+  .content-card {
+    padding: var(--sp-8) var(--sp-6);
+    border-radius: var(--r-lg);
+  }
+  
+  .content-card h2 {
+    font-size: 1.5rem;
+  }
+  
+  .content-card h3 {
+    font-size: 1.125rem;
+  }
+  
+  .content-card ul, .content-card ol {
+    margin-left: var(--sp-6);
+    padding-left: var(--sp-2);
+  }
+}
+
+@media (max-width: 480px) {
+  .page-content h1 {
+    font-size: 1.75rem;
+  }
+  
+  .content-card {
+    padding: var(--sp-6) var(--sp-5);
+  }
+  
+  .content-card h2 {
+    font-size: 1.375rem;
+    margin-top: var(--sp-10);
+  }
+  
+  .content-card h3 {
+    font-size: 1.0625rem;
+  }
+  
+  .content-card p,
+  .content-card li {
+    font-size: 0.9375rem;
   }
 }
