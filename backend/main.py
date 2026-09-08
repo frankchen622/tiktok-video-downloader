@@ -180,3 +180,42 @@ async def parse_video(request: Request, body: ParseRequest):
         "video_url": best_url,
         "formats": formats[:6],
     }
+
+
+# Proxy download endpoint to avoid CORS issues
+from fastapi.responses import StreamingResponse
+import httpx
+
+class ProxyDownloadRequest(BaseModel):
+    url: str
+    filename: str
+
+@app.post("/api/proxy-download")
+@limiter.limit("50/minute")
+async def proxy_download(request: Request, body: ProxyDownloadRequest):
+    """Proxy download to avoid CORS and force download"""
+    try:
+        url = body.url
+        filename = body.filename
+        
+        # Stream the file from TikTok servers
+        async with httpx.AsyncClient(timeout=60.0) as client:
+            response = await client.get(url, follow_redirects=True)
+            
+            if response.status_code != 200:
+                raise HTTPException(status_code=400, detail="Could not download file")
+            
+            # Determine content type
+            content_type = response.headers.get('content-type', 'application/octet-stream')
+            
+            # Return as streaming response with download headers
+            return StreamingResponse(
+                iter([response.content]),
+                media_type=content_type,
+                headers={
+                    'Content-Disposition': f'attachment; filename="{filename}"',
+                    'Content-Length': str(len(response.content))
+                }
+            )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Download failed: {str(e)}")

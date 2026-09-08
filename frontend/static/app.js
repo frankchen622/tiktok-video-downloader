@@ -47,28 +47,64 @@
     const a = document.createElement('a');
     a.className = primary ? 'dl-btn dl-btn-primary' : 'dl-btn dl-btn-secondary';
     a.href = href;
-    // 直接下载，不打开新页面
-    a.download = ''; 
     a.textContent = label;
-    // 点击时强制下载
+    
+    // 生成文件名
+    const timestamp = Date.now();
+    let filename = 'tiktok_video_' + timestamp;
+    
+    if (label.includes('Watermark')) {
+      filename = label.includes('Without') ? 'tiktok_no_watermark_' + timestamp + '.mp4' : 'tiktok_with_watermark_' + timestamp + '.mp4';
+    } else if (label.includes('Thumbnail')) {
+      filename = 'tiktok_thumbnail_' + timestamp + '.jpg';
+    } else if (label.includes('MP4')) {
+      filename = 'tiktok_video_' + timestamp + '.mp4';
+    } else {
+      filename = 'tiktok_download_' + timestamp + '.mp4';
+    }
+    
+    a.download = filename;
+    
+    // 点击时通过后端代理下载
     a.addEventListener('click', async (e) => {
       e.preventDefault();
+      
       try {
-        const response = await fetch(href);
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const tempLink = document.createElement('a');
-        tempLink.href = url;
-        tempLink.download = label.replace(/[^a-zA-Z0-9]/g, '_') + '.mp4';
-        document.body.appendChild(tempLink);
-        tempLink.click();
-        document.body.removeChild(tempLink);
-        window.URL.revokeObjectURL(url);
+        // 方法1：通过后端 API 代理下载（避免跨域）
+        const response = await fetch('/api/proxy-download', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url: href, filename: filename })
+        });
+        
+        if (response.ok) {
+          const blob = await response.blob();
+          const downloadUrl = window.URL.createObjectURL(blob);
+          const tempLink = document.createElement('a');
+          tempLink.href = downloadUrl;
+          tempLink.download = filename;
+          document.body.appendChild(tempLink);
+          tempLink.click();
+          document.body.removeChild(tempLink);
+          window.URL.revokeObjectURL(downloadUrl);
+        } else {
+          // 回退方案：直接使用原始链接
+          throw new Error('Proxy failed');
+        }
       } catch (err) {
-        // 如果fetch失败，回退到直接下载
-        window.location.href = href;
+        // 方法2：如果后端不可用，使用 iframe 隐藏下载
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = href;
+        document.body.appendChild(iframe);
+        
+        // 5秒后移除 iframe
+        setTimeout(() => {
+          document.body.removeChild(iframe);
+        }, 5000);
       }
     });
+    
     return a;
   }
 
