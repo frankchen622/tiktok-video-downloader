@@ -43,6 +43,30 @@ async def serve_index():
     return FileResponse(os.path.join(frontend_path, "index.html"))
 
 
+@app.get("/mp3.html")
+async def serve_mp3():
+    return FileResponse(os.path.join(frontend_path, "mp3.html"))
+
+
+@app.get("/thumbnail.html")
+async def serve_thumbnail():
+    return FileResponse(os.path.join(frontend_path, "thumbnail.html"))
+
+
+@app.get("/story.html")
+async def serve_story():
+    return FileResponse(os.path.join(frontend_path, "story.html"))
+
+
+@app.get("/pages/{page_name}")
+async def serve_page(page_name: str):
+    # Serve legal/info pages
+    allowed_pages = ["contact.html", "privacy.html", "terms.html", "disclaimer.html", "dmca.html", "cookies.html"]
+    if page_name not in allowed_pages:
+        raise HTTPException(status_code=404, detail="Page not found")
+    return FileResponse(os.path.join(frontend_path, "pages", page_name))
+
+
 @app.post("/api/parse")
 @limiter.limit("20/minute")
 async def parse_video(request: Request, body: ParseRequest):
