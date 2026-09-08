@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and API endpoints
+Disallow: /api/
+Disallow: /.git/
+
+# Allow all pages
+Allow: /index.html
+Allow: /mp3.html
+Allow: /thumbnail.html
+Allow: /story.html
+Allow: /pages/
+
+# Allow static resources
+Allow: /static/
+
+# Sitemap
+Sitemap: https://dltk.io/sitemap.xml
+
+# Crawl-delay (optional, for politeness)
+Crawl-delay: 0.5
