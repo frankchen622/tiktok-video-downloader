@@ -394,6 +394,54 @@ a:hover {
   box-shadow: 0 4px 8px rgba(238, 29, 82, 0.25);
 }
 
+/* Download buttons */
+.dl-btn {
+  flex: 1;
+  min-width: 180px;
+  padding: var(--sp-4) var(--sp-6);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: all var(--dur) var(--ease);
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.dl-btn-primary {
+  background: var(--brand-gradient);
+  color: white;
+  box-shadow: 0 2px 8px rgba(238, 29, 82, 0.2);
+}
+
+.dl-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(238, 29, 82, 0.35);
+}
+
+.dl-btn-secondary {
+  background: white;
+  color: var(--brand-red);
+  border: 2px solid var(--brand-red);
+}
+
+.dl-btn-secondary:hover {
+  background: var(--brand-red);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(238, 29, 82, 0.2);
+}
+
+@media (max-width: 768px) {
+  .dl-btn {
+    min-width: 100%;
+    flex: 1 1 100%;
+  }
+}
+
+
 .inline-error {
   padding: var(--sp-4);
   background: rgba(238, 29, 82, 0.1);

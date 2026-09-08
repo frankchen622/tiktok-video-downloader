@@ -47,10 +47,28 @@
     const a = document.createElement('a');
     a.className = primary ? 'dl-btn dl-btn-primary' : 'dl-btn dl-btn-secondary';
     a.href = href;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    a.download = '';
+    // 直接下载，不打开新页面
+    a.download = ''; 
     a.textContent = label;
+    // 点击时强制下载
+    a.addEventListener('click', async (e) => {
+      e.preventDefault();
+      try {
+        const response = await fetch(href);
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const tempLink = document.createElement('a');
+        tempLink.href = url;
+        tempLink.download = label.replace(/[^a-zA-Z0-9]/g, '_') + '.mp4';
+        document.body.appendChild(tempLink);
+        tempLink.click();
+        document.body.removeChild(tempLink);
+        window.URL.revokeObjectURL(url);
+      } catch (err) {
+        // 如果fetch失败，回退到直接下载
+        window.location.href = href;
+      }
+    });
     return a;
   }
 
