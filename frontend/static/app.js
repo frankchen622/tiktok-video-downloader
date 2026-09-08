@@ -46,7 +46,6 @@
   function makeDlBtn(label, href, primary = false) {
     const a = document.createElement('a');
     a.className = primary ? 'dl-btn dl-btn-primary' : 'dl-btn dl-btn-secondary';
-    a.href = href;
     a.textContent = label;
     
     // 生成文件名
@@ -63,47 +62,11 @@
       filename = 'tiktok_download_' + timestamp + '.mp4';
     }
     
+    // 简单可靠的下载方式
+    a.href = href;
     a.download = filename;
-    
-    // 点击时通过后端代理下载
-    a.addEventListener('click', async (e) => {
-      e.preventDefault();
-      
-      try {
-        // 方法1：通过后端 API 代理下载（避免跨域）
-        const response = await fetch('/api/proxy-download', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ url: href, filename: filename })
-        });
-        
-        if (response.ok) {
-          const blob = await response.blob();
-          const downloadUrl = window.URL.createObjectURL(blob);
-          const tempLink = document.createElement('a');
-          tempLink.href = downloadUrl;
-          tempLink.download = filename;
-          document.body.appendChild(tempLink);
-          tempLink.click();
-          document.body.removeChild(tempLink);
-          window.URL.revokeObjectURL(downloadUrl);
-        } else {
-          // 回退方案：直接使用原始链接
-          throw new Error('Proxy failed');
-        }
-      } catch (err) {
-        // 方法2：如果后端不可用，使用 iframe 隐藏下载
-        const iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = href;
-        document.body.appendChild(iframe);
-        
-        // 5秒后移除 iframe
-        setTimeout(() => {
-          document.body.removeChild(iframe);
-        }, 5000);
-      }
-    });
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
     
     return a;
   }
