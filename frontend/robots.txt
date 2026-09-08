@@ -1,0 +1,18 @@
+# robots.txt for DLTK.io
+
+User-agent: *
+Allow: /
+Allow: /mp3.html
+Allow: /thumbnail.html
+Allow: /story.html
+Allow: /pages/
+Allow: /static/
+
+# Disallow dynamic/processing paths if any
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://dltk.io/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

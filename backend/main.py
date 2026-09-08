@@ -43,6 +43,21 @@ async def serve_index():
     return FileResponse(os.path.join(frontend_path, "index.html"))
 
 
+@app.get("/robots.txt")
+async def serve_robots():
+    return FileResponse(os.path.join(frontend_path, "robots.txt"), media_type="text/plain")
+
+
+@app.get("/sitemap.xml")
+async def serve_sitemap():
+    return FileResponse(os.path.join(frontend_path, "sitemap.xml"), media_type="application/xml")
+
+
+@app.get("/manifest.json")
+async def serve_manifest():
+    return FileResponse(os.path.join(frontend_path, "manifest.json"), media_type="application/json")
+
+
 @app.get("/mp3.html")
 async def serve_mp3():
     return FileResponse(os.path.join(frontend_path, "mp3.html"))
