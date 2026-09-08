@@ -405,3 +405,140 @@
     font-size: 0.875rem;
   }
 }
+
+/* =====================
+   PAGE CONTENT (for legal/info pages)
+   ===================== */
+.page-content {
+  padding: var(--sp-16) 0;
+  min-height: 60vh;
+}
+
+.page-content h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--heading);
+  margin-bottom: var(--sp-3);
+  letter-spacing: -0.02em;
+}
+
+.page-date {
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin-bottom: var(--sp-8);
+}
+
+.content-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: var(--sp-10);
+  box-shadow: var(--shadow-md);
+}
+
+.content-card h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--heading);
+  margin-top: var(--sp-8);
+  margin-bottom: var(--sp-4);
+}
+
+.content-card h2:first-child {
+  margin-top: 0;
+}
+
+.content-card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--heading);
+  margin-top: var(--sp-6);
+  margin-bottom: var(--sp-3);
+}
+
+.content-card p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--sp-4);
+}
+
+.content-card ul, .content-card ol {
+  margin-left: var(--sp-6);
+  margin-bottom: var(--sp-4);
+  color: var(--text-secondary);
+}
+
+.content-card li {
+  margin-bottom: var(--sp-2);
+  line-height: 1.6;
+}
+
+.content-card a {
+  color: var(--brand-red);
+  text-decoration: underline;
+}
+
+.content-card a:hover {
+  color: var(--brand-cyan);
+}
+
+/* =====================
+   ENHANCED FOOTER
+   ===================== */
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--sp-10);
+  padding: var(--sp-12) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.footer-about h3,
+.footer-links h3,
+.footer-legal h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--heading);
+  margin-bottom: var(--sp-4);
+}
+
+.footer-about p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.9375rem;
+}
+
+.footer-links ul,
+.footer-legal ul {
+  list-style: none;
+}
+
+.footer-links li,
+.footer-legal li {
+  margin-bottom: var(--sp-2);
+}
+
+.footer-links a,
+.footer-legal a {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: color var(--dur) var(--ease);
+}
+
+.footer-links a:hover,
+.footer-legal a:hover {
+  color: var(--brand-red);
+}
+
+.footer-bottom {
+  padding: var(--sp-6) 0;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: var(--sp-8);
+  }
+}
