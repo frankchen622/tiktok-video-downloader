@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TikTok Story Downloader - Save TikTok Stories | DLTK</title>
-  <meta name="description" content="Download TikTok stories before they disappear. Save stories from any TikTok profile quickly and easily." />
+  <title>TikTok Story Downloader - Save Stories Before They Expire | DLTK</title>
+  <meta name="description" content="Download TikTok stories before they disappear. Free TikTok story downloader - save 24-hour stories permanently in HD. No watermarks, instant download." />
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dltk.io/story.html" />
-  <meta property="og:title" content="TikTok Story Downloader - Save Stories Permanently" />
-  <meta property="og:description" content="Download TikTok stories before they expire. Anonymous, free, and fast." />
+  <meta property="og:title" content="TikTok Story Downloader - Save Stories Before They Expire" />
+  <meta property="og:description" content="Download TikTok stories in HD. Free, instant, save before expiration." />
   <meta property="og:image" content="https://dltk.io/static/dltk-logo-512.png" />
   <meta property="og:site_name" content="DLTK.io" />
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://dltk.io/story.html" />
-  <meta name="twitter:title" content="TikTok Story Downloader - Save Stories Permanently" />
-  <meta name="twitter:description" content="Download TikTok stories before they expire. Anonymous, free, and fast." />
+  <meta name="twitter:title" content="TikTok Story Downloader - Save Stories Before They Expire" />
+  <meta property="twitter:description" content="Download TikTok stories in HD. Free, instant, save before expiration." />
   <meta name="twitter:image" content="https://dltk.io/static/dltk-logo-512.png" />
   
   <!-- Canonical -->
@@ -74,37 +74,38 @@
     <section class="hero">
       <div class="container">
         <div class="hero-card">
-
-          <!-- Decorative corner dots -->
           <span class="corner-dot top-left" aria-hidden="true"></span>
           <span class="corner-dot top-right" aria-hidden="true"></span>
           <span class="corner-dot bottom-left" aria-hidden="true"></span>
           <span class="corner-dot bottom-right" aria-hidden="true"></span>
 
-          <h1>TikTok Story Downloader<br><span class="hero-sub-title">— Save Stories Before They Vanish</span></h1>
+          <h1>TikTok Story Downloader<br><span class="hero-sub-title">— Save Stories Permanently</span></h1>
+          
+          <p class="hero-intro">
+            Download TikTok stories before they expire. Save 24-hour TikTok stories permanently in HD quality with our free story downloader. No watermarks, no sign-up, instant download.
+          </p>
 
           <form class="downloader-form" id="downloaderForm" novalidate>
             <div class="input-row">
-              <label for="videoUrl" class="sr-only">TikTok story or profile URL</label>
+              <label for="videoUrl" class="sr-only">TikTok story URL</label>
               <input
                 type="url"
                 id="videoUrl"
                 name="url"
-                placeholder="Paste TikTok Story or Profile Link Here..."
+                placeholder="Paste TikTok Story Link Here..."
                 autocomplete="off"
                 spellcheck="false"
                 aria-describedby="urlError"
                 required
               />
               <button type="submit" id="submitBtn">
-                <span class="btn-text">DOWNLOAD STORY</span>
+                <span class="btn-text">SAVE STORY</span>
                 <span class="btn-spinner" aria-hidden="true" hidden></span>
               </button>
             </div>
             <p class="field-error" id="urlError" role="alert" aria-live="polite"></p>
           </form>
 
-          <!-- Result card (hidden until parse) -->
           <div class="result-card" id="resultCard" hidden aria-live="polite">
             <div class="result-preview">
               <div class="result-thumb-wrap">
@@ -115,6 +116,10 @@
                     <path d="M10 8l12 6-12 6V8z" fill="white"/>
                   </svg>
                 </div>
+                <div class="result-brand" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect width="14" height="14" rx="4" fill="#010101"/><path d="M9.5 4.25c-.6 0-1.1-.4-1.25-1H6.5v4.4c0 .6-.5 1.1-1.1 1.1s-1.1-.5-1.1-1.1.5-1.1 1.1-1.1c.1 0 .2 0 .3.05V5.5c-.1 0-.2-.05-.3-.05C3.5 5.45 2.4 6.55 2.4 7.9s1.1 2.45 2.45 2.45 2.45-1.1 2.45-2.45V6c.5.35 1.05.5 1.65.5V4.3c-.2 0-.35-.05-.45-.05z" fill="white"/></svg>
+                  <span>TikTok</span>
+                </div>
               </div>
               <div class="result-meta">
                 <p class="result-author" id="resultAuthor"></p>
@@ -124,128 +129,266 @@
             </div>
           </div>
 
-          <!-- Error state -->
-          <p class="inline-error" id="errorCard" hidden role="alert" aria-live="assertive" id="errorMessage"></p>
+          <p class="inline-error" id="errorCard" hidden role="alert" aria-live="assertive"></p>
 
-        </div><!-- /hero-card -->
+        </div>
       </div>
     </section>
 
     <!-- How to -->
     <section class="steps-section" id="how-to">
       <div class="container">
-        <h2>How to download TikTok stories?</h2>
-        <p class="section-sub">Save disappearing content permanently.</p>
-        <ol class="steps">
-          <li class="step">
-            <span class="step-num" aria-hidden="true">01</span>
-            <div>
-              <h3>Find the story</h3>
-              <p>Open TikTok and go to the profile with the story you want to save.</p>
-            </div>
+        <h2>How to Download TikTok Stories</h2>
+        <p class="section-sub">Save TikTok stories permanently in 3 simple steps before they disappear.</p>
+        <ul class="features-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <li class="feature-card">
+            <div class="step-num" style="margin: 0 auto var(--sp-4);">01</div>
+            <h3>Find TikTok Story</h3>
+            <p>Open TikTok and navigate to the story you want to save. Tap Share on the story and select "Copy link". Act fast - stories disappear after 24 hours!</p>
           </li>
-          <li class="step">
-            <span class="step-num" aria-hidden="true">02</span>
-            <div>
-              <h3>Copy the link</h3>
-              <p>Tap the story, then tap Share and "Copy link", or copy the profile URL.</p>
-            </div>
+          <li class="feature-card">
+            <div class="step-num" style="margin: 0 auto var(--sp-4);">02</div>
+            <h3>Paste Story Link</h3>
+            <p>Return to DLTK.io and paste the TikTok story link into the input field above. Our downloader will process the video before it expires.</p>
           </li>
-          <li class="step">
-            <span class="step-num" aria-hidden="true">03</span>
-            <div>
-              <h3>Download</h3>
-              <p>Paste the link here, click "Download Story", and save before it expires.</p>
-            </div>
+          <li class="feature-card">
+            <div class="step-num" style="margin: 0 auto var(--sp-4);">03</div>
+            <h3>Download Story</h3>
+            <p>Click "Save Story" and download the video. Your TikTok story download will start immediately in HD quality, saved permanently to your device.</p>
           </li>
-        </ol>
+        </ul>
       </div>
     </section>
 
     <!-- Features -->
     <section class="features-section" id="features">
       <div class="container">
-        <h2>Story Downloader Features</h2>
-        <p class="section-sub">Capture ephemeral content.</p>
-        <ul class="features-grid">
-          <li class="feature-card">
-            <div class="feature-icon" aria-hidden="true">⏰</div>
-            <h3>Save Before Expiry</h3>
-            <p>Download stories before they disappear after 24 hours.</p>
+        <h2>Why Use DLTK TikTok Story Downloader</h2>
+        <p class="section-sub">The best free tool to save TikTok stories before they expire.</p>
+        
+        <ul class="features-alternating">
+          <li class="feature-row">
+            <div class="feature-image-container">
+              <img src="/static/images/feature-fast.svg" alt="Save Before Expiration" loading="lazy" />
+            </div>
+            <div class="feature-text-container">
+              <h3>Save Stories Before They Expire</h3>
+              <p>Download TikTok stories within their 24-hour window. Our downloader processes videos instantly, ensuring you save content before it disappears forever. Never miss memorable moments, important updates, or trending stories again.</p>
+            </div>
           </li>
-          <li class="feature-card">
-            <div class="feature-icon" aria-hidden="true">📹</div>
-            <h3>Video & Photos</h3>
-            <p>Download both video and photo stories in full quality.</p>
+          
+          <li class="feature-row">
+            <div class="feature-image-container">
+              <img src="/static/images/feature-hd.svg" alt="HD Quality Stories" loading="lazy" />
+            </div>
+            <div class="feature-text-container">
+              <h3>HD Quality Story Downloads</h3>
+              <p>Save TikTok stories in high definition (up to 1080p). Our downloader preserves the original video quality, giving you crystal-clear stories perfect for archiving or sharing.</p>
+            </div>
           </li>
-          <li class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🆓</div>
-            <h3>Free Forever</h3>
-            <p>Unlimited story downloads with no subscriptions or fees.</p>
+          
+          <li class="feature-row">
+            <div class="feature-image-container">
+              <img src="/static/images/feature-no-watermark.svg" alt="No Watermarks" loading="lazy" />
+            </div>
+            <div class="feature-text-container">
+              <h3>Download Stories Without Watermarks</h3>
+              <p>Save TikTok stories without watermarks. Our downloader removes TikTok branding automatically, giving you clean videos perfect for repurposing or personal archives.</p>
+            </div>
           </li>
-          <li class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🔒</div>
-            <h3>Anonymous</h3>
-            <p>Download stories privately without leaving a trace.</p>
+          
+          <li class="feature-row">
+            <div class="feature-image-container">
+              <img src="/static/images/feature-free.svg" alt="100% Free" loading="lazy" />
+            </div>
+            <div class="feature-text-container">
+              <h3>100% Free Story Downloader</h3>
+              <p>Download TikTok stories for free with no limits. No registration, no subscription, no hidden fees. DLTK is a completely free TikTok story downloader forever.</p>
+            </div>
           </li>
-          <li class="feature-card">
-            <div class="feature-icon" aria-hidden="true">⚡</div>
-            <h3>Lightning Fast</h3>
-            <p>Instant downloads with no delays or queues.</p>
+          
+          <li class="feature-row">
+            <div class="feature-image-container">
+              <img src="/static/images/feature-devices.svg" alt="All Devices" loading="lazy" />
+            </div>
+            <div class="feature-text-container">
+              <h3>Works on All Devices</h3>
+              <p>Our downloader works on iPhone, Android, Windows, Mac, and any device with a web browser. Save stories from any device without installing apps.</p>
+            </div>
           </li>
-          <li class="feature-card">
-            <div class="feature-icon" aria-hidden="true">📱</div>
-            <h3>All Devices</h3>
-            <p>Works on mobile, tablet, and desktop—anywhere, anytime.</p>
+          
+          <li class="feature-row">
+            <div class="feature-image-container">
+              <img src="/static/images/feature-safe.svg" alt="Safe & Private" loading="lazy" />
+            </div>
+            <div class="feature-text-container">
+              <h3>Safe & Private</h3>
+              <p>Your privacy matters. We don't store your downloaded stories or personal information. Download TikTok stories safely and anonymously with DLTK.</p>
+            </div>
           </li>
         </ul>
+      </div>
+    </section>
+
+    <!-- Understanding Stories -->
+    <section class="steps-section" style="background: var(--bg);">
+      <div class="container">
+        <h2>Understanding TikTok Stories</h2>
+        <p class="section-sub">Everything you need to know about TikTok's 24-hour stories feature.</p>
+        <div class="content-card" style="max-width: 900px; margin: 0 auto;">
+          <p>TikTok Stories is a feature that allows creators to share temporary videos that disappear after 24 hours, similar to Instagram Stories and Snapchat. Here's what makes TikTok stories unique:</p>
+          
+          <h3>What are TikTok Stories?</h3>
+          <p>TikTok Stories are short vertical videos (up to 15 seconds) that appear at the top of followers' feeds and disappear automatically after 24 hours. Unlike regular TikTok videos, stories are temporary and don't appear on your profile permanently.</p>
+          
+          <h3>Why Download TikTok Stories?</h3>
+          <ul>
+            <li><strong>Preserve Memories</strong> - Save personal moments, special announcements, or behind-the-scenes content before it vanishes.</li>
+            <li><strong>Archive Important Content</strong> - Keep product launches, event coverage, or time-sensitive updates for future reference.</li>
+            <li><strong>Content Repurposing</strong> - Download stories to create compilations, highlights, or cross-platform content.</li>
+            <li><strong>Backup Your Own Stories</strong> - Save your own TikTok stories as permanent backups in case you want to repost or remember them later.</li>
+            <li><strong>Research & Analysis</strong> - Save stories for market research, competitor analysis, or trend documentation.</li>
+          </ul>
+          
+          <h3>Story vs Regular TikTok Videos</h3>
+          <p><strong>Stories:</strong> Temporary (24 hours), appear at top of feed, can't be liked or shared publicly, more casual and spontaneous.</p>
+          <p><strong>Regular Videos:</strong> Permanent (unless deleted), appear in main feed, full engagement features, more polished and produced.</p>
+          
+          <h3>Privacy & Access</h3>
+          <p>TikTok stories can only be viewed by the creator's followers or people they specifically allow. Our downloader can only save publicly accessible stories - you must follow the account to download their stories.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="steps-section">
+      <div class="container">
+        <h2>What Can You Do with Downloaded TikTok Stories?</h2>
+        <p class="section-sub">Popular uses for saved TikTok stories.</p>
+        <div class="content-card" style="max-width: 900px; margin: 0 auto;">
+          <h3>Create Story Highlights & Compilations</h3>
+          <p>Download multiple TikTok stories and combine them into highlight reels or best-of compilations. Perfect for preserving your favorite creator's moments or building narrative sequences.</p>
+          
+          <h3>Cross-Platform Sharing</h3>
+          <p>Save TikTok stories and share them on Instagram, Facebook, Twitter, or YouTube. Download stories to extend their reach beyond TikTok's 24-hour limit.</p>
+          
+          <h3>Personal Archives & Memories</h3>
+          <p>Download your own TikTok stories to create permanent personal archives. Save memories, special occasions, daily vlogs, or travel stories before they disappear.</p>
+          
+          <h3>Business & Marketing Content</h3>
+          <p>Save brand stories, product launches, event coverage, or promotional content. Download TikTok stories for marketing analysis, portfolio building, or client presentations.</p>
+          
+          <h3>Educational & Tutorial Preservation</h3>
+          <p>Download educational TikTok stories, quick tips, or how-to content before expiration. Save valuable learning content for future reference or offline viewing.</p>
+          
+          <h3>Creator Content Backup</h3>
+          <p>Content creators can download their own TikTok stories as backups. Save your work permanently, repurpose stories into regular videos, or maintain archives of all published content.</p>
+        </div>
       </div>
     </section>
 
     <!-- FAQ -->
     <section class="faq-section" id="faq">
       <div class="container">
-        <h2>Story Downloader FAQ</h2>
+        <h2>TikTok Story Downloader FAQ</h2>
         <dl class="faq-list">
           <div class="faq-item">
-            <dt>What are TikTok stories?</dt>
-            <dd>TikTok stories are temporary posts that disappear after 24 hours, similar to Instagram or Snapchat stories.</dd>
+            <dt>Is DLTK TikTok story downloader free?</dt>
+            <dd>Yes, DLTK is completely free. You can download stories with no sign-up, no premium tier, and unlimited downloads. It's a 100% free story downloader forever.</dd>
           </div>
           <div class="faq-item">
-            <dt>Can I download someone else's story?</dt>
-            <dd>Yes, if the story is publicly visible. Private or restricted stories cannot be accessed.</dd>
+            <dt>How do I download stories before they expire?</dt>
+            <dd>Copy the TikTok story link within the 24-hour window, paste it into DLTK's story downloader, and click "Save Story". The video will be downloaded permanently to your device before it disappears.</dd>
           </div>
           <div class="faq-item">
-            <dt>Will they know I downloaded their story?</dt>
-            <dd>No, DLTK downloads stories anonymously. The creator won't receive any notification.</dd>
+            <dt>Can I download stories after 24 hours?</dt>
+            <dd>No, TikTok stories are only available for 24 hours. After expiration, stories are permanently deleted from TikTok's servers and cannot be recovered. Download stories while they're still live to save them permanently.</dd>
           </div>
           <div class="faq-item">
-            <dt>How long do stories last?</dt>
-            <dd>TikTok stories disappear 24 hours after being posted. Download them before they're gone.</dd>
+            <dt>What quality are downloaded TikTok stories?</dt>
+            <dd>You can download stories in up to HD (1080p) quality - the highest quality available from the original story. Our downloader preserves the best possible video quality.</dd>
           </div>
           <div class="faq-item">
-            <dt>Is this legal?</dt>
-            <dd>Downloading stories for personal viewing is generally acceptable. Never redistribute or use content without the creator's permission.</dd>
+            <dt>Can I download stories on iPhone or Android?</dt>
+            <dd>Yes! Our downloader works on all devices including iPhone, Android, tablets, and computers. No app installation required - just use your mobile browser to save stories.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Are downloaded TikTok stories free of watermarks?</dt>
+            <dd>Yes, our story downloader removes watermarks automatically. You get clean, high-quality TikTok stories without branding.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Can I download stories from private TikTok accounts?</dt>
+            <dd>You can only download stories from accounts you follow. TikTok stories are visible only to followers, so you must be following an account to access and download their stories.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Is it legal to download stories?</dt>
+            <dd>Downloading TikTok stories for personal use is generally acceptable. However, never redistribute or use downloaded content commercially without the creator's permission. Always respect copyright and credit the original creator.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Can I download my own TikTok stories?</dt>
+            <dd>Yes! You can download your own TikTok stories to keep permanent backups. Copy the link from your own story, paste it into DLTK, and save before the 24-hour expiration.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>How long do I have to download a TikTok story?</dt>
+            <dd>You have 24 hours from the moment a TikTok story is posted to download it. After 24 hours, the story expires and is permanently deleted from TikTok. Download stories as soon as possible to avoid missing them.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Can I download multiple TikTok stories at once?</dt>
+            <dd>Currently, DLTK processes one story at a time for optimal quality and speed. For multiple downloads, simply save each story one by one - our fast downloader processes stories in seconds.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Do I need software to download stories?</dt>
+            <dd>No. DLTK is a web-based story downloader that runs entirely in your browser. You don't need to download any app or software to save TikTok stories.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Will the creator know if I download their story?</dt>
+            <dd>No, TikTok does not notify creators when someone downloads their story using third-party tools like DLTK. Story downloads are private and anonymous.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>What's the difference between TikTok stories and regular videos?</dt>
+            <dd>TikTok stories disappear after 24 hours and appear at the top of your followers' feeds, while regular TikTok videos stay on your profile permanently unless deleted. Stories are more casual and spontaneous, while regular videos are typically more polished.</dd>
           </div>
         </dl>
       </div>
     </section>
+
+    <!-- Conclusion CTA -->
+    <section class="steps-section" style="background: var(--surface);">
+      <div class="container">
+        <div class="content-card" style="max-width: 900px; margin: 0 auto; text-align: center;">
+          <h2>Start Downloading TikTok Stories Now</h2>
+          <p>
+            DLTK is the best free TikTok story downloader for saving 24-hour stories before they expire. With support for HD quality, no watermarks, and instant downloads, our story downloader works on all devices and requires no registration. Save TikTok stories permanently with our fast, safe, and reliable tool.
+          </p>
+          <p>
+            Whether you need to preserve memories, archive business content, create story highlights, or backup your own stories, DLTK provides the fastest way to download stories. Try our story downloader today - it's completely free with unlimited downloads!
+          </p>
+          <p style="margin-top: var(--sp-6);">
+            <a href="#" onclick="document.getElementById('videoUrl').focus(); return false;" style="display: inline-block; padding: var(--sp-4) var(--sp-8); background: var(--brand-gradient); color: white; border-radius: var(--r-md); font-weight: 700; text-decoration: none;">Save TikTok Stories Now →</a>
+          </p>
+          <p style="margin-top: var(--sp-6); font-size: 0.9375rem; color: var(--text-secondary);">
+            Need other TikTok tools? Check out our <a href="/">TikTok video downloader</a>, <a href="/mp3.html">TikTok to MP3 converter</a>, or <a href="/thumbnail.html">TikTok thumbnail downloader</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer">
     <div class="container footer-content">
       <div class="footer-about">
         <h3>About DLTK</h3>
-        <p>DLTK.io is a free online tool for downloading TikTok videos, extracting audio, saving thumbnails, and preserving stories. Fast, simple, and always free.</p>
+        <p>DLTK.io is a free online TikTok downloader and converter. Download TikTok videos without watermark, convert to MP3 audio, save thumbnails and cover images, and preserve 24-hour stories permanently. Fast, simple, and always free.</p>
       </div>
       
       <div class="footer-links">
         <h3>Quick Links</h3>
         <ul>
           <li><a href="/">TikTok Video Downloader</a></li>
-          <li><a href="/mp3.html">TikTok to MP3</a></li>
-          <li><a href="/thumbnail.html">Thumbnail Downloader</a></li>
-          <li><a href="/story.html">Story Downloader</a></li>
+          <li><a href="/mp3.html">TikTok to MP3 Converter</a></li>
+          <li><a href="/thumbnail.html">TikTok Thumbnail Downloader</a></li>
+          <li><a href="/story.html">TikTok Story Downloader</a></li>
         </ul>
       </div>
       
@@ -256,18 +399,20 @@
           <li><a href="/pages/privacy.html">Privacy Policy</a></li>
           <li><a href="/pages/terms.html">Terms of Service</a></li>
           <li><a href="/pages/disclaimer.html">Disclaimer</a></li>
-          <li><a href="/pages/dmca.html">DMCA & Copyright</a></li>
+          <li><a href="/pages/dmca.html">DMCA</a></li>
           <li><a href="/pages/cookies.html">Cookie Policy</a></li>
         </ul>
       </div>
     </div>
     
-    <div class="container footer-bottom">
-      <p>DLTK.io — Free TikTok Tools</p>
-      <p class="footer-note">We are not affiliated with TikTok or ByteDance. © 2024 DLTK.io. All rights belong to their respective owners.</p>
+    <div class="container">
+      <p class="footer-copy">
+        &copy; 2025 DLTK.io - Free TikTok Downloader &amp; Story Saver. Not affiliated with TikTok.
+      </p>
     </div>
   </footer>
 
   <script src="/static/app.js"></script>
+
 </body>
 </html>
