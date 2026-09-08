@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" fill="none">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EE1D52;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#69C9D0;stop-opacity:0.1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EE1D52;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#69C9D0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="300" height="200" fill="url(#bg2)"/>
+  
+  <!-- Lightning bolt -->
+  <path d="M 150 30 L 120 100 L 160 100 L 130 170" 
+        fill="url(#grad2)" stroke="url(#grad2)" stroke-width="2" stroke-linejoin="round"/>
+  
+  <!-- Speed lines -->
+  <line x1="40" y1="60" x2="90" y2="60" stroke="url(#grad2)" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+  <line x1="50" y1="80" x2="100" y2="80" stroke="url(#grad2)" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+  <line x1="200" y1="120" x2="250" y2="120" stroke="url(#grad2)" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+  <line x1="210" y1="140" x2="260" y2="140" stroke="url(#grad2)" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+  
+  <!-- Circle glow -->
+  <circle cx="150" cy="100" r="60" fill="url(#grad2)" opacity="0.1"/>
+  <circle cx="150" cy="100" r="45" fill="url(#grad2)" opacity="0.1"/>
+</svg>

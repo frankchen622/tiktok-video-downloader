@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" fill="none">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EE1D52;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#69C9D0;stop-opacity:0.1" />
+    </linearGradient>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EE1D52;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#69C9D0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="300" height="200" fill="url(#bg1)"/>
+  
+  <!-- Video frame -->
+  <rect x="50" y="40" width="200" height="120" rx="12" fill="white" stroke="url(#grad1)" stroke-width="3"/>
+  
+  <!-- Play button -->
+  <circle cx="150" cy="100" r="25" fill="url(#grad1)" opacity="0.9"/>
+  <path d="M 140 90 L 140 110 L 160 100 Z" fill="white"/>
+  
+  <!-- Watermark with X -->
+  <g opacity="0.6">
+    <rect x="180" y="130" width="50" height="15" rx="3" fill="#cccccc"/>
+    <line x1="185" y1="132" x2="225" y2="143" stroke="#ff0000" stroke-width="3"/>
+    <line x1="225" y1="132" x2="185" y2="143" stroke="#ff0000" stroke-width="3"/>
+  </g>
+  
+  <!-- Check mark -->
+  <circle cx="230" cy="60" r="20" fill="url(#grad1)"/>
+  <path d="M 220 60 L 227 67 L 240 54" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>

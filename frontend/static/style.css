@@ -1039,3 +1039,119 @@ a:hover {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* =====================
+   ALTERNATING IMAGE-TEXT FEATURES
+   ===================== */
+.features-alternating {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-10);
+  align-items: center;
+  margin-bottom: var(--sp-16);
+  padding: var(--sp-8);
+}
+
+.feature-row:last-child {
+  margin-bottom: 0;
+}
+
+/* Alternate layout - image on right */
+.feature-row:nth-child(even) .feature-image-container {
+  order: 2;
+}
+
+.feature-row:nth-child(even) .feature-text-container {
+  order: 1;
+  text-align: right;
+}
+
+.feature-image-container {
+  position: relative;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--dur) var(--ease);
+}
+
+.feature-image-container:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-xl);
+}
+
+.feature-image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.feature-text-container {
+  padding: var(--sp-6);
+}
+
+.feature-text-container h3 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--heading);
+  margin-bottom: var(--sp-4);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.feature-text-container p {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: var(--sp-4);
+}
+
+.feature-link {
+  display: inline-block;
+  color: var(--brand-pink);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--dur) var(--ease);
+  position: relative;
+}
+
+.feature-link::after {
+  content: ' →';
+  transition: transform var(--dur) var(--ease);
+  display: inline-block;
+}
+
+.feature-link:hover {
+  color: var(--brand-cyan);
+}
+
+.feature-link:hover::after {
+  transform: translateX(4px);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .feature-row {
+    grid-template-columns: 1fr;
+    gap: var(--sp-6);
+    margin-bottom: var(--sp-10);
+  }
+  
+  .feature-row:nth-child(even) .feature-image-container {
+    order: 1;
+  }
+  
+  .feature-row:nth-child(even) .feature-text-container {
+    order: 2;
+    text-align: left;
+  }
+  
+  .feature-text-container h3 {
+    font-size: 1.5rem;
+  }
+}
