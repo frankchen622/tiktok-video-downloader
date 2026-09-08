@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DLTK - TikTok Video Downloader | No Watermark, Free & Fast</title>
-  <meta name="description" content="Download TikTok videos without watermark in HD quality with DLTK.io. Free, fast, and no registration required." />
+  <title>TikTok Thumbnail Downloader - Save TikTok Cover Images | DLTK</title>
+  <meta name="description" content="Download TikTok video thumbnails and cover images in high quality. Free and fast thumbnail extraction tool." />
   <link rel="icon" type="image/svg+xml" href="/static/dltk-logo-v3.svg" />
   <link rel="apple-touch-icon" href="/static/dltk-logo-final-128.png" />
   <link rel="stylesheet" href="/static/style.css" />
@@ -53,7 +53,7 @@
           <span class="corner-dot bottom-left" aria-hidden="true"></span>
           <span class="corner-dot bottom-right" aria-hidden="true"></span>
 
-          <h1>Download TikTok Videos (No Watermark)<br><span class="hero-sub-title">— Instant, Free, High Quality</span></h1>
+          <h1>TikTok Thumbnail Downloader<br><span class="hero-sub-title">— Save Cover Images in HD</span></h1>
 
           <form class="downloader-form" id="downloaderForm" novalidate>
             <div class="input-row">
@@ -69,7 +69,7 @@
                 required
               />
               <button type="submit" id="submitBtn">
-                <span class="btn-text">DOWNLOAD</span>
+                <span class="btn-text">GET THUMBNAIL</span>
                 <span class="btn-spinner" aria-hidden="true" hidden></span>
               </button>
             </div>
@@ -81,16 +81,6 @@
             <div class="result-preview">
               <div class="result-thumb-wrap">
                 <img id="resultThumb" src="" alt="Video thumbnail" loading="lazy" />
-                <div class="result-play" aria-hidden="true">
-                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                    <circle cx="14" cy="14" r="14" fill="rgba(0,0,0,.55)"/>
-                    <path d="M11 9l10 5-10 5V9z" fill="white"/>
-                  </svg>
-                </div>
-                <div class="result-brand" aria-hidden="true">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect width="14" height="14" rx="4" fill="#010101"/><path d="M9.5 4.25c-.6 0-1.1-.4-1.25-1H6.5v4.4c0 .6-.5 1.1-1.1 1.1s-1.1-.5-1.1-1.1.5-1.1 1.1-1.1c.1 0 .2 0 .3.05V5.5c-.1 0-.2-.05-.3-.05C3.5 5.45 2.4 6.55 2.4 7.9s1.1 2.45 2.45 2.45 2.45-1.1 2.45-2.45V6c.5.35 1.05.5 1.65.5V4.3c-.2 0-.35-.05-.45-.05z" fill="white"/></svg>
-                  <span>TikTok</span>
-                </div>
               </div>
               <div class="result-meta">
                 <p class="result-author" id="resultAuthor"></p>
@@ -110,28 +100,28 @@
     <!-- How to -->
     <section class="steps-section" id="how-to">
       <div class="container">
-        <h2>How to download your video?</h2>
-        <p class="section-sub">Three steps, under ten seconds.</p>
+        <h2>How to download TikTok thumbnails?</h2>
+        <p class="section-sub">Save cover images in three steps.</p>
         <ol class="steps">
           <li class="step">
             <span class="step-num" aria-hidden="true">01</span>
             <div>
               <h3>Copy the link</h3>
-              <p>Open TikTok, tap Share on any video, then tap "Copy link".</p>
+              <p>Find the TikTok video, tap Share, then "Copy link".</p>
             </div>
           </li>
           <li class="step">
             <span class="step-num" aria-hidden="true">02</span>
             <div>
               <h3>Paste the link</h3>
-              <p>Come back here and paste the copied link into the input field above.</p>
+              <p>Paste the video link into the input field above.</p>
             </div>
           </li>
           <li class="step">
             <span class="step-num" aria-hidden="true">03</span>
             <div>
-              <h3>Click Download</h3>
-              <p>Hit Download, pick your format, and the file saves straight to your device.</p>
+              <h3>Download Image</h3>
+              <p>Click "Get Thumbnail" and save the cover image in full resolution.</p>
             </div>
           </li>
         </ol>
@@ -141,38 +131,38 @@
     <!-- Features -->
     <section class="features-section" id="features">
       <div class="container">
-        <h2>Features</h2>
-        <p class="section-sub">Everything you need to save TikTok content.</p>
+        <h2>Thumbnail Downloader Features</h2>
+        <p class="section-sub">Extract TikTok cover images effortlessly.</p>
         <ul class="features-grid">
           <li class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🎬</div>
-            <h3>No Watermark</h3>
-            <p>Download the original video without the TikTok logo burned in.</p>
-          </li>
-          <li class="feature-card">
             <div class="feature-icon" aria-hidden="true">🖼️</div>
-            <h3>Thumbnail Download</h3>
-            <p>Save the video cover image in full resolution with one click.</p>
-          </li>
-          <li class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🎵</div>
-            <h3>MP3 Extraction</h3>
-            <p>Extract just the audio track as a high-quality MP3 file.</p>
-          </li>
-          <li class="feature-card">
-            <div class="feature-icon" aria-hidden="true">📱</div>
-            <h3>Works Everywhere</h3>
-            <p>No app install needed. Works on any phone, tablet, or computer.</p>
+            <h3>Full Resolution</h3>
+            <p>Download thumbnails in the highest quality available.</p>
           </li>
           <li class="feature-card">
             <div class="feature-icon" aria-hidden="true">⚡</div>
-            <h3>Fast Parsing</h3>
-            <p>Video info appears in seconds. No waiting, no queues.</p>
+            <h3>Instant Download</h3>
+            <p>Get the thumbnail in seconds, no processing delays.</p>
           </li>
           <li class="feature-card">
             <div class="feature-icon" aria-hidden="true">🆓</div>
-            <h3>Completely Free</h3>
-            <p>No registration, no subscription, no hidden fees. Ever.</p>
+            <h3>Totally Free</h3>
+            <p>No watermarks, no registration, no hidden fees.</p>
+          </li>
+          <li class="feature-card">
+            <div class="feature-icon" aria-hidden="true">📱</div>
+            <h3>Mobile Friendly</h3>
+            <p>Works perfectly on phones, tablets, and desktop.</p>
+          </li>
+          <li class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🎨</div>
+            <h3>Original Quality</h3>
+            <p>No compression or quality loss—pure original image.</p>
+          </li>
+          <li class="feature-card">
+            <div class="feature-icon" aria-hidden="true">💨</div>
+            <h3>No Installation</h3>
+            <p>Browser-based tool, no apps or software needed.</p>
           </li>
         </ul>
       </div>
@@ -181,27 +171,27 @@
     <!-- FAQ -->
     <section class="faq-section" id="faq">
       <div class="container">
-        <h2>Got Questions? We've Got Answers</h2>
+        <h2>Common Questions</h2>
         <dl class="faq-list">
           <div class="faq-item">
-            <dt>Is DLTK free to use?</dt>
-            <dd>Yes, completely free. No sign-up, no premium tier, no limits on how many videos you download.</dd>
+            <dt>What is a TikTok thumbnail?</dt>
+            <dd>The thumbnail is the cover image displayed before a TikTok video plays. It's typically a frame from the video or a custom image chosen by the creator.</dd>
           </div>
           <div class="faq-item">
-            <dt>Can I download videos without the watermark?</dt>
-            <dd>Yes. DLTK retrieves the original source video, which does not have the TikTok watermark overlay.</dd>
+            <dt>Can I download thumbnails in HD?</dt>
+            <dd>Yes, DLTK downloads thumbnails in the highest resolution available from TikTok's servers.</dd>
           </div>
           <div class="faq-item">
-            <dt>Do I need to install anything?</dt>
-            <dd>No. DLTK runs entirely in your browser. Paste a link and you're done.</dd>
+            <dt>Is it free to use?</dt>
+            <dd>Absolutely. DLTK's thumbnail downloader is 100% free with no limitations.</dd>
           </div>
           <div class="faq-item">
-            <dt>What formats are supported?</dt>
-            <dd>MP4 video (multiple quality options when available) and MP3 audio extraction.</dd>
+            <dt>Do I need an account?</dt>
+            <dd>No registration needed. Just paste the link and download.</dd>
           </div>
           <div class="faq-item">
-            <dt>Is it legal to download TikTok videos?</dt>
-            <dd>Downloading for personal use is generally fine. Never redistribute or use downloaded content commercially without the creator's permission.</dd>
+            <dt>Can I use these images commercially?</dt>
+            <dd>Thumbnails belong to the original creator. Always get permission before using them for commercial purposes.</dd>
           </div>
         </dl>
       </div>
@@ -211,7 +201,7 @@
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>DLTK.io — Free TikTok Video Downloader</p>
+      <p>DLTK.io — Free TikTok Tools</p>
       <p class="footer-note">We are not affiliated with TikTok or ByteDance. © All rights belong to their respective owners.</p>
     </div>
   </footer>
