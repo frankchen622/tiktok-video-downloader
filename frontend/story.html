@@ -36,6 +36,50 @@
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="/static/style.css" />
+
+  <!-- WebApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "DLTK - TikTok Story Downloader",
+    "url": "https://dltk.io/story.html",
+    "description": "Download TikTok stories before they expire. Save 24-hour stories permanently in HD quality.",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I download TikTok stories before they expire?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Copy the TikTok story link within the 24-hour window, paste it into DLTK's story downloader, and click Save Story. The video will be downloaded permanently before it disappears."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I download TikTok stories after 24 hours?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, TikTok stories are only available for 24 hours. After expiration, stories are permanently deleted and cannot be recovered. Download stories while they're still live."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
