@@ -1,3 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TikTok to MP3 Converter - Extract Audio from TikTok Videos | DLTK</title>
+  <meta name="description" content="Convert TikTok videos to MP3 audio files. Fast, free, and high-quality audio extraction from any TikTok video." />
+  <link rel="icon" type="image/svg+xml" href="/static/dltk-logo-v3.svg" />
+  <link rel="apple-touch-icon" href="/static/dltk-logo-final-128.png" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <svg width="40" height="40" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#EE1D52;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#69C9D0;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <rect width="200" height="200" rx="40" fill="url(#logoGradient)"/>
+          <g transform="translate(100, 70)">
+            <circle cx="0" cy="0" r="35" fill="rgba(255,255,255,0.2)"/>
+            <path d="M 0,-18 L 0,18" stroke="white" stroke-width="10" stroke-linecap="round"/>
+            <path d="M -15,10 L 0,25 L 15,10" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </g>
+          <text x="100" y="155" font-family="Arial, sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="white" letter-spacing="2">DLTK</text>
+        </svg>
+        <span>DLTK</span>
+      </div>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/">Video</a>
+        <a href="/mp3.html">MP3</a>
+        <a href="/thumbnail.html">Thumbnail</a>
+        <a href="/story.html">Story</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+
+          <!-- Decorative corner dots -->
+          <span class="corner-dot top-left" aria-hidden="true"></span>
+          <span class="corner-dot top-right" aria-hidden="true"></span>
+          <span class="corner-dot bottom-left" aria-hidden="true"></span>
+          <span class="corner-dot bottom-right" aria-hidden="true"></span>
+
+          <h1>TikTok to MP3 Converter<br><span class="hero-sub-title">— Extract Audio, Free & Fast</span></h1>
+
+          <form class="downloader-form" id="downloaderForm" novalidate>
+            <div class="input-row">
+              <label for="videoUrl" class="sr-only">TikTok video URL</label>
+              <input
+                type="url"
+                id="videoUrl"
+                name="url"
+                placeholder="Paste TikTok Video Link Here..."
+                autocomplete="off"
+                spellcheck="false"
+                aria-describedby="urlError"
+                required
+              />
+              <button type="submit" id="submitBtn">
+                <span class="btn-text">CONVERT TO MP3</span>
+                <span class="btn-spinner" aria-hidden="true" hidden></span>
+              </button>
+            </div>
+            <p class="field-error" id="urlError" role="alert" aria-live="polite"></p>
+          </form>
+
+          <!-- Result card (hidden until parse) -->
+          <div class="result-card" id="resultCard" hidden aria-live="polite">
+            <div class="result-preview">
+              <div class="result-thumb-wrap">
+                <img id="resultThumb" src="" alt="Video thumbnail" loading="lazy" />
+                <div class="result-play" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <circle cx="14" cy="14" r="14" fill="rgba(0,0,0,.55)"/>
+                    <path d="M10 8l12 6-12 6V8z" fill="white"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="result-meta">
+                <p class="result-author" id="resultAuthor"></p>
+                <p class="result-title" id="resultTitle"></p>
+                <div class="result-actions" id="resultActions"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Error state -->
+          <p class="inline-error" id="errorCard" hidden role="alert" aria-live="assertive"></p>
+
+        </div><!-- /hero-card -->
+      </div>
+    </section>
+
+    <!-- How to -->
+    <section class="steps-section" id="how-to">
+      <div class="container">
+        <h2>How to convert TikTok to MP3?</h2>
+        <p class="section-sub">Extract audio in three simple steps.</p>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-num" aria-hidden="true">01</span>
+            <div>
+              <h3>Copy the link</h3>
+              <p>Open TikTok, find the video with audio you want, tap Share, then "Copy link".</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num" aria-hidden="true">02</span>
+            <div>
+              <h3>Paste the link</h3>
+              <p>Return here and paste the link into the converter above.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num" aria-hidden="true">03</span>
+            <div>
+              <h3>Download MP3</h3>
+              <p>Click "Convert to MP3" and download the extracted audio file.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section" id="features">
+      <div class="container">
+        <h2>Why Use DLTK MP3 Converter?</h2>
+        <p class="section-sub">Best TikTok audio extraction tool.</p>
+        <ul class="features-grid">
+          <li class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🎵</div>
+            <h3>High Quality Audio</h3>
+            <p>Extract audio in the best available quality, up to 320kbps.</p>
+          </li>
+          <li class="feature-card">
+            <div class="feature-icon" aria-hidden="true">⚡</div>
+            <h3>Fast Conversion</h3>
+            <p>Convert TikTok videos to MP3 in seconds, no waiting.</p>
+          </li>
+          <li class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🆓</div>
+            <h3>100% Free</h3>
+            <p>No registration, no limits, completely free forever.</p>
+          </li>
+          <li class="feature-card">
+            <div class="feature-icon" aria-hidden="true">📱</div>
+            <h3>All Devices</h3>
+            <p>Works on iPhone, Android, PC, Mac—any device with a browser.</p>
+          </li>
           <li class="feature-card">
             <div class="feature-icon" aria-hidden="true">🔒</div>
             <h3>Safe & Private</h3>
@@ -42,6 +204,7 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-content">
       <div class="footer-about">

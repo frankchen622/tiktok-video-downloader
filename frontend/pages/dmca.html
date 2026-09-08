@@ -10,9 +10,29 @@
 <body>
   <header class="site-header">
     <div class="container">
-      <div class="logo"><span>DLTK</span></div>
+      <div class="logo">
+        <svg width="40" height="40" viewBox="0 0 200 200" fill="none">
+          <defs>
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#EE1D52"/>
+              <stop offset="100%" stop-color="#69C9D0"/>
+            </linearGradient>
+          </defs>
+          <rect width="200" height="200" rx="40" fill="url(#logoGradient)"/>
+          <g transform="translate(100, 70)">
+            <circle cx="0" cy="0" r="35" fill="rgba(255,255,255,0.2)"/>
+            <path d="M 0,-18 L 0,18" stroke="white" stroke-width="10" stroke-linecap="round"/>
+            <path d="M -15,10 L 0,25 L 15,10" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </g>
+          <text x="100" y="155" font-family="Arial" font-size="52" font-weight="900" text-anchor="middle" fill="white" letter-spacing="2">DLTK</text>
+        </svg>
+        <span>DLTK</span>
+      </div>
       <nav class="site-nav">
-        <a href="/">Video</a><a href="/mp3.html">MP3</a><a href="/thumbnail.html">Thumbnail</a><a href="/story.html">Story</a>
+        <a href="/">Video</a>
+        <a href="/mp3.html">MP3</a>
+        <a href="/thumbnail.html">Thumbnail</a>
+        <a href="/story.html">Story</a>
       </nav>
     </div>
   </header>
