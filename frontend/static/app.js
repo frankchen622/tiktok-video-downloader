@@ -129,26 +129,20 @@
     resultAuthor.textContent = data.author ? `User: @${data.author}` : '';
     resultTitle.textContent  = data.title  || 'TikTok Video';
 
-    // Buttons — matches reference image layout
+    // Buttons — use original TikTok URL for real server-side download
     resultActions.innerHTML = '';
 
-    if (data.video_url) {
-      resultActions.appendChild(
-        makeDlBtn('Download Without Watermark', data.video_url, true)
-      );
-    }
+    // Get the original TikTok URL from the input
+    const originalUrl = input.value.trim();
 
-    // Watermark version from formats fallback (second format if exists)
-    if (data.formats && data.formats.length > 1) {
-      const wm = data.formats[1];
-      resultActions.appendChild(
-        makeDlBtn('Download with Watermark', wm.url, false)
-      );
-    } else if (data.video_url) {
-      // Show as alternate quality link
-      resultActions.appendChild(
-        makeDlBtn('Download MP4', data.video_url, false)
-      );
+    if (originalUrl) {
+      // Primary download button - uses yt-dlp server-side download
+      const downloadBtn = document.createElement('a');
+      downloadBtn.className = 'dl-btn dl-btn-primary';
+      downloadBtn.textContent = 'Download Video';
+      downloadBtn.href = `/api/download?url=${encodeURIComponent(originalUrl)}`;
+      downloadBtn.target = '_blank'; // Open in new tab to show download progress
+      resultActions.appendChild(downloadBtn);
     }
 
     // Thumbnail

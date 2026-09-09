@@ -182,75 +182,82 @@ async def parse_video(request: Request, body: ParseRequest):
     }
 
 
-# Proxy download endpoint to avoid CORS issues
-from fastapi.responses import StreamingResponse
-import httpx
+# Real download endpoint using yt-dlp
+import tempfile
+import uuid
+from pathlib import Path
 
-class ProxyDownloadRequest(BaseModel):
-    url: str
-    filename: str
-
-@app.get("/api/proxy-download")
-@limiter.limit("50/minute")
-async def proxy_download_get(request: Request, url: str, filename: str):
-    """Proxy download via GET for simple <a> tag links"""
-    return await _do_proxy_download(url, filename)
-
-@app.post("/api/proxy-download")
-@limiter.limit("50/minute")
-async def proxy_download_post(request: Request, body: ProxyDownloadRequest):
-    """Proxy download via POST for fetch requests"""
-    return await _do_proxy_download(body.url, body.filename)
-
-async def _do_proxy_download(url: str, filename: str):
-    """Shared proxy download logic"""
+@app.get("/api/download")
+@limiter.limit("10/minute")
+async def download_video(request: Request, url: str):
+    """Download video using yt-dlp and serve it"""
     try:
-        # Headers to mimic real browser and avoid anti-hotlink protection
-        headers = {
+        url = sanitize_url(url)
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid URL format")
+    
+    # Create temp directory for downloads
+    temp_dir = Path(tempfile.gettempdir()) / "tiktok_downloads"
+    temp_dir.mkdir(exist_ok=True)
+    
+    # Generate unique filename
+    video_id = str(uuid.uuid4())[:8]
+    output_template = str(temp_dir / f"{video_id}.%(ext)s")
+    
+    ydl_opts = {
+        "quiet": True,
+        "no_warnings": True,
+        "format": "download_addr-0/best[ext=mp4]/best",
+        "outtmpl": output_template,
+        "http_headers": {
             "User-Agent": (
                 "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) "
                 "AppleWebKit/605.1.15 (KHTML, like Gecko) "
                 "Version/17.0 Mobile/15E148 Safari/604.1"
             ),
             "Referer": "https://www.tiktok.com/",
-            "Accept": "*/*",
-            "Accept-Language": "en-US,en;q=0.9",
-            "Origin": "https://www.tiktok.com",
-        }
+        },
+        "retries": 3,
+        "socket_timeout": 30,
+    }
+    
+    loop = asyncio.get_event_loop()
+    
+    def _download():
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            info = ydl.extract_info(url, download=True)
+            # Find the downloaded file
+            ext = info.get("ext", "mp4")
+            downloaded_file = temp_dir / f"{video_id}.{ext}"
+            return downloaded_file, info.get("title", "video")
+    
+    try:
+        downloaded_file, title = await loop.run_in_executor(None, _download)
         
-        # Stream the file from TikTok servers with longer timeout
-        async with httpx.AsyncClient(timeout=120.0, follow_redirects=True) as client:
-            async with client.stream('GET', url, headers=headers) as response:
-                if response.status_code != 200:
-                    raise HTTPException(
-                        status_code=400, 
-                        detail=f"Could not download file (status: {response.status_code})"
-                    )
-                
-                # Determine content type and length
-                content_type = response.headers.get('content-type', 'application/octet-stream')
-                content_length = response.headers.get('content-length')
-                
-                # Stream generator
-                async def iterfile():
-                    async for chunk in response.aiter_bytes(chunk_size=1024 * 1024):  # 1MB chunks
-                        yield chunk
-                
-                # Build response headers
-                response_headers = {
-                    'Content-Disposition': f'attachment; filename="{filename}"',
-                    'Cache-Control': 'no-cache',
-                }
-                if content_length:
-                    response_headers['Content-Length'] = content_length
-                
-                # Return as streaming response with download headers
-                return StreamingResponse(
-                    iterfile(),
-                    media_type=content_type,
-                    headers=response_headers
-                )
-    except HTTPException:
-        raise
+        if not downloaded_file.exists():
+            raise HTTPException(status_code=500, detail="Download failed")
+        
+        # Clean filename
+        safe_title = "".join(c for c in title if c.isalnum() or c in (' ', '-', '_'))[:50]
+        filename = f"{safe_title}.mp4" if safe_title else "tiktok_video.mp4"
+        
+        # Return file and schedule cleanup
+        def cleanup():
+            try:
+                if downloaded_file.exists():
+                    downloaded_file.unlink()
+            except:
+                pass
+        
+        response = FileResponse(
+            path=str(downloaded_file),
+            media_type="video/mp4",
+            filename=filename,
+            background=cleanup
+        )
+        return response
+        
+    except yt_dlp.utils.DownloadError as e:
+        raise HTTPException(status_code=400, detail=f"Download failed: {str(e)}")
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Download failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
