@@ -62,11 +62,9 @@
       filename = 'tiktok_download_' + timestamp + '.mp4';
     }
     
-    // 通过后端代理下载
-    // 构造代理 URL，让后端添加下载响应头
-    const proxyUrl = `/api/proxy-download?url=${encodeURIComponent(href)}&filename=${encodeURIComponent(filename)}`;
-    
-    a.href = proxyUrl;
+    // 直接链接到视频 URL（让浏览器尝试下载）
+    // 不经过代理，因为 TikTok 的防盗链可能阻止服务器端代理
+    a.href = href;
     a.download = filename;
     
     return a;
