@@ -152,11 +152,14 @@
       resultActions.appendChild(downloadBtn);
     }
 
-    // Thumbnail
+    // Thumbnail - use backend download to force download instead of opening in browser
     if (data.thumbnail) {
-      resultActions.appendChild(
-        makeDlBtn('🖼 Save Thumbnail', data.thumbnail, false)
-      );
+      const thumbBtn = document.createElement('a');
+      thumbBtn.className = 'dl-btn dl-btn-secondary';
+      thumbBtn.textContent = '🖼 Save Thumbnail';
+      thumbBtn.href = `/api/download-thumbnail?url=${encodeURIComponent(data.thumbnail)}`;
+      thumbBtn.target = '_blank';
+      resultActions.appendChild(thumbBtn);
     }
 
     resultCard.hidden = false;

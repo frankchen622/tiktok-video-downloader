@@ -294,3 +294,55 @@ async def download_video(request: Request, url: str, format: str = "video"):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
 
+
+# Thumbnail download endpoint
+import httpx
+
+@app.get("/api/download-thumbnail")
+@limiter.limit("20/minute")
+async def download_thumbnail(request: Request, url: str):
+    """Download thumbnail image and serve it with proper headers for download"""
+    try:
+        url = sanitize_url(url)
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid URL format")
+    
+    # Create temp directory
+    temp_dir = Path(tempfile.gettempdir()) / "tiktok_downloads"
+    temp_dir.mkdir(exist_ok=True)
+    
+    # Generate unique filename
+    thumb_id = str(uuid.uuid4())[:8]
+    temp_file = temp_dir / f"thumb_{thumb_id}.jpg"
+    
+    try:
+        # Download the image
+        async with httpx.AsyncClient(timeout=30.0) as client:
+            response = await client.get(url, follow_redirects=True)
+            response.raise_for_status()
+            
+            # Write to temp file
+            with open(temp_file, 'wb') as f:
+                f.write(response.content)
+        
+        # Return file and schedule cleanup
+        def cleanup():
+            try:
+                if temp_file.exists():
+                    temp_file.unlink()
+            except:
+                pass
+        
+        return FileResponse(
+            path=str(temp_file),
+            media_type="image/jpeg",
+            filename=f"tiktok_thumbnail_{thumb_id}.jpg",
+            background=cleanup
+        )
+        
+    except httpx.HTTPError as e:
+        raise HTTPException(status_code=400, detail=f"Failed to download thumbnail: {str(e)}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
+
+
