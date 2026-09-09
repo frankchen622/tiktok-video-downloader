@@ -66,6 +66,7 @@
     // 点击时通过代理下载
     btn.addEventListener('click', async () => {
       btn.disabled = true;
+      const originalText = btn.textContent;
       btn.textContent = 'Downloading...';
       
       try {
@@ -76,7 +77,9 @@
         });
         
         if (!response.ok) {
-          throw new Error('Download failed');
+          const errorData = await response.json().catch(() => ({}));
+          console.error('Download failed:', errorData);
+          throw new Error(errorData.detail || 'Download failed');
         }
         
         // 创建blob并触发下载
@@ -90,14 +93,18 @@
         window.URL.revokeObjectURL(url);
         document.body.removeChild(a);
         
-        btn.textContent = label;
-        btn.disabled = false;
-      } catch (err) {
-        btn.textContent = 'Download Failed';
+        btn.textContent = '✓ Downloaded';
         setTimeout(() => {
-          btn.textContent = label;
+          btn.textContent = originalText;
           btn.disabled = false;
         }, 2000);
+      } catch (err) {
+        console.error('Download error:', err);
+        btn.textContent = '✗ Failed';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }, 3000);
       }
     });
     

@@ -198,12 +198,28 @@ async def proxy_download(request: Request, body: ProxyDownloadRequest):
         url = body.url
         filename = body.filename
         
+        # Headers to mimic real browser and avoid anti-hotlink protection
+        headers = {
+            "User-Agent": (
+                "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) "
+                "AppleWebKit/605.1.15 (KHTML, like Gecko) "
+                "Version/17.0 Mobile/15E148 Safari/604.1"
+            ),
+            "Referer": "https://www.tiktok.com/",
+            "Accept": "*/*",
+            "Accept-Language": "en-US,en;q=0.9",
+            "Origin": "https://www.tiktok.com",
+        }
+        
         # Stream the file from TikTok servers
-        async with httpx.AsyncClient(timeout=60.0) as client:
-            response = await client.get(url, follow_redirects=True)
+        async with httpx.AsyncClient(timeout=60.0, follow_redirects=True) as client:
+            response = await client.get(url, headers=headers)
             
             if response.status_code != 200:
-                raise HTTPException(status_code=400, detail="Could not download file")
+                raise HTTPException(
+                    status_code=400, 
+                    detail=f"Could not download file (status: {response.status_code})"
+                )
             
             # Determine content type
             content_type = response.headers.get('content-type', 'application/octet-stream')
@@ -217,5 +233,7 @@ async def proxy_download(request: Request, body: ProxyDownloadRequest):
                     'Content-Length': str(len(response.content))
                 }
             )
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Download failed: {str(e)}")
