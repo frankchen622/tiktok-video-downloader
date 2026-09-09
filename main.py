@@ -189,8 +189,8 @@ from pathlib import Path
 
 @app.get("/api/download")
 @limiter.limit("10/minute")
-async def download_video(request: Request, url: str):
-    """Download video using yt-dlp and serve it"""
+async def download_video(request: Request, url: str, format: str = "video"):
+    """Download video or audio using yt-dlp and serve it"""
     try:
         url = sanitize_url(url)
     except ValueError:
@@ -204,22 +204,46 @@ async def download_video(request: Request, url: str):
     video_id = str(uuid.uuid4())[:8]
     output_template = str(temp_dir / f"{video_id}.%(ext)s")
     
-    ydl_opts = {
-        "quiet": True,
-        "no_warnings": True,
-        "format": "download_addr-0/best[ext=mp4]/best",
-        "outtmpl": output_template,
-        "http_headers": {
-            "User-Agent": (
-                "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) "
-                "AppleWebKit/605.1.15 (KHTML, like Gecko) "
-                "Version/17.0 Mobile/15E148 Safari/604.1"
-            ),
-            "Referer": "https://www.tiktok.com/",
-        },
-        "retries": 3,
-        "socket_timeout": 30,
-    }
+    # Configure yt-dlp options based on format
+    if format == "mp3":
+        ydl_opts = {
+            "quiet": True,
+            "no_warnings": True,
+            "format": "bestaudio/best",
+            "outtmpl": output_template,
+            "postprocessors": [{
+                "key": "FFmpegExtractAudio",
+                "preferredcodec": "mp3",
+                "preferredquality": "320",
+            }],
+            "http_headers": {
+                "User-Agent": (
+                    "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) "
+                    "AppleWebKit/605.1.15 (KHTML, like Gecko) "
+                    "Version/17.0 Mobile/15E148 Safari/604.1"
+                ),
+                "Referer": "https://www.tiktok.com/",
+            },
+            "retries": 3,
+            "socket_timeout": 30,
+        }
+    else:
+        ydl_opts = {
+            "quiet": True,
+            "no_warnings": True,
+            "format": "download_addr-0/best[ext=mp4]/best",
+            "outtmpl": output_template,
+            "http_headers": {
+                "User-Agent": (
+                    "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) "
+                    "AppleWebKit/605.1.15 (KHTML, like Gecko) "
+                    "Version/17.0 Mobile/15E148 Safari/604.1"
+                ),
+                "Referer": "https://www.tiktok.com/",
+            },
+            "retries": 3,
+            "socket_timeout": 30,
+        }
     
     loop = asyncio.get_event_loop()
     
@@ -227,9 +251,12 @@ async def download_video(request: Request, url: str):
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=True)
             # Find the downloaded file
-            ext = info.get("ext", "mp4")
+            if format == "mp3":
+                ext = "mp3"
+            else:
+                ext = info.get("ext", "mp4")
             downloaded_file = temp_dir / f"{video_id}.{ext}"
-            return downloaded_file, info.get("title", "video")
+            return downloaded_file, info.get("title", "tiktok")
     
     try:
         downloaded_file, title = await loop.run_in_executor(None, _download)
@@ -239,7 +266,12 @@ async def download_video(request: Request, url: str):
         
         # Clean filename
         safe_title = "".join(c for c in title if c.isalnum() or c in (' ', '-', '_'))[:50]
-        filename = f"{safe_title}.mp4" if safe_title else "tiktok_video.mp4"
+        if format == "mp3":
+            filename = f"{safe_title}.mp3" if safe_title else "tiktok_audio.mp3"
+            media_type = "audio/mpeg"
+        else:
+            filename = f"{safe_title}.mp4" if safe_title else "tiktok_video.mp4"
+            media_type = "video/mp4"
         
         # Return file and schedule cleanup
         def cleanup():
@@ -251,7 +283,7 @@ async def download_video(request: Request, url: str):
         
         response = FileResponse(
             path=str(downloaded_file),
-            media_type="video/mp4",
+            media_type=media_type,
             filename=filename,
             background=cleanup
         )
@@ -261,3 +293,4 @@ async def download_video(request: Request, url: str):
         raise HTTPException(status_code=400, detail=f"Download failed: {str(e)}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
+
