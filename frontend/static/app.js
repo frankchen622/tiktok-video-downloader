@@ -62,11 +62,12 @@
       filename = 'tiktok_download_' + timestamp + '.mp4';
     }
     
-    // 直接下载：<a> 标签 + download 属性
-    // 浏览器会尝试下载，如果服务器没有 CORS 限制
-    a.href = href;
+    // 通过后端代理下载
+    // 构造代理 URL，让后端添加下载响应头
+    const proxyUrl = `/api/proxy-download?url=${encodeURIComponent(href)}&filename=${encodeURIComponent(filename)}`;
+    
+    a.href = proxyUrl;
     a.download = filename;
-    // 不设置 target="_blank"，让浏览器决定是下载还是打开
     
     return a;
   }

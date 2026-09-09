@@ -190,14 +190,21 @@ class ProxyDownloadRequest(BaseModel):
     url: str
     filename: str
 
+@app.get("/api/proxy-download")
+@limiter.limit("50/minute")
+async def proxy_download_get(request: Request, url: str, filename: str):
+    """Proxy download via GET for simple <a> tag links"""
+    return await _do_proxy_download(url, filename)
+
 @app.post("/api/proxy-download")
 @limiter.limit("50/minute")
-async def proxy_download(request: Request, body: ProxyDownloadRequest):
-    """Proxy download to avoid CORS and force download"""
+async def proxy_download_post(request: Request, body: ProxyDownloadRequest):
+    """Proxy download via POST for fetch requests"""
+    return await _do_proxy_download(body.url, body.filename)
+
+async def _do_proxy_download(url: str, filename: str):
+    """Shared proxy download logic"""
     try:
-        url = body.url
-        filename = body.filename
-        
         # Headers to mimic real browser and avoid anti-hotlink protection
         headers = {
             "User-Agent": (
