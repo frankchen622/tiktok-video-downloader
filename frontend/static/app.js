@@ -44,10 +44,9 @@
   }
 
   function makeDlBtn(label, href, primary = false) {
-    const btn = document.createElement('button');
-    btn.className = primary ? 'dl-btn dl-btn-primary' : 'dl-btn dl-btn-secondary';
-    btn.textContent = label;
-    btn.type = 'button';
+    const a = document.createElement('a');
+    a.className = primary ? 'dl-btn dl-btn-primary' : 'dl-btn dl-btn-secondary';
+    a.textContent = label;
     
     // 生成文件名
     const timestamp = Date.now();
@@ -63,58 +62,13 @@
       filename = 'tiktok_download_' + timestamp + '.mp4';
     }
     
-    // 点击时触发下载（通过后端代理）
-    btn.addEventListener('click', async () => {
-      btn.disabled = true;
-      const originalText = btn.textContent;
-      btn.textContent = 'Downloading...';
-      
-      try {
-        // 通过后端代理下载（强制设置 Content-Disposition）
-        const response = await fetch('/api/proxy-download', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ url: href, filename: filename })
-        });
-        
-        if (!response.ok) {
-          const errorData = await response.json().catch(() => ({ detail: 'Unknown error' }));
-          throw new Error(errorData.detail);
-        }
-        
-        // 创建 blob 并触发下载
-        const blob = await response.blob();
-        const blobUrl = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = blobUrl;
-        a.download = filename;
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.click();
-        
-        // 清理
-        setTimeout(() => {
-          window.URL.revokeObjectURL(blobUrl);
-          document.body.removeChild(a);
-        }, 100);
-        
-        btn.textContent = '✓ Downloaded';
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.disabled = false;
-        }, 2000);
-        
-      } catch (err) {
-        console.error('Download error:', err);
-        btn.textContent = '✗ Failed: ' + err.message.substring(0, 20);
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.disabled = false;
-        }, 3000);
-      }
-    });
+    // 直接下载：<a> 标签 + download 属性
+    // 浏览器会尝试下载，如果服务器没有 CORS 限制
+    a.href = href;
+    a.download = filename;
+    // 不设置 target="_blank"，让浏览器决定是下载还是打开
     
-    return btn;
+    return a;
   }
 
   // ── Form submit ────────────────────────────────────────────────────────────
