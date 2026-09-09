@@ -63,64 +63,27 @@
       filename = 'tiktok_download_' + timestamp + '.mp4';
     }
     
-    // 点击时直接下载（使用 fetch + blob 方式）
-    btn.addEventListener('click', async () => {
-      btn.disabled = true;
-      const originalText = btn.textContent;
-      btn.textContent = 'Downloading...';
+    // 点击时触发下载
+    btn.addEventListener('click', () => {
+      // 创建隐藏的 <a> 标签触发下载
+      const a = document.createElement('a');
+      a.href = href;
+      a.download = filename;
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
       
-      try {
-        // 直接从原始 URL fetch（不经过代理）
-        const response = await fetch(href, {
-          method: 'GET',
-          mode: 'cors',
-          credentials: 'omit'
-        });
-        
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`);
-        }
-        
-        // 转换为 blob
-        const blob = await response.blob();
-        
-        // 创建临时下载链接
-        const blobUrl = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = blobUrl;
-        a.download = filename;
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.click();
-        
-        // 清理
-        setTimeout(() => {
-          window.URL.revokeObjectURL(blobUrl);
-          document.body.removeChild(a);
-        }, 100);
-        
-        btn.textContent = '✓ Downloaded';
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.disabled = false;
-        }, 2000);
-        
-      } catch (err) {
-        console.error('Download error:', err);
-        // Fallback: 如果 fetch 失败，尝试直接打开链接
-        // （浏览器可能会下载或者播放，取决于响应头）
-        const a = document.createElement('a');
-        a.href = href;
-        a.download = filename;
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-        document.body.appendChild(a);
-        a.click();
+      // 清理
+      setTimeout(() => {
         document.body.removeChild(a);
-        
+      }, 100);
+      
+      // 视觉反馈
+      const originalText = btn.textContent;
+      btn.textContent = '✓ Downloading...';
+      setTimeout(() => {
         btn.textContent = originalText;
-        btn.disabled = false;
-      }
+      }, 2000);
     });
     
     return btn;
