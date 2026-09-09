@@ -63,27 +63,55 @@
       filename = 'tiktok_download_' + timestamp + '.mp4';
     }
     
-    // 点击时触发下载
-    btn.addEventListener('click', () => {
-      // 创建隐藏的 <a> 标签触发下载
-      const a = document.createElement('a');
-      a.href = href;
-      a.download = filename;
-      a.style.display = 'none';
-      document.body.appendChild(a);
-      a.click();
-      
-      // 清理
-      setTimeout(() => {
-        document.body.removeChild(a);
-      }, 100);
-      
-      // 视觉反馈
+    // 点击时触发下载（通过后端代理）
+    btn.addEventListener('click', async () => {
+      btn.disabled = true;
       const originalText = btn.textContent;
-      btn.textContent = '✓ Downloading...';
-      setTimeout(() => {
-        btn.textContent = originalText;
-      }, 2000);
+      btn.textContent = 'Downloading...';
+      
+      try {
+        // 通过后端代理下载（强制设置 Content-Disposition）
+        const response = await fetch('/api/proxy-download', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url: href, filename: filename })
+        });
+        
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({ detail: 'Unknown error' }));
+          throw new Error(errorData.detail);
+        }
+        
+        // 创建 blob 并触发下载
+        const blob = await response.blob();
+        const blobUrl = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = filename;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        
+        // 清理
+        setTimeout(() => {
+          window.URL.revokeObjectURL(blobUrl);
+          document.body.removeChild(a);
+        }, 100);
+        
+        btn.textContent = '✓ Downloaded';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }, 2000);
+        
+      } catch (err) {
+        console.error('Download error:', err);
+        btn.textContent = '✗ Failed: ' + err.message.substring(0, 20);
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }, 3000);
+      }
     });
     
     return btn;

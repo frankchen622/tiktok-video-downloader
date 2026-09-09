@@ -211,28 +211,38 @@ async def proxy_download(request: Request, body: ProxyDownloadRequest):
             "Origin": "https://www.tiktok.com",
         }
         
-        # Stream the file from TikTok servers
-        async with httpx.AsyncClient(timeout=60.0, follow_redirects=True) as client:
-            response = await client.get(url, headers=headers)
-            
-            if response.status_code != 200:
-                raise HTTPException(
-                    status_code=400, 
-                    detail=f"Could not download file (status: {response.status_code})"
-                )
-            
-            # Determine content type
-            content_type = response.headers.get('content-type', 'application/octet-stream')
-            
-            # Return as streaming response with download headers
-            return StreamingResponse(
-                iter([response.content]),
-                media_type=content_type,
-                headers={
+        # Stream the file from TikTok servers with longer timeout
+        async with httpx.AsyncClient(timeout=120.0, follow_redirects=True) as client:
+            async with client.stream('GET', url, headers=headers) as response:
+                if response.status_code != 200:
+                    raise HTTPException(
+                        status_code=400, 
+                        detail=f"Could not download file (status: {response.status_code})"
+                    )
+                
+                # Determine content type and length
+                content_type = response.headers.get('content-type', 'application/octet-stream')
+                content_length = response.headers.get('content-length')
+                
+                # Stream generator
+                async def iterfile():
+                    async for chunk in response.aiter_bytes(chunk_size=1024 * 1024):  # 1MB chunks
+                        yield chunk
+                
+                # Build response headers
+                response_headers = {
                     'Content-Disposition': f'attachment; filename="{filename}"',
-                    'Content-Length': str(len(response.content))
+                    'Cache-Control': 'no-cache',
                 }
-            )
+                if content_length:
+                    response_headers['Content-Length'] = content_length
+                
+                # Return as streaming response with download headers
+                return StreamingResponse(
+                    iterfile(),
+                    media_type=content_type,
+                    headers=response_headers
+                )
     except HTTPException:
         raise
     except Exception as e:
