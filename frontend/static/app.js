@@ -16,6 +16,13 @@
 
   const errorCard    = document.getElementById('errorCard');
 
+  // ── Initialize button state ────────────────────────────────────────────────
+  
+  // Ensure button is in normal state on page load
+  submitBtn.disabled = false;
+  btnText.hidden = false;
+  btnSpinner.hidden = true;
+
   // ── Helpers ────────────────────────────────────────────────────────────────
 
   function setLoading(on) {
