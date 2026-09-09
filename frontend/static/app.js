@@ -44,9 +44,10 @@
   }
 
   function makeDlBtn(label, href, primary = false) {
-    const a = document.createElement('a');
-    a.className = primary ? 'dl-btn dl-btn-primary' : 'dl-btn dl-btn-secondary';
-    a.textContent = label;
+    const btn = document.createElement('button');
+    btn.className = primary ? 'dl-btn dl-btn-primary' : 'dl-btn dl-btn-secondary';
+    btn.textContent = label;
+    btn.type = 'button';
     
     // 生成文件名
     const timestamp = Date.now();
@@ -62,13 +63,45 @@
       filename = 'tiktok_download_' + timestamp + '.mp4';
     }
     
-    // 简单可靠的下载方式
-    a.href = href;
-    a.download = filename;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
+    // 点击时通过代理下载
+    btn.addEventListener('click', async () => {
+      btn.disabled = true;
+      btn.textContent = 'Downloading...';
+      
+      try {
+        const response = await fetch('/api/proxy-download', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url: href, filename: filename })
+        });
+        
+        if (!response.ok) {
+          throw new Error('Download failed');
+        }
+        
+        // 创建blob并触发下载
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+        
+        btn.textContent = label;
+        btn.disabled = false;
+      } catch (err) {
+        btn.textContent = 'Download Failed';
+        setTimeout(() => {
+          btn.textContent = label;
+          btn.disabled = false;
+        }, 2000);
+      }
+    });
     
-    return a;
+    return btn;
   }
 
   // ── Form submit ────────────────────────────────────────────────────────────
