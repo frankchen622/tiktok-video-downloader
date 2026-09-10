@@ -17,9 +17,15 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://dltk.io",
+        "https://www.dltk.io",
+        "http://localhost:3000",
+        "http://localhost:8000",
+    ],
     allow_methods=["GET", "POST"],
     allow_headers=["*"],
+    allow_credentials=True,
 )
 
 # Serve frontend static files
@@ -41,6 +47,12 @@ def sanitize_url(url: str) -> str:
 @app.get("/")
 async def serve_index():
     return FileResponse(os.path.join(frontend_path, "index.html"))
+
+
+@app.get("/health")
+async def health_check():
+    """Lightweight health check for Railway"""
+    return {"status": "ok", "version": "1.0.0"}
 
 
 @app.get("/robots.txt")
