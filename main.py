@@ -1,5 +1,6 @@
 import os
 import asyncio
+import logging
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -9,6 +10,13 @@ from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 import yt_dlp
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
 
 limiter = Limiter(key_func=get_remote_address)
 app = FastAPI(title="TikTok Downloader API")
@@ -97,9 +105,13 @@ async def serve_page(page_name: str):
 @app.post("/api/parse")
 @limiter.limit("20/minute")
 async def parse_video(request: Request, body: ParseRequest):
+    client_ip = get_remote_address(request)
+    logger.info(f"Parse request from {client_ip}: {body.url[:50]}...")
+    
     try:
         url = sanitize_url(body.url)
     except ValueError:
+        logger.warning(f"Invalid URL from {client_ip}: {body.url}")
         raise HTTPException(status_code=400, detail="Invalid URL format")
 
     ydl_opts = {
@@ -203,9 +215,13 @@ from pathlib import Path
 @limiter.limit("10/minute")
 async def download_video(request: Request, url: str, format: str = "video"):
     """Download video or audio using yt-dlp and serve it"""
+    client_ip = get_remote_address(request)
+    logger.info(f"Download request ({format}) from {client_ip}: {url[:50]}...")
+    
     try:
         url = sanitize_url(url)
     except ValueError:
+        logger.warning(f"Invalid download URL from {client_ip}: {url}")
         raise HTTPException(status_code=400, detail="Invalid URL format")
     
     # Create temp directory for downloads
