@@ -36,12 +36,12 @@ window.switchLanguage = function(lang) {
 function updatePageTranslations(lang) {
   console.log('Updating page translations for:', lang);
   
-  if (typeof translations === 'undefined') {
-    console.error('translations object not found!');
+  if (typeof window.translations === 'undefined') {
+    console.error('window.translations object not found!');
     return;
   }
   
-  const trans = translations[lang] || translations['en'];
+  const trans = window.translations[lang] || window.translations['en'];
   let updateCount = 0;
   
   // 更新所有带 data-i18n 的元素

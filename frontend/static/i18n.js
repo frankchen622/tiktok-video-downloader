@@ -1,7 +1,8 @@
 // DLTK.io - 多语言国际化系统
 // Multilingual Internationalization System
 
-const translations = {
+// 全局暴露 translations 对象，供 lang-dropdown.js 使用
+window.translations = {
   en: {
     // Navigation
     nav_video: "Video",
@@ -585,7 +586,7 @@ class I18n {
   detectLanguage() {
     // 首先检查 localStorage - Check localStorage first
     const saved = localStorage.getItem('dltk_lang');
-    if (saved && translations[saved]) return saved;
+    if (saved && window.translations[saved]) return saved;
     
     // 检测浏览器语言 - Detect browser language
     const browserLang = navigator.language || navigator.userLanguage;
@@ -605,7 +606,7 @@ class I18n {
   
   // 设置语言 - Set language
   setLanguage(lang) {
-    if (!translations[lang]) return;
+    if (!window.translations[lang]) return;
     this.currentLang = lang;
     localStorage.setItem('dltk_lang', lang);
     this.updatePage();
@@ -614,7 +615,7 @@ class I18n {
   
   // 获取翻译 - Get translation
   t(key) {
-    return translations[this.currentLang][key] || translations['en'][key] || key;
+    return window.translations[this.currentLang][key] || window.translations['en'][key] || key;
   }
   
   // 初始化 - Initialize
