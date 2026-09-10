@@ -15,8 +15,17 @@
     gtag('config', 'G-7104GGSQ1S');
   </script>
 
+  <link rel="stylesheet" href="/static/lang-switcher.css" />
+  <script src="/static/i18n.js"></script>
 </head>
 <body>
+  <div class="lang-switcher">
+    <button class="lang-btn" data-lang="en" onclick="i18n.setLanguage('en')">EN</button>
+    <button class="lang-btn" data-lang="zh" onclick="i18n.setLanguage('zh')">中文</button>
+    <button class="lang-btn" data-lang="es" onclick="i18n.setLanguage('es')">ES</button>
+    <button class="lang-btn" data-lang="pt" onclick="i18n.setLanguage('pt')">PT</button>
+    <button class="lang-btn" data-lang="id" onclick="i18n.setLanguage('id')">ID</button>
+  </div>
   <header class="site-header">
     <div class="container">
       <div class="logo">

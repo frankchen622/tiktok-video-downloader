@@ -89,8 +89,21 @@
     ]
   }
   </script>
+  
+  <!-- i18n & Language Switcher -->
+  <link rel="stylesheet" href="/static/lang-switcher.css" />
+  <script src="/static/i18n.js"></script>
 </head>
 <body>
+  
+  <!-- Language Switcher -->
+  <div class="lang-switcher">
+    <button class="lang-btn" data-lang="en" onclick="i18n.setLanguage('en')">EN</button>
+    <button class="lang-btn" data-lang="zh" onclick="i18n.setLanguage('zh')">中文</button>
+    <button class="lang-btn" data-lang="es" onclick="i18n.setLanguage('es')">ES</button>
+    <button class="lang-btn" data-lang="pt" onclick="i18n.setLanguage('pt')">PT</button>
+    <button class="lang-btn" data-lang="id" onclick="i18n.setLanguage('id')">ID</button>
+  </div>
 
   <!-- Header -->
   <header class="site-header">

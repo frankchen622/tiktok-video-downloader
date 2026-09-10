@@ -135,8 +135,21 @@
     ]
   }
   </script>
+  
+  <!-- i18n & Language Switcher -->
+  <link rel="stylesheet" href="/static/lang-switcher.css" />
+  <script src="/static/i18n.js"></script>
 </head>
 <body>
+
+  <!-- Language Switcher -->
+  <div class="lang-switcher">
+    <button class="lang-btn" data-lang="en" onclick="i18n.setLanguage('en')">EN</button>
+    <button class="lang-btn" data-lang="zh" onclick="i18n.setLanguage('zh')">中文</button>
+    <button class="lang-btn" data-lang="es" onclick="i18n.setLanguage('es')">ES</button>
+    <button class="lang-btn" data-lang="pt" onclick="i18n.setLanguage('pt')">PT</button>
+    <button class="lang-btn" data-lang="id" onclick="i18n.setLanguage('id')">ID</button>
+  </div>
 
   <!-- Header -->
   <header class="site-header">
@@ -157,13 +170,13 @@
           </g>
           <text x="100" y="155" font-family="Arial, sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="white" letter-spacing="2">DLTK</text>
         </svg>
-        <span>DLTK</span>
+        <span data-i18n="logo_text">DLTK</span>
       </div>
       <nav class="site-nav" aria-label="Main navigation">
-        <a href="/">Video</a>
-        <a href="/mp3.html">MP3</a>
-        <a href="/thumbnail.html">Thumbnail</a>
-        <a href="/story.html">Story</a>
+        <a href="/" data-i18n="nav_video">Video</a>
+        <a href="/mp3.html" data-i18n="nav_mp3">MP3</a>
+        <a href="/thumbnail.html" data-i18n="nav_thumbnail">Thumbnail</a>
+        <a href="/story.html" data-i18n="nav_story">Story</a>
       </nav>
     </div>
   </header>
@@ -180,9 +193,9 @@
           <span class="corner-dot bottom-left" aria-hidden="true"></span>
           <span class="corner-dot bottom-right" aria-hidden="true"></span>
 
-          <h1>TikTok to MP3 Converter<br><span class="hero-sub-title">— Download Audio Free & Fast</span></h1>
+          <h1><span data-i18n="mp3_hero_title">TikTok to MP3 Converter</span><br><span class="hero-sub-title" data-i18n="mp3_hero_subtitle">— Download Audio Free & Fast</span></h1>
           
-          <p class="hero-intro">
+          <p class="hero-intro" data-i18n="mp3_hero_intro">
             Convert TikTok videos to MP3 in seconds. Download audio in high quality (320kbps) for free. Extract music, sound effects, and voiceovers from any video with our fast converter.
           </p>
 
@@ -192,6 +205,16 @@
               <input
                 type="url"
                 id="videoUrl"
+                name="url"
+                placeholder="Paste TikTok Video Link Here..."
+                data-i18n="input_placeholder"
+                autocomplete="off"
+                spellcheck="false"
+                aria-describedby="urlError"
+                required
+              />
+              <button type="submit" id="submitBtn">
+                <span class="btn-text" data-i18n="mp3_btn">CONVERT TO MP3</span>
                 name="url"
                 placeholder="Paste TikTok Video Link Here..."
                 autocomplete="off"

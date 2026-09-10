@@ -164,8 +164,21 @@
     ]
   }
   </script>
+  
+  <!-- i18n & Language Switcher -->
+  <link rel="stylesheet" href="/static/lang-switcher.css" />
+  <script src="/static/i18n.js"></script>
 </head>
 <body>
+
+  <!-- Language Switcher -->
+  <div class="lang-switcher">
+    <button class="lang-btn" data-lang="en" onclick="i18n.setLanguage('en')">EN</button>
+    <button class="lang-btn" data-lang="zh" onclick="i18n.setLanguage('zh')">中文</button>
+    <button class="lang-btn" data-lang="es" onclick="i18n.setLanguage('es')">ES</button>
+    <button class="lang-btn" data-lang="pt" onclick="i18n.setLanguage('pt')">PT</button>
+    <button class="lang-btn" data-lang="id" onclick="i18n.setLanguage('id')">ID</button>
+  </div>
 
   <!-- Header -->
   <header class="site-header">
@@ -186,13 +199,13 @@
           </g>
           <text x="100" y="155" font-family="Arial, sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="white" letter-spacing="2">DLTK</text>
         </svg>
-        <span>DLTK</span>
+        <span data-i18n="logo_text">DLTK</span>
       </div>
       <nav class="site-nav" aria-label="Main navigation">
-        <a href="/">Video</a>
-        <a href="/mp3.html">MP3</a>
-        <a href="/thumbnail.html">Thumbnail</a>
-        <a href="/story.html">Story</a>
+        <a href="/" data-i18n="nav_video">Video</a>
+        <a href="/mp3.html" data-i18n="nav_mp3">MP3</a>
+        <a href="/thumbnail.html" data-i18n="nav_thumbnail">Thumbnail</a>
+        <a href="/story.html" data-i18n="nav_story">Story</a>
       </nav>
     </div>
   </header>
@@ -209,11 +222,11 @@
           <span class="corner-dot bottom-left" aria-hidden="true"></span>
           <span class="corner-dot bottom-right" aria-hidden="true"></span>
 
-          <h1>TikTok Video Downloader Without Watermark<br><span class="hero-sub-title">Free, Fast & HD Quality</span></h1>
+          <h1><span data-i18n="hero_title">TikTok Video Downloader Without Watermark</span><br><span class="hero-sub-title" data-i18n="hero_subtitle">Free, Fast & HD Quality</span></h1>
 
           <!-- Intro paragraph -->
           <div class="intro-section">
-            <p class="intro-text">
+            <p class="intro-text" data-i18n="hero_intro">
               DLTK is a free TikTok video downloader that removes watermarks automatically. Download TikTok videos in HD quality, convert to MP3, or save thumbnails - all in one place. No app needed, no registration required. Fast, simple, and works on all devices.
             </p>
           </div>
@@ -226,13 +239,14 @@
                 id="videoUrl"
                 name="url"
                 placeholder="Paste TikTok Video Link Here..."
+                data-i18n="input_placeholder"
                 autocomplete="off"
                 spellcheck="false"
                 aria-describedby="urlError"
                 required
               />
               <button type="submit" id="submitBtn">
-                <span class="btn-text">DOWNLOAD</span>
+                <span class="btn-text" data-i18n="btn_download">DOWNLOAD</span>
                 <span class="btn-spinner" aria-hidden="true" hidden></span>
               </button>
             </div>
@@ -302,23 +316,23 @@
     <!-- How to -->
     <section class="steps-section" id="how-to">
       <div class="container">
-        <h2>How to Download TikTok Videos Without Watermark</h2>
-        <p class="section-sub">Simple 3-step process to save TikTok videos. No app or registration needed.</p>
+        <h2 data-i18n="how_to_title">How to Download TikTok Videos Without Watermark</h2>
+        <p class="section-sub" data-i18n="how_to_subtitle">Simple 3-step process to save TikTok videos. No app or registration needed.</p>
         <ul class="features-grid" style="max-width: 900px; margin: 0 auto; grid-template-columns: repeat(3, 1fr);">
           <li class="feature-card">
-            <div class="step-num" style="margin: 0 auto var(--sp-4);">01</div>
-            <h3>Copy the TikTok Video Link</h3>
-            <p>Open TikTok app, find the video you want to download, tap the Share button, and select "Copy link". Our TikTok video downloader works with any TikTok video URL.</p>
+            <div class="step-num" style="margin: 0 auto var(--sp-4);" data-i18n="step1_num">01</div>
+            <h3 data-i18n="step1_title">Copy the TikTok Video Link</h3>
+            <p data-i18n="step1_desc">Open TikTok app, find the video you want to download, tap the Share button, and select "Copy link". Our TikTok video downloader works with any TikTok video URL.</p>
           </li>
           <li class="feature-card">
-            <div class="step-num" style="margin: 0 auto var(--sp-4);">02</div>
-            <h3>Paste the Link into DLTK</h3>
+            <div class="step-num" style="margin: 0 auto var(--sp-4);" data-i18n="step2_num">02</div>
+            <h3 data-i18n="step2_title">Paste the Link into DLTK</h3>
             <p>Come back to DLTK.io and paste the copied TikTok link into the input field above. Our TikTok downloader will instantly process your video and remove the watermark automatically.</p>
           </li>
           <li class="feature-card">
-            <div class="step-num" style="margin: 0 auto var(--sp-4);">03</div>
-            <h3>Step 3: Download TikTok Video</h3>
-            <p>Click the Download button and choose your preferred quality (HD, Full HD, or MP4). The video saves directly to your device without watermark. You can also convert TikTok to MP3 if you only need the audio.</p>
+            <div class="step-num" style="margin: 0 auto var(--sp-4);" data-i18n="step3_num">03</div>
+            <h3 data-i18n="step3_title">Download TikTok Video</h3>
+            <p data-i18n="step3_desc">Click the Download button and choose your preferred quality (HD, Full HD, or MP4). The video saves directly to your device without watermark. You can also convert TikTok to MP3 if you only need the audio.</p>
           </li>
         </ul>
       </div>
@@ -327,8 +341,8 @@
     <!-- Features -->
     <section class="features-section" id="features">
       <div class="container">
-        <h2>Why Choose Our Free TikTok Video Downloader</h2>
-        <p class="section-sub">The best free TikTok downloader with powerful features for all your needs.</p>
+        <h2 data-i18n="features_title">Why Choose Our Free TikTok Video Downloader</h2>
+        <p class="section-sub" data-i18n="features_subtitle">The best free TikTok downloader with powerful features for all your needs.</p>
         
         <ul class="features-alternating">
           <!-- Feature 1: No Watermark -->
@@ -337,8 +351,8 @@
               <img src="/static/images/feature-no-watermark.jpg" alt="Download TikTok Without Watermark" loading="lazy" />
             </div>
             <div class="feature-text-container">
-              <h3>Download TikTok Without Watermark</h3>
-              <p>Our free TikTok video downloader removes watermarks automatically, giving you clean, professional-looking videos. Download TikTok videos in original quality without the TikTok logo.</p>
+              <h3 data-i18n="feature1_title">Download TikTok Without Watermark</h3>
+              <p data-i18n="feature1_desc">Our free TikTok video downloader removes watermarks automatically, giving you clean, professional-looking videos. Download TikTok videos in original quality without the TikTok logo.</p>
             </div>
           </li>
           
@@ -348,8 +362,8 @@
               <img src="/static/images/feature-fast.jpg" alt="Fast TikTok Downloader" loading="lazy" />
             </div>
             <div class="feature-text-container">
-              <h3>Fast TikTok Downloader</h3>
-              <p>Download TikTok videos in seconds. Our TikTok video downloader uses advanced technology to process videos instantly. No waiting, no queues - just fast TikTok downloads.</p>
+              <h3 data-i18n="feature2_title">Fast TikTok Downloader</h3>
+              <p data-i18n="feature2_desc">Download TikTok videos in seconds. Our TikTok video downloader uses advanced technology to process videos instantly. No waiting, no queues - just fast TikTok downloads.</p>
             </div>
           </li>
           
@@ -358,10 +372,15 @@
             <div class="feature-image-container">
               <img src="/static/images/feature-mp3.jpg" alt="TikTok to MP3 Converter" loading="lazy" />
             </div>
+          <!-- Feature 3: TikTok to MP3 -->
+          <li class="feature-row">
+            <div class="feature-image-container">
+              <img src="/static/images/feature-mp3.jpg" alt="TikTok to MP3 Converter" loading="lazy" />
+            </div>
             <div class="feature-text-container">
-              <h3>TikTok to MP3 Converter</h3>
-              <p>Extract audio from TikTok videos and save as high-quality MP3 files. Perfect for creating music collections or podcasts.</p>
-              <a href="/mp3.html" class="feature-link">Try TikTok to MP3 Converter</a>
+              <h3 data-i18n="feature3_title">TikTok to MP3 Converter</h3>
+              <p data-i18n="feature3_desc">Extract audio from TikTok videos and save as high-quality MP3 files. Perfect for creating music collections or podcasts.</p>
+              <a href="/mp3.html" class="feature-link" data-i18n="feature3_link">Try TikTok to MP3 Converter</a>
             </div>
           </li>
           
@@ -371,9 +390,9 @@
               <img src="/static/images/feature-thumbnail.svg" alt="TikTok Thumbnail Downloader" loading="lazy" />
             </div>
             <div class="feature-text-container">
-              <h3>TikTok Thumbnail Downloader</h3>
-              <p>Save TikTok video cover images in full resolution with one click. Download TikTok thumbnails for your projects.</p>
-              <a href="/thumbnail.html" class="feature-link">Download TikTok Thumbnails</a>
+              <h3 data-i18n="feature4_title">TikTok Thumbnail Downloader</h3>
+              <p data-i18n="feature4_desc">Save TikTok video cover images in full resolution with one click. Download TikTok thumbnails for your projects.</p>
+              <a href="/thumbnail.html" class="feature-link" data-i18n="feature4_link">Download TikTok Thumbnails</a>
             </div>
           </li>
           
@@ -383,8 +402,8 @@
               <img src="/static/images/feature-devices.jpg" alt="Works on All Devices" loading="lazy" />
             </div>
             <div class="feature-text-container">
-              <h3>Works on All Devices</h3>
-              <p>Our TikTok video downloader works on Windows, Mac, Android, iOS, and any device with a web browser. No app installation needed - download TikTok videos from any device.</p>
+              <h3 data-i18n="feature5_title">Works on All Devices</h3>
+              <p data-i18n="feature5_desc">Our TikTok video downloader works on Windows, Mac, Android, iOS, and any device with a web browser. No app installation needed - download TikTok videos from any device.</p>
             </div>
           </li>
           
@@ -394,8 +413,8 @@
               <img src="/static/images/feature-free.jpg" alt="100% Free TikTok Downloader" loading="lazy" />
             </div>
             <div class="feature-text-container">
-              <h3>100% Free TikTok Downloader</h3>
-              <p>Download TikTok videos for free with no limits. No registration, no subscription, no hidden fees. DLTK is completely free to use forever.</p>
+              <h3 data-i18n="feature6_title">100% Free TikTok Downloader</h3>
+              <p data-i18n="feature6_desc">Download TikTok videos for free with no limits. No registration, no subscription, no hidden fees. DLTK is completely free to use forever.</p>
             </div>
           </li>
           
@@ -405,8 +424,8 @@
               <img src="/static/images/feature-hd.svg" alt="HD TikTok Video Downloader" loading="lazy" />
             </div>
             <div class="feature-text-container">
-              <h3>HD TikTok Video Downloader</h3>
-              <p>Download TikTok videos in HD, Full HD, and even 4K quality when available. Our TikTok video downloader preserves original video quality for the best viewing experience.</p>
+              <h3 data-i18n="feature7_title">HD TikTok Video Downloader</h3>
+              <p data-i18n="feature7_desc">Download TikTok videos in HD, Full HD, and even 4K quality when available. Our TikTok video downloader preserves original video quality for the best viewing experience.</p>
             </div>
           </li>
           
@@ -416,8 +435,8 @@
               <img src="/static/images/feature-safe.svg" alt="Safe & Private" loading="lazy" />
             </div>
             <div class="feature-text-container">
-              <h3>Safe & Private</h3>
-              <p>Your privacy is our priority. We don't store your downloaded videos or personal information. Download TikTok videos safely and anonymously with DLTK.</p>
+              <h3 data-i18n="feature8_title">Safe & Private</h3>
+              <p data-i18n="feature8_desc">Your privacy is our priority. We don't store your downloaded videos or personal information. Download TikTok videos safely and anonymously with DLTK.</p>
             </div>
           </li>
         </ul>
@@ -513,19 +532,19 @@
     <!-- FAQ -->
     <section class="faq-section" id="faq">
       <div class="container">
-        <h2>TikTok Video Downloader FAQ - Common Questions</h2>
+        <h2 data-i18n="faq_title">TikTok Video Downloader FAQ - Common Questions</h2>
         <dl class="faq-list">
           <div class="faq-item">
-            <dt>Is DLTK free to use?</dt>
-            <dd>With DLTK TikTok video downloader, yes, DLTK is completely free. You can download TikTok videos without watermark with no sign-up, no premium tier, and no limits on how many videos you download. It's a 100% free TikTok video downloader.</dd>
+            <dt data-i18n="faq1_q">Is DLTK free to use?</dt>
+            <dd data-i18n="faq1_a">With DLTK TikTok video downloader, yes, DLTK is completely free. You can download TikTok videos without watermark with no sign-up, no premium tier, and no limits on how many videos you download. It's a 100% free TikTok video downloader.</dd>
           </div>
           <div class="faq-item">
-            <dt>How can I download TikTok videos without watermark?</dt>
-            <dd>Simply copy the TikTok video link, paste it into DLTK's input field, and click Download. Our TikTok video downloader automatically removes the watermark and lets you save TikTok videos in HD quality. The entire process takes less than 10 seconds.</dd>
+            <dt data-i18n="faq2_q">How can I download TikTok videos without watermark?</dt>
+            <dd data-i18n="faq2_a">Simply copy the TikTok video link, paste it into DLTK's input field, and click Download. Our TikTok video downloader automatically removes the watermark and lets you save TikTok videos in HD quality. The entire process takes less than 10 seconds.</dd>
           </div>
           <div class="faq-item">
-            <dt>Do I need to install an app to download TikTok videos?</dt>
-            <dd>With DLTK TikTok video downloader, no. DLTK is a web-based TikTok video downloader that runs entirely in your browser. You don't need to download any app or software. Just visit our website to download TikTok videos instantly.</dd>
+            <dt data-i18n="faq3_q">Do I need to install an app to download TikTok videos?</dt>
+            <dd data-i18n="faq3_a">With DLTK TikTok video downloader, no. DLTK is a web-based TikTok video downloader that runs entirely in your browser. You don't need to download any app or software. Just visit our website to download TikTok videos instantly.</dd>
           </div>
           <div class="faq-item">
             <dt>What video quality can I download TikTok videos in?</dt>
@@ -610,29 +629,29 @@
   <footer class="site-footer">
     <div class="container footer-content">
       <div class="footer-about">
-        <h3>About DLTK</h3>
-        <p>DLTK.io is a free online TikTok video downloader for downloading TikTok videos without watermark, extracting audio to MP3, saving thumbnails, and preserving stories. Fast, simple, and always free.</p>
+        <h3 data-i18n="footer_about_title">About DLTK</h3>
+        <p data-i18n="footer_about_text">DLTK.io is a free online TikTok video downloader for downloading TikTok videos without watermark, extracting audio to MP3, saving thumbnails, and preserving stories. Fast, simple, and always free.</p>
       </div>
       
       <div class="footer-links">
-        <h3>Quick Links</h3>
+        <h3 data-i18n="footer_links_title">Quick Links</h3>
         <ul>
-          <li><a href="/">TikTok Video Downloader</a></li>
-          <li><a href="/mp3.html">TikTok to MP3</a></li>
-          <li><a href="/thumbnail.html">Thumbnail Downloader</a></li>
-          <li><a href="/story.html">Story Downloader</a></li>
+          <li><a href="/" data-i18n="nav_video">TikTok Video Downloader</a></li>
+          <li><a href="/mp3.html" data-i18n="nav_mp3">TikTok to MP3</a></li>
+          <li><a href="/thumbnail.html" data-i18n="nav_thumbnail">Thumbnail Downloader</a></li>
+          <li><a href="/story.html" data-i18n="nav_story">Story Downloader</a></li>
         </ul>
       </div>
       
       <div class="footer-legal">
-        <h3>Legal</h3>
+        <h3 data-i18n="footer_legal_title">Legal</h3>
         <ul>
-          <li><a href="/pages/contact.html">Contact Us</a></li>
-          <li><a href="/pages/privacy.html">Privacy Policy</a></li>
-          <li><a href="/pages/terms.html">Terms of Service</a></li>
-          <li><a href="/pages/disclaimer.html">Disclaimer</a></li>
+          <li><a href="/pages/contact.html" data-i18n="contact_us">Contact Us</a></li>
+          <li><a href="/pages/privacy.html" data-i18n="privacy_policy">Privacy Policy</a></li>
+          <li><a href="/pages/terms.html" data-i18n="terms_service">Terms of Service</a></li>
+          <li><a href="/pages/disclaimer.html" data-i18n="disclaimer">Disclaimer</a></li>
           <li><a href="/pages/dmca.html">DMCA & Copyright</a></li>
-          <li><a href="/pages/cookies.html">Cookie Policy</a></li>
+          <li><a href="/pages/cookies.html" data-i18n="cookies">Cookie Policy</a></li>
         </ul>
       </div>
     </div>
