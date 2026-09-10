@@ -1,70 +1,77 @@
-// Language switcher dropdown control
-// 必须在 DOM 加载完成后执行
+// 简化的语言切换系统 - 确保可靠工作
 
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('Language switcher initializing...');
-  
-  const langCurrent = document.getElementById('langCurrent');
-  const langSwitcher = document.getElementById('langSwitcher');
-  
-  if (!langCurrent || !langSwitcher) {
-    console.error('Language switcher elements not found!');
-    return;
-  }
-  
-  console.log('Language switcher elements found');
-  
-  // 点击当前语言按钮，切换下拉菜单
-  langCurrent.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    console.log('Language button clicked');
-    langSwitcher.classList.toggle('active');
-  });
-  
-  // 点击页面其他地方，关闭下拉菜单
-  document.addEventListener('click', function(e) {
-    if (!langSwitcher.contains(e.target)) {
-      langSwitcher.classList.remove('active');
-    }
-  });
-  
-  // 阻止下拉菜单内的点击冒泡
-  const langDropdown = langSwitcher.querySelector('.lang-dropdown');
-  if (langDropdown) {
-    langDropdown.addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-  }
-  
-  console.log('Language switcher ready!');
-});
-
-// 全局函数：切换语言
+// 全局切换函数
 window.switchLanguage = function(lang) {
-  console.log('switchLanguage called with:', lang);
-  console.log('i18n object exists:', typeof i18n !== 'undefined');
+  console.log('=== Language Switch Started ===');
+  console.log('Target language:', lang);
   
-  if (typeof i18n !== 'undefined') {
-    console.log('i18n.setLanguage exists:', typeof i18n.setLanguage === 'function');
-    console.log('Current language before switch:', i18n.currentLang);
+  // 直接调用 i18n 的方法
+  if (typeof i18n !== 'undefined' && i18n) {
+    console.log('i18n found, current lang:', i18n.currentLang);
     
-    if (i18n.setLanguage) {
-      i18n.setLanguage(lang);
-      console.log('Language switched to:', i18n.currentLang);
-      console.log('Testing translation:', i18n.t('nav_video'));
-      
-      updateCurrentLangText(lang);
-      closeLangDropdown();
-    } else {
-      console.error('i18n.setLanguage is not a function!');
-    }
+    // 设置语言
+    i18n.currentLang = lang;
+    localStorage.setItem('dltk_lang', lang);
+    console.log('Language set to:', i18n.currentLang);
+    
+    // 立即更新页面
+    updatePageTranslations(lang);
+    
+    // 更新按钮文字
+    updateCurrentLangText(lang);
+    
+    // 更新激活状态
+    updateActiveButton(lang);
+    
+    // 关闭下拉菜单
+    closeLangDropdown();
+    
+    console.log('=== Language Switch Complete ===');
   } else {
-    console.error('i18n object not found! Window.i18n:', window.i18n);
+    console.error('i18n not found!');
   }
 };
 
-// 更新当前语言显示文本
+// 更新页面翻译
+function updatePageTranslations(lang) {
+  console.log('Updating page translations for:', lang);
+  
+  if (typeof translations === 'undefined') {
+    console.error('translations object not found!');
+    return;
+  }
+  
+  const trans = translations[lang] || translations['en'];
+  let updateCount = 0;
+  
+  // 更新所有带 data-i18n 的元素
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const text = trans[key];
+    
+    if (text) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = text;
+      } else if (el.tagName === 'BUTTON') {
+        const textSpan = el.querySelector('.btn-text');
+        if (textSpan) {
+          textSpan.textContent = text;
+        } else {
+          el.textContent = text;
+        }
+      } else {
+        el.textContent = text;
+      }
+      updateCount++;
+    } else {
+      console.warn('Missing translation for key:', key);
+    }
+  });
+  
+  console.log('Updated', updateCount, 'elements');
+}
+
+// 更新当前语言显示
 function updateCurrentLangText(lang) {
   const langNames = {
     'en': 'EN',
@@ -79,6 +86,16 @@ function updateCurrentLangText(lang) {
   }
 }
 
+// 更新激活按钮
+function updateActiveButton(lang) {
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.dataset.lang === lang) {
+      btn.classList.add('active');
+    }
+  });
+}
+
 // 关闭下拉菜单
 function closeLangDropdown() {
   const switcher = document.getElementById('langSwitcher');
@@ -86,3 +103,41 @@ function closeLangDropdown() {
     switcher.classList.remove('active');
   }
 }
+
+// 初始化下拉菜单控制
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Language dropdown initializing...');
+  
+  const langCurrent = document.getElementById('langCurrent');
+  const langSwitcher = document.getElementById('langSwitcher');
+  
+  if (!langCurrent || !langSwitcher) {
+    console.error('Language switcher elements not found!');
+    return;
+  }
+  
+  console.log('Elements found, setting up listeners');
+  
+  // 点击切换下拉菜单
+  langCurrent.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('Language button clicked');
+    langSwitcher.classList.toggle('active');
+  });
+  
+  // 点击外部关闭
+  document.addEventListener('click', function(e) {
+    if (!langSwitcher.contains(e.target)) {
+      langSwitcher.classList.remove('active');
+    }
+  });
+  
+  // 初始化当前语言显示
+  if (typeof i18n !== 'undefined' && i18n.currentLang) {
+    updateCurrentLangText(i18n.currentLang);
+    updateActiveButton(i18n.currentLang);
+  }
+  
+  console.log('Language dropdown ready!');
+});
