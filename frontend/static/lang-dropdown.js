@@ -42,13 +42,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 全局函数：切换语言
 window.switchLanguage = function(lang) {
-  console.log('Switching to language:', lang);
-  if (typeof i18n !== 'undefined' && i18n.setLanguage) {
-    i18n.setLanguage(lang);
-    updateCurrentLangText(lang);
-    closeLangDropdown();
+  console.log('switchLanguage called with:', lang);
+  console.log('i18n object exists:', typeof i18n !== 'undefined');
+  
+  if (typeof i18n !== 'undefined') {
+    console.log('i18n.setLanguage exists:', typeof i18n.setLanguage === 'function');
+    console.log('Current language before switch:', i18n.currentLang);
+    
+    if (i18n.setLanguage) {
+      i18n.setLanguage(lang);
+      console.log('Language switched to:', i18n.currentLang);
+      console.log('Testing translation:', i18n.t('nav_video'));
+      
+      updateCurrentLangText(lang);
+      closeLangDropdown();
+    } else {
+      console.error('i18n.setLanguage is not a function!');
+    }
   } else {
-    console.error('i18n object not found!');
+    console.error('i18n object not found! Window.i18n:', window.i18n);
   }
 };
 
