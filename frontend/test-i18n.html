@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DLTK i18n Test Page</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    h1 {
+      color: #EE1D52;
+      text-align: center;
+    }
+    .test-section {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .test-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .test-key {
+      font-weight: bold;
+      color: #666;
+    }
+    .test-value {
+      color: #333;
+    }
+    .success {
+      color: #28a745;
+    }
+    .error {
+      color: #dc3545;
+    }
+    .lang-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    .lang-btn {
+      padding: 10px 20px;
+      border: 2px solid #EE1D52;
+      background: white;
+      color: #EE1D52;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .lang-btn:hover {
+      background: #EE1D52;
+      color: white;
+    }
+    .lang-btn.active {
+      background: #EE1D52;
+      color: white;
+    }
+  </style>
+  <script src="/static/i18n.js"></script>
+</head>
+<body>
+  <h1>🌍 DLTK.io 多语言测试页面</h1>
+  
+  <div class="test-section">
+    <h2>语言切换测试 / Language Switcher Test</h2>
+    <div class="lang-buttons" id="langButtons">
+      <button class="lang-btn" data-lang="en" onclick="testLanguage('en')">English</button>
+      <button class="lang-btn" data-lang="zh" onclick="testLanguage('zh')">简体中文</button>
+      <button class="lang-btn" data-lang="es" onclick="testLanguage('es')">Español</button>
+      <button class="lang-btn" data-lang="pt" onclick="testLanguage('pt')">Português</button>
+      <button class="lang-btn" data-lang="id" onclick="testLanguage('id')">Indonesia</button>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>当前语言 / Current Language: <span id="currentLang"></span></h2>
+    <div id="testResults"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>翻译示例 / Translation Examples</h2>
+    <div class="test-row">
+      <div class="test-key">导航-视频:</div>
+      <div class="test-value" data-i18n="nav_video">Video</div>
+    </div>
+    <div class="test-row">
+      <div class="test-key">主标题:</div>
+      <div class="test-value" data-i18n="hero_title">TikTok Video Downloader</div>
+    </div>
+    <div class="test-row">
+      <div class="test-key">输入框占位符:</div>
+      <div class="test-value" data-i18n="input_placeholder">Paste TikTok Video Link Here...</div>
+    </div>
+    <div class="test-row">
+      <div class="test-key">下载按钮:</div>
+      <div class="test-value" data-i18n="btn_download">DOWNLOAD</div>
+    </div>
+    <div class="test-row">
+      <div class="test-key">FAQ标题:</div>
+      <div class="test-value" data-i18n="faq_title">TikTok Video Downloader FAQ</div>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>功能测试 / Function Tests</h2>
+    <div id="functionTests"></div>
+  </div>
+
+  <script>
+    // 测试函数
+    function testLanguage(lang) {
+      i18n.setLanguage(lang);
+      updateTestResults();
+      
+      // 更新按钮状态
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.lang === lang) {
+          btn.classList.add('active');
+        }
+      });
+    }
+
+    function updateTestResults() {
+      const currentLang = i18n.currentLang;
+      document.getElementById('currentLang').textContent = currentLang.toUpperCase();
+      
+      // 测试关键翻译
+      const testKeys = [
+        'nav_video', 'nav_mp3', 'nav_thumbnail', 'nav_story',
+        'hero_title', 'hero_subtitle', 'hero_intro',
+        'btn_download', 'input_placeholder',
+        'feature1_title', 'feature2_title',
+        'faq_title', 'footer_about_title'
+      ];
+      
+      let resultsHTML = '<h3>翻译键测试结果:</h3>';
+      let successCount = 0;
+      let totalCount = testKeys.length;
+      
+      testKeys.forEach(key => {
+        const translation = i18n.t(key);
+        const exists = translation && translation !== key;
+        if (exists) successCount++;
+        
+        resultsHTML += `
+          <div class="test-row">
+            <div class="test-key">${key}</div>
+            <div class="test-value ${exists ? 'success' : 'error'}">
+              ${exists ? '✓ ' + translation : '✗ 缺失'}
+            </div>
+          </div>
+        `;
+      });
+      
+      resultsHTML = `<p><strong>成功率: ${successCount}/${totalCount} (${Math.round(successCount/totalCount*100)}%)</strong></p>` + resultsHTML;
+      document.getElementById('testResults').innerHTML = resultsHTML;
+      
+      // 功能测试
+      testFunctions();
+    }
+
+    function testFunctions() {
+      let html = '';
+      
+      // 测试1: 语言检测
+      const detectedLang = i18n.detectLanguage();
+      html += `
+        <div class="test-row">
+          <div class="test-key">自动检测语言:</div>
+          <div class="test-value success">✓ ${detectedLang}</div>
+        </div>
+      `;
+      
+      // 测试2: LocalStorage
+      const savedLang = localStorage.getItem('dltk_lang');
+      html += `
+        <div class="test-row">
+          <div class="test-key">LocalStorage:</div>
+          <div class="test-value success">✓ ${savedLang || 'null'}</div>
+        </div>
+      `;
+      
+      // 测试3: 翻译对象结构
+      const langs = Object.keys(translations);
+      html += `
+        <div class="test-row">
+          <div class="test-key">支持的语言:</div>
+          <div class="test-value success">✓ ${langs.join(', ')}</div>
+        </div>
+      `;
+      
+      // 测试4: 翻译键数量
+      const enKeys = Object.keys(translations.en || {}).length;
+      const zhKeys = Object.keys(translations.zh || {}).length;
+      const esKeys = Object.keys(translations.es || {}).length;
+      const ptKeys = Object.keys(translations.pt || {}).length;
+      const idKeys = Object.keys(translations.id || {}).length;
+      
+      html += `
+        <div class="test-row">
+          <div class="test-key">翻译键数量:</div>
+          <div class="test-value success">
+            EN: ${enKeys}, ZH: ${zhKeys}, ES: ${esKeys}, PT: ${ptKeys}, ID: ${idKeys}
+          </div>
+        </div>
+      `;
+      
+      document.getElementById('functionTests').innerHTML = html;
+    }
+
+    // 页面加载时运行测试
+    window.addEventListener('DOMContentLoaded', () => {
+      const currentLang = i18n.currentLang;
+      document.querySelector(`[data-lang="${currentLang}"]`).classList.add('active');
+      updateTestResults();
+    });
+  </script>
+</body>
+</html>
