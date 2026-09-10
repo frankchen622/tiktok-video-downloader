@@ -1,10 +1,5 @@
 import os
 import asyncio
-import time
-import atexit
-import logging
-from pathlib import Path
-import tempfile
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -13,15 +8,7 @@ from pydantic import BaseModel
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
-from apscheduler.schedulers.background import BackgroundScheduler
 import yt_dlp
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
 
 limiter = Limiter(key_func=get_remote_address)
 app = FastAPI(title="TikTok Downloader API")
@@ -30,15 +17,9 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://dltk.io",
-        "https://www.dltk.io",
-        "http://localhost:3000",  # Local development
-        "http://localhost:8000",
-    ],
+    allow_origins=["*"],
     allow_methods=["GET", "POST"],
     allow_headers=["*"],
-    allow_credentials=True,
 )
 
 # Serve frontend static files
@@ -60,12 +41,6 @@ def sanitize_url(url: str) -> str:
 @app.get("/")
 async def serve_index():
     return FileResponse(os.path.join(frontend_path, "index.html"))
-
-
-@app.get("/health")
-async def health_check():
-    """Lightweight health check for Railway"""
-    return {"status": "ok", "version": "1.0.0"}
 
 
 @app.get("/robots.txt")
@@ -110,13 +85,9 @@ async def serve_page(page_name: str):
 @app.post("/api/parse")
 @limiter.limit("20/minute")
 async def parse_video(request: Request, body: ParseRequest):
-    client_ip = get_remote_address(request)
-    logger.info(f"Parse request from {client_ip}: {body.url[:50]}...")
-    
     try:
         url = sanitize_url(body.url)
     except ValueError:
-        logger.warning(f"Invalid URL from {client_ip}: {body.url}")
         raise HTTPException(status_code=400, detail="Invalid URL format")
 
     ydl_opts = {
@@ -220,13 +191,9 @@ from pathlib import Path
 @limiter.limit("10/minute")
 async def download_video(request: Request, url: str, format: str = "video"):
     """Download video or audio using yt-dlp and serve it"""
-    client_ip = get_remote_address(request)
-    logger.info(f"Download request ({format}) from {client_ip}: {url[:50]}...")
-    
     try:
         url = sanitize_url(url)
     except ValueError:
-        logger.warning(f"Invalid download URL from {client_ip}: {url}")
         raise HTTPException(status_code=400, detail="Invalid URL format")
     
     # Create temp directory for downloads
@@ -379,32 +346,3 @@ async def download_thumbnail(request: Request, url: str):
         raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
 
 
-# Background job: Clean up old temporary files
-def cleanup_old_files():
-    """Remove temporary files older than 1 hour"""
-    temp_dir = Path(tempfile.gettempdir()) / "tiktok_downloads"
-    if not temp_dir.exists():
-        return
-    
-    now = time.time()
-    cleaned = 0
-    for file in temp_dir.glob("*"):
-        try:
-            if now - file.stat().st_mtime > 3600:  # 1 hour old
-                file.unlink()
-                cleaned += 1
-        except Exception:
-            pass
-    
-    if cleaned > 0:
-        print(f"[Cleanup] Removed {cleaned} old temporary files")
-
-
-# Initialize cleanup scheduler
-scheduler = BackgroundScheduler()
-scheduler.add_job(cleanup_old_files, 'interval', minutes=30)
-scheduler.start()
-atexit.register(lambda: scheduler.shutdown())
-
-# Clean up on startup
-cleanup_old_files()

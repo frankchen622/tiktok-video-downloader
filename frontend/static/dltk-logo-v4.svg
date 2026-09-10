@@ -1,0 +1,32 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EE1D52;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#69C9D0;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <rect width="200" height="200" rx="40" fill="url(#grad3)"/>
+  
+  <!-- TikTok-style video frame with download -->
+  <g transform="translate(100, 55)">
+    <!-- Video frame -->
+    <rect x="-30" y="-35" width="60" height="80" rx="8" fill="white" opacity="0.95"/>
+    
+    <!-- Download arrow inside -->
+    <path d="M 0,-15 L 0,15" stroke="#EE1D52" stroke-width="6" stroke-linecap="round"/>
+    <path d="M -10,8 L 0,18 L 10,8" stroke="#EE1D52" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    
+    <!-- Small TikTok-style note icon -->
+    <circle cx="20" cy="-20" r="8" fill="#69C9D0"/>
+    <circle cx="22" cy="-15" r="6" fill="#69C9D0"/>
+  </g>
+  
+  <!-- DLTK.io Text -->
+  <text x="100" y="155" font-family="Arial, sans-serif" font-size="44" font-weight="900" text-anchor="middle" fill="white">DLTK</text>
+  <text x="100" y="180" font-family="Arial, sans-serif" font-size="20" font-weight="600" text-anchor="middle" fill="rgba(255,255,255,0.85)">.io</text>
+</svg>
