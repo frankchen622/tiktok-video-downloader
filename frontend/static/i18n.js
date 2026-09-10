@@ -680,6 +680,6 @@ class I18n {
 }
 
 // 创建全局实例 - Create global instance
-const i18n = new I18n();
-i18n.init(); // 立即初始化
+window.i18n = new I18n();
+window.i18n.init(); // 立即初始化
 

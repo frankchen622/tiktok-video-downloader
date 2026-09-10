@@ -5,14 +5,14 @@ window.switchLanguage = function(lang) {
   console.log('=== Language Switch Started ===');
   console.log('Target language:', lang);
   
-  // 直接调用 i18n 的方法
-  if (typeof i18n !== 'undefined' && i18n) {
-    console.log('i18n found, current lang:', i18n.currentLang);
+  // 直接调用 window.i18n 的方法
+  if (typeof window.i18n !== 'undefined' && window.i18n) {
+    console.log('i18n found, current lang:', window.i18n.currentLang);
     
     // 设置语言
-    i18n.currentLang = lang;
+    window.i18n.currentLang = lang;
     localStorage.setItem('dltk_lang', lang);
-    console.log('Language set to:', i18n.currentLang);
+    console.log('Language set to:', window.i18n.currentLang);
     
     // 立即更新页面
     updatePageTranslations(lang);
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // 初始化当前语言显示
-  if (typeof i18n !== 'undefined' && i18n.currentLang) {
+  if (window.i18n !== 'undefined' && window.i18n.currentLang) {
     updateCurrentLangText(i18n.currentLang);
     updateActiveButton(i18n.currentLang);
   }
