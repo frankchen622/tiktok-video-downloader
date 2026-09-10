@@ -143,13 +143,6 @@
 <body>
 
   <!-- Language Switcher -->
-  <div class="lang-switcher">
-    <button class="lang-btn" data-lang="en" onclick="i18n.setLanguage('en')">EN</button>
-    <button class="lang-btn" data-lang="zh" onclick="i18n.setLanguage('zh')">中文</button>
-    <button class="lang-btn" data-lang="es" onclick="i18n.setLanguage('es')">ES</button>
-    <button class="lang-btn" data-lang="pt" onclick="i18n.setLanguage('pt')">PT</button>
-    <button class="lang-btn" data-lang="id" onclick="i18n.setLanguage('id')">ID</button>
-  </div>
 
   <!-- Header -->
   <header class="site-header">
@@ -177,6 +170,20 @@
         <a href="/mp3.html" data-i18n="nav_mp3">MP3</a>
         <a href="/thumbnail.html" data-i18n="nav_thumbnail">Thumbnail</a>
         <a href="/story.html" data-i18n="nav_story">Story</a>
+              
+        <!-- Language Switcher Dropdown -->
+        <div class="lang-switcher" id="langSwitcher">
+          <button class="lang-current" id="langCurrent" aria-label="Select language">
+            <span id="currentLangText">EN</span>
+          </button>
+          <div class="lang-dropdown">
+            <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">🇺🇸 English</button>
+            <button class="lang-btn" data-lang="zh" onclick="switchLanguage('zh')">🇨🇳 简体中文</button>
+            <button class="lang-btn" data-lang="es" onclick="switchLanguage('es')">🇪🇸 Español</button>
+            <button class="lang-btn" data-lang="pt" onclick="switchLanguage('pt')">🇧🇷 Português</button>
+            <button class="lang-btn" data-lang="id" onclick="switchLanguage('id')">🇮🇩 Indonesia</button>
+          </div>
+        </div>
       </nav>
     </div>
   </header>

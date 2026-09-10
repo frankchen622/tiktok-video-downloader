@@ -680,3 +680,58 @@ class I18n {
 
 // 创建全局实例 - Create global instance
 const i18n = new I18n();
+
+// Language switcher dropdown控制
+function switchLanguage(lang) {
+  i18n.setLanguage(lang);
+  updateCurrentLangText(lang);
+  closeLangDropdown();
+}
+
+function updateCurrentLangText(lang) {
+  const langNames = {
+    'en': 'EN',
+    'zh': '中文',
+    'es': 'ES',
+    'pt': 'PT',
+    'id': 'ID'
+  };
+  const currentText = document.getElementById('currentLangText');
+  if (currentText) {
+    currentText.textContent = langNames[lang] || 'EN';
+  }
+}
+
+function closeLangDropdown() {
+  const switcher = document.getElementById('langSwitcher');
+  if (switcher) {
+    switcher.classList.remove('active');
+  }
+}
+
+// 页面加载时初始化
+document.addEventListener('DOMContentLoaded', () => {
+  // 更新当前语言显示
+  updateCurrentLangText(i18n.currentLang);
+  
+  // 下拉菜单点击控制
+  const langCurrent = document.getElementById('langCurrent');
+  const langSwitcher = document.getElementById('langSwitcher');
+  
+  if (langCurrent && langSwitcher) {
+    langCurrent.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langSwitcher.classList.toggle('active');
+    });
+    
+    // 点击外部关闭下拉菜单
+    document.addEventListener('click', () => {
+      langSwitcher.classList.remove('active');
+    });
+    
+    // 阻止下拉菜单内部点击冒泡
+    langSwitcher.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  }
+});
