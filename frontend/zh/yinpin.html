@@ -3,96 +3,604 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TikTok转MP3 - 免费音频提取工具 | DLTK</title>
-  <meta name="description" content="免费TikTok转MP3工具，快速提取视频音频，高品质320kbps，支持音乐、音效、语音提取。无需注册，完全免费。" />
+  <title>TikTok转MP3转换器 - 下载 TikTok Audio Free | DLTK</title>
+  <meta name="description" content="Convert to MP3 free. 下载 TikTok audio, extract music from TikTok videos in high quality (320kbps). Fast MP3 downloader for all devices." />
   
-  <!-- Open Graph -->
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dltk.io/zh/yinpin" />
-  <meta property="og:title" content="TikTok转MP3 - 免费音频提取工具" />
-  <meta property="og:description" content="快速提取TikTok视频音频，保存为高品质MP3文件" />
-  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:title" content="TikTok转MP3转换器 - 下载 Audio Free" />
+  <meta property="og:description" content="Convert TikTok videos to MP3 audio. High-quality, fast, and completely free." />
+  <meta property="og:image" content="https://dltk.io/static/dltk-logo-512.png" />
+  <meta property="og:site_name" content="DLTK.io" />
   
-  <!-- Canonical & hreflang -->
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://dltk.io/zh/yinpin" />
+  <meta name="twitter:title" content="TikTok转MP3转换器 - 下载 Audio Free" />
+  <meta name="twitter:description" content="Convert TikTok videos to MP3 audio. High-quality, fast, and completely free." />
+  <meta name="twitter:image" content="https://dltk.io/static/dltk-logo-512.png" />
+  
+  <!-- Canonical -->
   <link rel="canonical" href="https://dltk.io/zh/yinpin" />
-  <link rel="alternate" hreflang="en" href="https://dltk.io/mp3.html" />
-  <link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/yinpin" />
-  <link rel="alternate" hreflang="x-default" href="https://dltk.io/mp3.html" />
   
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/static/dltk-logo-v3.svg" />
-  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="apple-touch-icon" href="/static/dltk-logo-128.png" />
+  
+  <!-- Manifest -->
+  <link rel="manifest" href="/manifest.json" />
+  
+  <!-- Theme Color -->
   <meta name="theme-color" content="#EE1D52" />
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7104GGSQ1S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7104GGSQ1S');
+  </script>
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/static/style.css" />
+
+  <!-- WebApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "DLTK - TikTok转MP3转换器",
+    "url": "https://dltk.io/zh/yinpin",
+    "description": "Convert TikTok videos to MP3 audio files. Free, fast, and high-quality audio extraction from any TikTok video.",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Convert TikTok to MP3",
+      "High quality audio (320kbps)",
+      "Fast conversion",
+      "No registration required",
+      "Free and unlimited"
+    ]
+  }
+  </script>
+
+  <!-- 常见问题 Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "常见问题Page",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is DLTK TikTok to MP3 converter free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, DLTK is completely free. You can convert TikTok videos to MP3 with no sign-up, no premium tier, and unlimited downloads."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I convert TikTok to MP3?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Simply copy the TikTok video link, paste it into DLTK's TikTok to MP3 converter, and click Convert to MP3. The audio will be extracted and ready to download in seconds."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What audio quality can I download TikTok audio in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can download TikTok audio in up to 320kbps MP3 quality - the highest available from the original video."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- HowTo Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Convert TikTok to MP3 Audio",
+    "description": "Step-by-step guide to convert TikTok videos to MP3 audio using DLTK",
+    "totalTime": "PT1M",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Copy TikTok Video Link",
+        "text": "Open the TikTok app, find the video with audio you want, tap Share, then Copy link",
+        "position": 1
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Paste Link into DLTK MP3 Converter",
+        "text": "Return to DLTK.io and paste the TikTok video link into the input field",
+        "position": 2
+      },
+      {
+        "@type": "HowToStep",
+        "name": "下载 TikTok Audio as MP3",
+        "text": "Click Convert to MP3 and download the extracted audio file in high quality",
+        "position": 3
+      }
+    ]
+  }
+  </script>
+  
+  <!-- i18n & Language Switcher -->
+  <link rel="stylesheet" href="/static/lang-switcher.css" />
+  <script src="/static/i18n.js"></script>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="/zh" class="logo">
-        <img src="/static/dltk-logo-v3.svg" alt="DLTK" />
-        <span>DLTK</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="/zh">视频下载</a></li>
-        <li><a href="/zh/yinpin" class="active">MP3转换</a></li>
-        <li><a href="/zh/fengmian">封面图</a></li>
-        <li><a href="/zh/kuaipai">快拍</a></li>
-      </ul>
-    </div>
-  </nav>
 
-  <section class="hero">
+  <!-- Language Switcher -->
+
+  <!-- Header -->
+  <header class="site-header">
     <div class="container">
-      <h1>TikTok转MP3音频提取器</h1>
-      <p class="hero-subtitle">免费下载 · 高品质320kbps · 快速转换</p>
-      <p class="hero-intro">
-        从TikTok视频中提取音频，保存为高品质MP3文件（320kbps）。免费转换音乐、音效和语音，无需注册，快速便捷。
-      </p>
-      
-      <div class="download-box">
-        <input type="text" id="videoUrl" placeholder="粘贴TikTok视频链接..." />
-        <button onclick="convertToMP3()" class="btn-download">
-          <span>转换为MP3</span>
-        </button>
+      <div class="logo">
+        <svg width="40" height="40" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#EE1D52;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#69C9D0;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <rect width="200" height="200" rx="40" fill="url(#logoGradient)"/>
+          <g transform="translate(100, 70)">
+            <circle cx="0" cy="0" r="35" fill="rgba(255,255,255,0.2)"/>
+            <path d="M 0,-18 L 0,18" stroke="white" stroke-width="10" stroke-linecap="round"/>
+            <path d="M -15,10 L 0,25 L 15,10" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </g>
+          <text x="100" y="155" font-family="Arial, sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="white" letter-spacing="2">DLTK</text>
+        </svg>
+        <span data-i18n="logo_text">DLTK</span>
+      </div>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/zh" data-i18n="nav_video">Video</a>
+        <a href="/zh/yinpin" data-i18n="nav_mp3">MP3</a>
+        <a href="/zh/fengmian" data-i18n="nav_thumbnail">Thumbnail</a>
+        <a href="/zh/kuaipai" data-i18n="nav_story">Story</a>
+              
+        <!-- Language Switcher Dropdown -->
+        <div class="lang-switcher" id="langSwitcher">
+          <button class="lang-current" id="langCurrent" aria-label="Select language">
+            <span id="currentLangText">EN</span>
+          </button>
+          <div class="lang-dropdown">
+            <button class="lang-btn" data-lang="zh-CN" onclick="switchLanguage('en')">🇺🇸 English</button>
+            <button class="lang-btn" data-lang="zh" onclick="switchLanguage('zh')">🇨🇳 简体中文</button>
+            <button class="lang-btn" data-lang="es" onclick="switchLanguage('es')">🇪🇸 Español</button>
+            <button class="lang-btn" data-lang="pt" onclick="switchLanguage('pt')">🇧🇷 Português</button>
+            <button class="lang-btn" data-lang="id" onclick="switchLanguage('id')">🇮🇩 Indonesia</button>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+
+          <!-- Decorative corner dots -->
+          <span class="corner-dot top-left" aria-hidden="true"></span>
+          <span class="corner-dot top-right" aria-hidden="true"></span>
+          <span class="corner-dot bottom-left" aria-hidden="true"></span>
+          <span class="corner-dot bottom-right" aria-hidden="true"></span>
+
+          <h1><span data-i18n="mp3_hero_title">TikTok转MP3转换器</span><br><span class="hero-sub-title" data-i18n="mp3_hero_subtitle">— 下载 Audio Free & Fast</span></h1>
+          
+          <p class="hero-intro" data-i18n="mp3_hero_intro">
+            Convert TikTok videos to MP3 in seconds. 下载 audio in high quality (320kbps) for free. Extract music, sound effects, and voiceovers from any video with our fast converter.
+          </p>
+
+          <form class="downloader-form" id="downloaderForm" novalidate>
+            <div class="input-row">
+              <label for="videoUrl" class="sr-only">TikTok video URL</label>
+              <input
+                type="url"
+                id="videoUrl"
+                name="url"
+                placeholder="粘贴TikTok视频链接..."
+                data-i18n="input_placeholder"
+                autocomplete="off"
+                spellcheck="false"
+                aria-describedby="urlError"
+                required
+              />
+              <button type="submit" id="submitBtn">
+                <span class="btn-text" data-i18n="mp3_btn">转换为MP3</span>
+                name="url"
+                placeholder="粘贴TikTok视频链接..."
+                autocomplete="off"
+                spellcheck="false"
+                aria-describedby="urlError"
+                required
+              />
+              <button type="submit" id="submitBtn">
+                <span class="btn-text">转换为MP3</span>
+                <span class="btn-spinner" aria-hidden="true" hidden></span>
+              </button>
+            </div>
+            <p class="field-error" id="urlError" role="alert" aria-live="polite"></p>
+          </form>
+
+          <!-- Result card -->
+          <div class="result-card" id="resultCard" hidden aria-live="polite">
+            <div class="result-preview">
+              <div class="result-thumb-wrap">
+                <img id="resultThumb" src="" alt="Video thumbnail" loading="lazy" />
+                <div class="result-play" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <circle cx="14" cy="14" r="14" fill="rgba(0,0,0,.55)"/>
+                    <path d="M10 8l12 6-12 6V8z" fill="white"/>
+                  </svg>
+                </div>
+                <div class="result-brand" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect width="14" height="14" rx="4" fill="#010101"/><path d="M9.5 4.25c-.6 0-1.1-.4-1.25-1H6.5v4.4c0 .6-.5 1.1-1.1 1.1s-1.1-.5-1.1-1.1.5-1.1 1.1-1.1c.1 0 .2 0 .3.05V5.5c-.1 0-.2-.05-.3-.05C3.5 5.45 2.4 6.55 2.4 7.9s1.1 2.45 2.45 2.45 2.45-1.1 2.45-2.45V6c.5.35 1.05.5 1.65.5V4.3c-.2 0-.35-.05-.45-.05z" fill="white"/></svg>
+                  <span>TikTok</span>
+                </div>
+              </div>
+              <div class="result-meta">
+                <p class="result-author" id="resultAuthor"></p>
+                <p class="result-title" id="resultTitle"></p>
+                <div class="result-actions" id="resultActions"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Error state -->
+          <p class="inline-error" id="errorCard" hidden role="alert" aria-live="assertive"></p>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- How to -->
+    <section class="steps-section" id="how-to">
+      <div class="container">
+        <h2>如何转换为MP3音频</h2>
+        <p class="section-sub">下载 TikTok audio in 3 simple steps with our free TikTok to MP3 converter.</p>
+        <ul class="features-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <li class="feature-card">
+            <div class="step-num" style="margin: 0 auto var(--sp-4);">01</div>
+            <h3>复制TikTok视频链接</h3>
+            <p>Open the TikTok app, find the video with audio you want to download, tap Share, and select "Copy link". DLTK works with any public TikTok video to extract audio as MP3.</p>
+          </li>
+          <li class="feature-card">
+            <div class="step-num" style="margin: 0 auto var(--sp-4);">02</div>
+            <h3>粘贴链接到DLTK MP3 Converter</h3>
+            <p>Return to DLTK.io and paste the TikTok video link into the input field above. Our converter will process the audio instantly.</p>
+          </li>
+          <li class="feature-card">
+            <div class="step-num" style="margin: 0 auto var(--sp-4);">03</div>
+            <h3>下载 TikTok Audio as MP3</h3>
+            <p>Click "Convert to MP3" and download the extracted audio file. Your TikTok MP3 download will start immediately in high quality (up to 320kbps).</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section" id="features">
+      <div class="container">
+        <h2>为什么使用DLTK TikTok转MP3转换器</h2>
+        <p class="section-sub">The best free audio downloader with powerful features.</p>
+        
+        <ul class="features-alternating">
+          <!-- Feature 1: High Quality -->
+          <li class="feature-row">
+            <div class="feature-image-container">
+              <img src="/static/images/feature-hd.jpg" alt="High Quality MP3 Audio" loading="lazy" />
+            </div>
+            <div class="feature-text-container">
+              <h3>高品质 TikTok Audio 下载</h3>
+              <p>下载 TikTok audio in the best available quality, up to 320kbps MP3. Our converter preserves the original audio quality from TikTok videos, giving you crystal-clear sound for music, podcasts, or voiceovers.</p>
+            </div>
+          </li>
+          
+          <!-- Feature 2: Fast Conversion -->
+          <li class="feature-row">
+            <div class="feature-image-container">
+              <img src="/static/images/feature-fast.svg" alt="Fast TikTok转MP3转换器" loading="lazy" />
+            </div>
+            <div class="feature-text-container">
+              <h3>快速 TikTok to MP3 Conversion</h3>
+              <p>Convert TikTok videos to MP3 in seconds. Our audio downloader uses advanced technology to extract audio instantly. No waiting, no queues - just fast TikTok MP3 downloads every time.</p>
+            </div>
+          </li>
+          
+          <!-- Feature 3: Free Forever -->
+          <li class="feature-row">
+            <div class="feature-image-container">
+              <img src="/static/images/feature-free-mp3.jpg" alt="100% Free TikTok MP3 下载er" loading="lazy" />
+            </div>
+            <div class="feature-text-container">
+              <h3>100%免费 TikTok MP3 下载er</h3>
+              <p>下载 TikTok audio as MP3 for free with no limits. No registration, no subscription, no hidden fees. DLTK is a completely free TikTok to MP3 converter that works forever.</p>
+            </div>
+          </li>
+          
+          <!-- Feature 4: All Devices -->
+          <li class="feature-row">
+            <div class="feature-image-container">
+              <img src="/static/images/feature-devices-mp3.jpg" alt="Works on All Devices" loading="lazy" />
+            </div>
+            <div class="feature-text-container">
+              <h3>支持所有设备</h3>
+              <p>Our audio downloader works on iPhone, Android, Windows, Mac, and any device with a web browser. 下载 TikTok audio as MP3 from any device without installing apps.</p>
+            </div>
+          </li>
+          
+          <!-- Feature 5: Safe & Private -->
+          <li class="feature-row">
+            <div class="feature-image-container">
+              <img src="/static/images/feature-safe-mp3.jpg" alt="Safe & Private" loading="lazy" />
+            </div>
+            <div class="feature-text-container">
+              <h3>安全私密 TikTok MP3 Converter</h3>
+              <p>Your privacy matters. We don't store your downloaded TikTok audio files or personal information. 下载 TikTok MP3 safely and anonymously with DLTK.</p>
+            </div>
+          </li>
+          
+          <!-- Feature 6: Universal Format -->
+          <li class="feature-row">
+            <div class="feature-image-container">
+              <img src="/static/images/feature-mp3.svg" alt="Universal MP3 Format" loading="lazy" />
+            </div>
+            <div class="feature-text-container">
+              <h3>通用MP3格式</h3>
+              <p>下载ed TikTok audio is saved as MP3 - the most compatible audio format. Play your TikTok MP3 downloads on any music player, smartphone, tablet, or computer.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="steps-section" style="background: var(--bg);">
+      <div class="container">
+        <h2>What Can You Do with TikTok MP3 下载s?</h2>
+        <p class="section-sub">Popular uses for TikTok audio extraction.</p>
+        <div class="content-card" style="max-width: 900px; margin: 0 auto;">
+          <p>Our converter is perfect for various use cases:</p>
+          
+          <h3>创建音乐合集</h3>
+          <p>下载 TikTok audio from your favorite music videos and build offline playlists. Convert to MP3 to enjoy trending songs, remixes, and covers without an internet connection.</p>
+          
+          <h3>保存播客节目和配音</h3>
+          <p>Extract audio from TikTok educational content, storytelling, and podcast clips. 下载 TikTok audio as MP3 to listen to valuable content anytime, anywhere.</p>
+          
+          <h3>收集音效</h3>
+          <p>下载 TikTok audio for sound effects, memes, and viral audio clips. Use our MP3 downloader to save funny sounds, transitions, and audio memes for your own videos.</p>
+          
+          <h3>铃声和通知音</h3>
+          <p>Convert to MP3 and create custom ringtones for your phone. 下载 TikTok audio of your favorite songs, quotes, or sound effects and set them as ringtones or notification sounds.</p>
+          
+          <h3>学习和教育</h3>
+          <p>下载 TikTok audio from language learning videos, educational content, and tutorials. Convert to MP3 to review lessons offline while commuting or exercising.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Audio Quality -->
+    <section class="steps-section">
+      <div class="container">
+        <h2>TikTok音频画质选项</h2>
+        <p class="section-sub">Choose the best audio quality for your needs.</p>
+        <div class="content-card" style="max-width: 900px; margin: 0 auto;">
+          <p>When you download audio with DLTK, we extract audio in the highest quality available:</p>
+          
+          <h3>可用的TikTok MP3画质等级</h3>
+          <ul>
+            <li><strong>320kbps（高品质）</strong> - 音乐和专业用途的最佳音频质量。接近CD质量的声音，清晰度极佳。</li>
+            <li><strong>256kbps（标准质量）</strong> - 文件大小和音频质量的完美平衡。适合大多数听音场景。</li>
+            <li><strong>192kbps（良好质量）</strong> - 较小文件大小同时保持良好音质。适合存储空间有限的移动设备。</li>
+            <li><strong>128kbps（基本质量）</strong> - 最小文件大小。适合休闲收听和语音内容。</li>
+          </ul>
+          
+          <p><strong>注意：</strong>最大音频质量取决于原始TikTok视频上传。我们的转换器会自动选择最佳可用质量，当源支持时可达320kbps。</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- User Testimonials -->
+    <section class="steps-section" style="background: var(--bg);">
+      <div class="container">
+        <h2>用户对 DLTK TikTok转MP3转换器</h2>
+        <p class="section-sub">Trusted by millions of TikTok users worldwide.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--sp-6); max-width: 1000px; margin: 0 auto;">
+          <div class="content-card" style="padding: var(--sp-6);">
+            <div style="color: #EE1D52; font-size: 1.5rem; margin-bottom: var(--sp-3);">★★★★★</div>
+            <p style="font-style: italic; margin-bottom: var(--sp-4);">"我找到的最好的TikTok下载器！ Fast, simple, and actually removes the watermark. I use it daily for my content creation."</p>
+            <div style="font-weight: 600; color: var(--heading);">Sarah M.</div>
+            <div style="font-size: 0.875rem; color: var(--text-secondary);">Content Creator</div>
+          </div>
+          <div class="content-card" style="padding: var(--sp-6);">
+            <div style="color: #EE1D52; font-size: 1.5rem; margin-bottom: var(--sp-3);">★★★★★</div>
+            <p style="font-style: italic; margin-bottom: var(--sp-4);">"终于有一个在iPhone上能用的TikTok下载器了 without installing apps. The quality is perfect and it's super fast!"</p>
+            <div style="font-weight: 600; color: var(--heading);">James K.</div>
+            <div style="font-size: 0.875rem; color: var(--text-secondary);">iPhone User</div>
+          </div>
+          <div class="content-card" style="padding: var(--sp-6);">
+            <div style="color: #EE1D52; font-size: 1.5rem; margin-bottom: var(--sp-3);">★★★★★</div>
+            <p style="font-style: italic; margin-bottom: var(--sp-4);">"我喜欢它完全免费 with no ads. 下载s are instant and the HD quality is amazing. Highly recommend!"</p>
+            <div style="font-weight: 600; color: var(--heading);">Maria G.</div>
+            <div style="font-size: 0.875rem; color: var(--text-secondary);">Social Media Manager</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <h2>TikTok转MP3转换器 常见问题</h2>
+        <dl class="faq-list">
+          <div class="faq-item">
+            <dt>Is DLTK TikTok to MP3 converter free?</dt>
+            <dd>Yes, DLTK is completely free. You can convert TikTok videos to MP3 with no sign-up, no premium tier, and unlimited downloads. It's a 100% free audio downloader forever.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>How do I convert TikTok to MP3?</dt>
+            <dd>Simply copy the TikTok video link, paste it into DLTK's TikTok to MP3 converter above, and click "Convert to MP3". The audio will be extracted and ready to download in seconds.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>What audio quality can I download audio in?</dt>
+            <dd>You can download audio in up to 320kbps MP3 quality - the highest available from the original video. Our MP3 downloader preserves the best possible audio quality.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Can I convert TikTok to MP3 on iPhone or Android?</dt>
+            <dd>Yes! Our converter works on all devices including iPhone, Android, tablets, and computers. No app installation required - just use your mobile browser to download audio.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Is it legal to download audio?</dt>
+            <dd>下载ing TikTok audio for personal use is generally acceptable. However, never redistribute or use downloaded content commercially without the creator's permission. Always respect copyright and give credit to original creators.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Do I need to install software to convert TikTok to MP3?</dt>
+            <dd>No. DLTK is a web-based audio downloader that runs entirely in your browser. You don't need to download any app or software to convert TikTok to MP3.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Can I download audio from private accounts?</dt>
+            <dd>No, you cannot download audio from private accounts unless you follow that account. Our converter can only download publicly available TikTok videos.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>What format is the downloaded TikTok audio?</dt>
+            <dd>下载ed TikTok audio is saved as MP3, the most universal audio format. MP3 files work on all devices, music players, and media applications.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Can I download multiple TikTok videos to MP3 at once?</dt>
+            <dd>Currently, DLTK processes one TikTok video at a time for optimal quality and speed. For batch conversions, simply convert each TikTok to MP3 one by one - our fast converter processes audio in seconds.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Why is my downloaded TikTok audio low quality?</dt>
+            <dd>If the audio quality is poor, the original TikTok video upload may have been low quality. DLTK preserves the original audio quality - we cannot enhance beyond what TikTok stored. The TikTok to MP3 converter extracts audio exactly as it was uploaded.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Can I use downloaded TikTok audio for my videos?</dt>
+            <dd>下载ing TikTok audio for personal use is fine, but using it in your own content requires permission from the original creator. Always respect copyright laws and credit the original audio source when reposting.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Does DLTK work with tic tok or tick tock videos?</dt>
+            <dd>Yes! DLTK's TikTok to MP3 converter works with all TikTok videos, regardless of how you spell it (tiktok, tic tok, tick tock, or tik tok). Simply paste any TikTok video link to download audio as MP3.</dd>
+          </div>
+                  <div class="faq-item">
+            <dt>How to save TikTok audio to my phone?</dt>
+            <dd>On iPhone or Android, copy the TikTok video link, paste it into DLTK's converter in your mobile browser, and tap "Convert to MP3". Once converted, tap the download button - the MP3 file will save to your phone's 下载s folder or Files app. You can then move it to your music library.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Why won't my TikTok link convert to MP3?</dt>
+            <dd>Common reasons: 1) The video is private or deleted, 2) The link format is incorrect (make sure it's a full TikTok URL), 3) The video has no audio track, 4) Temporary server issues. Try refreshing the page, check if the video plays on TikTok, and ensure you copied the complete link including "https://".</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Are TikTok MP3 downloaders safe from viruses?</dt>
+            <dd>DLTK is completely safe - we don't require software installation, don't store your files, and have no malicious code. However, be cautious with other sites that ask you to install software, download executables, or provide personal information. Always use web-based tools like DLTK that run entirely in your browser.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Do I need to log in to download TikTok audio?</dt>
+            <dd>No, DLTK never requires login credentials. You don't need to provide your TikTok username, password, or any personal information. Simply paste the video link and download - completely anonymous and secure.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>How to turn TikTok audio into a ringtone?</dt>
+            <dd>下载 the TikTok audio as MP3, then: On iPhone - use iTunes or GarageBand to convert MP3 to M4R format and sync to your phone. On Android - move the MP3 file to your Ringtones folder (usually in /Music/Ringtones), then select it in Settings > Sound > Phone ringtone. You may need to trim the audio to 30 seconds for best results.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>What bitrate is TikTok audio?</dt>
+            <dd>TikTok typically uses 128kbps AAC audio for most videos. When you convert to MP3 with DLTK, we can extract audio up to 320kbps MP3 (the maximum MP3 quality), though the actual quality depends on the original video upload. Higher quality videos will produce better MP3 results.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Can I convert TikTok to other formats like WAV or FLAC?</dt>
+            <dd>DLTK currently converts TikTok to MP3 format, which is the most universally compatible audio format. MP3 works on all devices and music players. If you need WAV or FLAC, you can download the MP3 first, then use a separate audio converter tool to convert MP3 to your desired format.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Can I use TikTok audio for YouTube or Instagram?</dt>
+            <dd>Technically possible, but use caution: Most TikTok audio is copyrighted music. For personal videos, it's usually okay, but for commercial content or monetized videos, you risk copyright strikes. Always check if the audio is copyright-free or obtain permission from the creator. Consider using royalty-free music for YouTube/Instagram to avoid issues.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>How to use downloaded TikTok audio in video editors?</dt>
+            <dd>After downloading TikTok audio as MP3, import it into your video editor: CapCut - tap "Audio" > "Import" > select your MP3. Premiere Pro - drag MP3 file to timeline. iMovie - click "Import Media" > select MP3. DaVinci Resolve - drag to media pool then timeline. The MP3 format is supported by all major video editing software.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Do creators get notified when I download their audio?</dt>
+            <dd>No, TikTok does not notify creators when someone downloads their video audio using third-party tools like DLTK. Your downloads are completely private and anonymous. However, always respect creators' work - credit them if you use their audio in your own content.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- Conclusion CTA -->
+    <section class="steps-section" style="background: var(--surface);">
+      <div class="container">
+        <div class="content-card" style="max-width: 900px; margin: 0 auto; text-align: center;">
+          <h2>立即开始转换TikTok为MP3</h2>
+          <p>
+            DLTK is the best free TikTok to MP3 converter for downloading TikTok audio. With support for high-quality MP3 extraction (up to 320kbps), our audio downloader works on all devices and requires no registration. Convert TikTok videos to MP3 instantly with our fast, safe, and reliable MP3 downloader.
+          </p>
+          <p>
+            Whether you want to download audio for music collections, podcasts, sound effects, or ringtones, DLTK provides the fastest way to convert TikTok to MP3. Try our audio downloader today - it's completely free with unlimited downloads!
+          </p>
+          <p style="margin-top: var(--sp-6);">
+            <a href="#" onclick="document.getElementById('videoUrl').focus(); return false;" style="display: inline-block; padding: var(--sp-4) var(--sp-8); background: var(--brand-gradient); color: white; border-radius: var(--r-md); font-weight: 700; text-decoration: none;">Convert to MP3 Now →</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-about">
+        <h3>关于DLTK</h3>
+        <p>DLTK.io is a free online TikTok downloader and converter. 下载 TikTok videos without watermark, convert TikTok to MP3 audio, save thumbnails, and preserve stories. Fast, simple, and always free.</p>
       </div>
       
-      <div id="result" class="result-container" style="display:none;"></div>
+      <div class="footer-links">
+        <h3>快速链接</h3>
+        <ul>
+          <li><a href="/zh">TikTok Video 下载er</a></li>
+          <li><a href="/zh/yinpin">TikTok转MP3转换器</a></li>
+          <li><a href="/zh/fengmian">TikTok Thumbnail 下载er</a></li>
+          <li><a href="/zh/kuaipai">TikTok Story 下载er</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-legal">
+        <h3>法律信息</h3>
+        <ul>
+          <li><a href="/pages/contact.html">联系我们</a></li>
+          <li><a href="/pages/privacy.html">隐私政策</a></li>
+          <li><a href="/pages/terms.html">使用条款</a></li>
+          <li><a href="/pages/disclaimer.html">免责声明</a></li>
+          <li><a href="/pages/dmca.html">版权政策</a></li>
+          <li><a href="/pages/cookies.html">Cookie政策</a></li>
+        </ul>
+      </div>
     </div>
-  </section>
-
-  <footer class="footer">
+    
     <div class="container">
-      <p>&copy; 2024 DLTK.io</p>
+      <p class="footer-copy">
+        &copy; 2025 DLTK.io - Free TikTok Video 下载er &amp; TikTok转MP3转换器. Not affiliated with TikTok.
+      </p>
     </div>
   </footer>
 
-  <script src="/static/main.js"></script>
-  <script>
-    async function convertToMP3() {
-      const url = document.getElementById('videoUrl').value.trim();
-      if (!url) {
-        alert('请输入TikTok视频链接');
-        return;
-      }
-      const resultDiv = document.getElementById('result');
-      resultDiv.innerHTML = '<p>正在转换...</p>';
-      resultDiv.style.display = 'block';
-      
-      try {
-        const response = await fetch('/api/parse', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ url })
-        });
-        const data = await response.json();
-        
-        const downloadUrl = `/api/download?url=${encodeURIComponent(url)}&format=mp3`;
-        resultDiv.innerHTML = `
-          <h3>${data.title}</h3>
-          <a href="${downloadUrl}" download class="btn-download">下载MP3</a>
-        `;
-      } catch (error) {
-        resultDiv.innerHTML = '<p>转换失败，请重试</p>';
-      }
-    }
-  </script>
+  <script src="/static/mp3.js"></script>
+
+  <script src="/static/lang-simple.js"></script>
 </body>
 </html>
