@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TikTok转MP3 - 免费音频提取工具 | DLTK</title>
+  <meta name="description" content="免费TikTok转MP3工具，快速提取视频音频，高品质320kbps，支持音乐、音效、语音提取。无需注册，完全免费。" />
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dltk.io/zh/yinpin" />
+  <meta property="og:title" content="TikTok转MP3 - 免费音频提取工具" />
+  <meta property="og:description" content="快速提取TikTok视频音频，保存为高品质MP3文件" />
+  <meta property="og:locale" content="zh_CN" />
+  
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://dltk.io/zh/yinpin" />
+  <link rel="alternate" hreflang="en" href="https://dltk.io/mp3.html" />
+  <link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/yinpin" />
+  <link rel="alternate" hreflang="x-default" href="https://dltk.io/mp3.html" />
+  
+  <link rel="icon" type="image/svg+xml" href="/static/dltk-logo-v3.svg" />
+  <link rel="stylesheet" href="/static/style.css" />
+  <meta name="theme-color" content="#EE1D52" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="/zh" class="logo">
+        <img src="/static/dltk-logo-v3.svg" alt="DLTK" />
+        <span>DLTK</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/zh">视频下载</a></li>
+        <li><a href="/zh/yinpin" class="active">MP3转换</a></li>
+        <li><a href="/zh/fengmian">封面图</a></li>
+        <li><a href="/zh/kuaipai">快拍</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <h1>TikTok转MP3音频提取器</h1>
+      <p class="hero-subtitle">免费下载 · 高品质320kbps · 快速转换</p>
+      <p class="hero-intro">
+        从TikTok视频中提取音频，保存为高品质MP3文件（320kbps）。免费转换音乐、音效和语音，无需注册，快速便捷。
+      </p>
+      
+      <div class="download-box">
+        <input type="text" id="videoUrl" placeholder="粘贴TikTok视频链接..." />
+        <button onclick="convertToMP3()" class="btn-download">
+          <span>转换为MP3</span>
+        </button>
+      </div>
+      
+      <div id="result" class="result-container" style="display:none;"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 DLTK.io</p>
+    </div>
+  </footer>
+
+  <script src="/static/main.js"></script>
+  <script>
+    async function convertToMP3() {
+      const url = document.getElementById('videoUrl').value.trim();
+      if (!url) {
+        alert('请输入TikTok视频链接');
+        return;
+      }
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = '<p>正在转换...</p>';
+      resultDiv.style.display = 'block';
+      
+      try {
+        const response = await fetch('/api/parse', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url })
+        });
+        const data = await response.json();
+        
+        const downloadUrl = `/api/download?url=${encodeURIComponent(url)}&format=mp3`;
+        resultDiv.innerHTML = `
+          <h3>${data.title}</h3>
+          <a href="${downloadUrl}" download class="btn-download">下载MP3</a>
+        `;
+      } catch (error) {
+        resultDiv.innerHTML = '<p>转换失败，请重试</p>';
+      }
+    }
+  </script>
+</body>
+</html>

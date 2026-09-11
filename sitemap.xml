@@ -2,79 +2,126 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
-  <!-- Homepage -->
+  <!-- English Pages -->
   <url>
     <loc>https://dltk.io/</loc>
-    <lastmod>2026-09-08</lastmod>
-    <changefreq>weekly</changefreq>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh" />
     <priority>1.0</priority>
+    <changefreq>daily</changefreq>
   </url>
   
-  <!-- TikTok to MP3 Converter -->
   <url>
     <loc>https://dltk.io/mp3.html</loc>
-    <lastmod>2026-09-08</lastmod>
-    <changefreq>weekly</changefreq>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/mp3.html" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/yinpin" />
     <priority>0.9</priority>
   </url>
   
-  <!-- TikTok Thumbnail Downloader -->
   <url>
     <loc>https://dltk.io/thumbnail.html</loc>
-    <lastmod>2026-09-08</lastmod>
-    <changefreq>weekly</changefreq>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/thumbnail.html" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/fengmian" />
     <priority>0.9</priority>
   </url>
   
-  <!-- TikTok Story Downloader -->
   <url>
     <loc>https://dltk.io/story.html</loc>
-    <lastmod>2026-09-08</lastmod>
-    <changefreq>weekly</changefreq>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/story.html" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/kuaipai" />
     <priority>0.9</priority>
   </url>
   
-  <!-- Legal Pages -->
+  <!-- Chinese Pages (中文页面) -->
+  <url>
+    <loc>https://dltk.io/zh</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/" />
+    <priority>1.0</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  
+  <url>
+    <loc>https://dltk.io/zh/yinpin</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/yinpin" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/mp3.html" />
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://dltk.io/zh/fengmian</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/fengmian" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/thumbnail.html" />
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://dltk.io/zh/kuaipai</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/kuaipai" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/story.html" />
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Chinese Legal Pages (中文法律页面) -->
+  <url>
+    <loc>https://dltk.io/zh/lianxi</loc>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dltk.io/zh/yinsi</loc>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dltk.io/zh/tiaokuan</loc>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dltk.io/zh/mianze</loc>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dltk.io/zh/banquan</loc>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dltk.io/zh/cookie</loc>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- English Legal Pages -->
   <url>
     <loc>https://dltk.io/pages/contact.html</loc>
-    <lastmod>2026-09-08</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://dltk.io/pages/privacy.html</loc>
-    <lastmod>2026-09-08</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://dltk.io/pages/terms.html</loc>
-    <lastmod>2026-09-08</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://dltk.io/pages/disclaimer.html</loc>
-    <lastmod>2026-09-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://dltk.io/pages/dmca.html</loc>
-    <lastmod>2026-09-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://dltk.io/pages/cookies.html</loc>
-    <lastmod>2026-09-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.5</priority>
   </url>
-
+  
 </urlset>

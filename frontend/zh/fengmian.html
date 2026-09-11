@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TikTok封面图下载 - 一键保存视频封面 | DLTK</title>
+  <meta name="description" content="免费下载TikTok视频封面图，全分辨率原图，一键保存。无需注册，完全免费。" />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dltk.io/zh/fengmian" />
+  <meta property="og:title" content="TikTok封面图下载工具" />
+  <meta property="og:locale" content="zh_CN" />
+  
+  <link rel="canonical" href="https://dltk.io/zh/fengmian" />
+  <link rel="alternate" hreflang="en" href="https://dltk.io/thumbnail.html" />
+  <link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/fengmian" />
+  
+  <link rel="icon" type="image/svg+xml" href="/static/dltk-logo-v3.svg" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="/zh" class="logo">
+        <img src="/static/dltk-logo-v3.svg" alt="DLTK" />
+        <span>DLTK</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/zh">视频下载</a></li>
+        <li><a href="/zh/yinpin">MP3转换</a></li>
+        <li><a href="/zh/fengmian" class="active">封面图</a></li>
+        <li><a href="/zh/kuaipai">快拍</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <h1>TikTok封面图下载器</h1>
+      <p class="hero-subtitle">全分辨率 · 一键保存 · 免费下载</p>
+      <p class="hero-intro">
+        快速下载TikTok视频封面图，保存完整分辨率原图。适合设计、收藏、分享。无需注册，完全免费。
+      </p>
+      
+      <div class="download-box">
+        <input type="text" id="videoUrl" placeholder="粘贴TikTok视频链接..." />
+        <button onclick="downloadThumbnail()" class="btn-download">
+          <span>下载封面图</span>
+        </button>
+      </div>
+      
+      <div id="result" class="result-container" style="display:none;"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 DLTK.io</p>
+    </div>
+  </footer>
+
+  <script src="/static/main.js"></script>
+  <script>
+    async function downloadThumbnail() {
+      const url = document.getElementById('videoUrl').value.trim();
+      if (!url) {
+        alert('请输入TikTok视频链接');
+        return;
+      }
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = '<p>正在获取封面...</p>';
+      resultDiv.style.display = 'block';
+      
+      try {
+        const response = await fetch('/api/parse', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url })
+        });
+        const data = await response.json();
+        
+        const thumbUrl = `/api/download-thumbnail?url=${encodeURIComponent(data.thumbnail)}`;
+        resultDiv.innerHTML = `
+          <img src="${data.thumbnail}" alt="封面图" style="max-width:400px;" />
+          <br/>
+          <a href="${thumbUrl}" download class="btn-download">下载封面图</a>
+        `;
+      } catch (error) {
+        resultDiv.innerHTML = '<p>获取失败，请重试</p>';
+      }
+    }
+  </script>
+</body>
+</html>

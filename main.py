@@ -102,6 +102,57 @@ async def serve_page(page_name: str):
     return FileResponse(os.path.join(frontend_path, "pages", page_name))
 
 
+# ========== 中文站路由 (Chinese Localized URLs) ==========
+
+@app.get("/zh")
+async def serve_index_zh():
+    """中文首页 - TikTok视频下载"""
+    return FileResponse(os.path.join(frontend_path, "zh", "index.html"))
+
+
+@app.get("/zh/yinpin")
+async def serve_mp3_zh():
+    """中文MP3转换页面"""
+    return FileResponse(os.path.join(frontend_path, "zh", "yinpin.html"))
+
+
+@app.get("/zh/fengmian")
+async def serve_thumbnail_zh():
+    """中文封面图下载页面"""
+    return FileResponse(os.path.join(frontend_path, "zh", "fengmian.html"))
+
+
+@app.get("/zh/kuaipai")
+async def serve_story_zh():
+    """中文快拍下载页面"""
+    return FileResponse(os.path.join(frontend_path, "zh", "kuaipai.html"))
+
+
+# 中文法律页面路由
+@app.get("/zh/{page_name}")
+async def serve_page_zh(page_name: str):
+    """中文法律/信息页面"""
+    allowed_pages = ["lianxi", "yinsi", "tiaokuan", "mianze", "banquan", "cookie"]
+    if page_name not in allowed_pages:
+        raise HTTPException(status_code=404, detail="页面不存在")
+    
+    # 映射到对应的HTML文件
+    page_map = {
+        "lianxi": "lianxi.html",      # 联系我们
+        "yinsi": "yinsi.html",          # 隐私政策
+        "tiaokuan": "tiaokuan.html",    # 使用条款
+        "mianze": "mianze.html",        # 免责声明
+        "banquan": "banquan.html",      # 版权政策
+        "cookie": "cookie.html"          # Cookie政策
+    }
+    
+    filename = page_map.get(page_name)
+    if not filename:
+        raise HTTPException(status_code=404, detail="页面不存在")
+    
+    return FileResponse(os.path.join(frontend_path, "zh", "pages", filename))
+
+
 @app.post("/api/parse")
 @limiter.limit("20/minute")
 async def parse_video(request: Request, body: ParseRequest):

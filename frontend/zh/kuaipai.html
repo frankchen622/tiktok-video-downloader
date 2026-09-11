@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TikTok快拍下载 - Story保存工具 | DLTK</title>
+  <meta name="description" content="免费下载TikTok快拍（Story），保存TikTok故事内容。无需注册，完全免费。" />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dltk.io/zh/kuaipai" />
+  <meta property="og:locale" content="zh_CN" />
+  
+  <link rel="canonical" href="https://dltk.io/zh/kuaipai" />
+  <link rel="alternate" hreflang="en" href="https://dltk.io/story.html" />
+  <link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/kuaipai" />
+  
+  <link rel="icon" type="image/svg+xml" href="/static/dltk-logo-v3.svg" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="/zh" class="logo">
+        <img src="/static/dltk-logo-v3.svg" alt="DLTK" />
+        <span>DLTK</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/zh">视频下载</a></li>
+        <li><a href="/zh/yinpin">MP3转换</a></li>
+        <li><a href="/zh/fengmian">封面图</a></li>
+        <li><a href="/zh/kuaipai" class="active">快拍</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <h1>TikTok快拍下载器</h1>
+      <p class="hero-subtitle">保存故事 · 快速下载 · 免费使用</p>
+      <p class="hero-intro">
+        下载TikTok快拍（Story）内容，保存用户发布的故事。支持图片和视频格式。无需注册，完全免费。
+      </p>
+      
+      <div class="download-box">
+        <input type="text" id="videoUrl" placeholder="粘贴TikTok快拍链接..." />
+        <button onclick="downloadStory()" class="btn-download">
+          <span>下载快拍</span>
+        </button>
+      </div>
+      
+      <div id="result" class="result-container" style="display:none;"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 DLTK.io</p>
+    </div>
+  </footer>
+
+  <script src="/static/main.js"></script>
+  <script>
+    async function downloadStory() {
+      const url = document.getElementById('videoUrl').value.trim();
+      if (!url) {
+        alert('请输入TikTok快拍链接');
+        return;
+      }
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = '<p>正在处理...</p>';
+      resultDiv.style.display = 'block';
+      
+      try {
+        const response = await fetch('/api/parse', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url })
+        });
+        const data = await response.json();
+        
+        resultDiv.innerHTML = `
+          <h3>${data.title}</h3>
+          <a href="${data.video_url}" download class="btn-download">下载快拍</a>
+        `;
+      } catch (error) {
+        resultDiv.innerHTML = '<p>下载失败，请重试</p>';
+      }
+    }
+  </script>
+</body>
+</html>

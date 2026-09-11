@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TikTok视频下载器 - 免费无水印高清下载 | DLTK</title>
+  <meta name="description" content="免费TikTok视频下载工具，一键去水印，支持高清下载、MP3转换、封面图保存。无需注册，无需下载APP，快速安全。" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dltk.io/zh" />
+  <meta property="og:title" content="TikTok视频下载器 - 免费无水印高清下载" />
+  <meta property="og:description" content="免费下载TikTok视频，自动去除水印，支持高清画质。无需注册，完全免费。" />
+  <meta property="og:image" content="https://dltk.io/static/dltk-logo-512.png" />
+  <meta property="og:site_name" content="DLTK.io" />
+  <meta property="og:locale" content="zh_CN" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://dltk.io/zh" />
+  <meta name="twitter:title" content="TikTok视频下载器 - 免费无水印高清下载" />
+  <meta name="twitter:description" content="免费下载TikTok视频，自动去除水印，支持高清画质。" />
+  <meta name="twitter:image" content="https://dltk.io/static/dltk-logo-512.png" />
+  
+  <!-- Canonical & Alternate Languages -->
+  <link rel="canonical" href="https://dltk.io/zh" />
+  <link rel="alternate" hreflang="en" href="https://dltk.io/" />
+  <link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh" />
+  <link rel="alternate" hreflang="x-default" href="https://dltk.io/" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/static/dltk-logo-v3.svg" />
+  <link rel="apple-touch-icon" href="/static/dltk-logo-128.png" />
+  
+  <!-- Manifest -->
+  <link rel="manifest" href="/manifest.json" />
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#EE1D52" />
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7104GGSQ1S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7104GGSQ1S');
+  </script>
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/static/style.css" />
+
+  <!-- Schema.org 结构化数据 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "DLTK - TikTok视频下载器",
+    "description": "免费TikTok视频下载工具，一键去水印，支持高清下载、MP3转换、封面图保存",
+    "url": "https://dltk.io/zh",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "跨平台",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "15240"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="/zh" class="logo">
+        <img src="/static/dltk-logo-v3.svg" alt="DLTK Logo" />
+        <span>DLTK</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/zh" class="active">视频下载</a></li>
+        <li><a href="/zh/yinpin">MP3转换</a></li>
+        <li><a href="/zh/fengmian">封面图</a></li>
+        <li><a href="/zh/kuaipai">快拍</a></li>
+      </ul>
+      <!-- 语言切换器 -->
+      <div class="lang-switcher">
+        <button class="lang-btn" onclick="switchLang('en')">EN</button>
+        <button class="lang-btn active">中文</button>
+        <button class="lang-btn" onclick="switchLang('es')">ES</button>
+        <button class="lang-btn" onclick="switchLang('pt')">PT</button>
+        <button class="lang-btn" onclick="switchLang('id')">ID</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero 区域 -->
+  <section class="hero">
+    <div class="container">
+      <h1>TikTok视频下载器 - 免费无水印</h1>
+      <p class="hero-subtitle">高清画质 · 极速下载 · 完全免费</p>
+      <p class="hero-intro">
+        DLTK 是一款免费的TikTok视频下载工具，自动去除水印。支持高清下载、MP3音频转换、封面图保存，无需注册，无需下载APP，快速简单，支持所有设备。
+      </p>
+      
+      <!-- 下载表单 -->
+      <div class="download-box">
+        <input 
+          type="text" 
+          id="videoUrl" 
+          placeholder="粘贴TikTok视频链接..." 
+          class="url-input"
+        />
+        <button onclick="downloadVideo()" class="btn-download">
+          <span>下载视频</span>
+        </button>
+      </div>
+      
+      <div id="result" class="result-container" style="display:none;">
+        <!-- 下载结果将显示在这里 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用说明 -->
+  <section class="how-to">
+    <div class="container">
+      <h2>如何下载TikTok视频</h2>
+      <p class="section-subtitle">3步即可保存无水印视频，无需APP，无需注册</p>
+      
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3>复制视频链接</h3>
+          <p>打开TikTok，找到你想下载的视频，点击分享按钮，选择"复制链接"</p>
+        </div>
+        
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3>粘贴到DLTK</h3>
+          <p>回到本页面，将复制的链接粘贴到上方输入框，系统会自动去除水印</p>
+        </div>
+        
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3>下载保存</h3>
+          <p>点击下载按钮，选择画质（高清/超清），视频会直接保存到你的设备，无水印</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 功能特点 -->
+  <section class="features">
+    <div class="container">
+      <h2>为什么选择DLTK</h2>
+      <p class="section-subtitle">最好用的免费TikTok视频下载器</p>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🚫</div>
+          <h3>自动去水印</h3>
+          <p>免费下载无水印TikTok视频，自动去除TikTok标志，获得干净的原始画质</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>极速下载</h3>
+          <p>秒级处理速度，采用先进技术即时下载，无需排队等待</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🎵</div>
+          <h3>MP3音频转换</h3>
+          <p>提取TikTok视频音频，保存为高品质MP3文件</p>
+          <a href="/zh/yinpin">试试MP3转换 →</a>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🖼️</div>
+          <h3>封面图下载</h3>
+          <p>一键保存TikTok视频封面图，全分辨率原图</p>
+          <a href="/zh/fengmian">下载封面图 →</a>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>全平台支持</h3>
+          <p>支持Windows、Mac、Android、iOS及所有浏览器，无需安装APP</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">💯</div>
+          <h3>完全免费</h3>
+          <p>永久免费，无限下载，无需注册，无需订阅，没有任何隐藏费用</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🎬</div>
+          <h3>高清画质</h3>
+          <p>支持HD、Full HD，甚至4K画质下载，保留原始视频质量</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>安全私密</h3>
+          <p>保护隐私优先，不存储你的下载记录和个人信息，匿名安全下载</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 常见问题 FAQ -->
+  <section class="faq">
+    <div class="container">
+      <h2>常见问题</h2>
+      
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>DLTK是免费的吗？</summary>
+          <p>是的，DLTK完全免费。你可以无限制下载无水印TikTok视频，无需注册，没有高级版付费，100%免费的TikTok下载工具。</p>
+        </details>
+        
+        <details class="faq-item">
+          <summary>如何下载无水印TikTok视频？</summary>
+          <p>只需复制TikTok视频链接，粘贴到DLTK输入框，点击下载即可。我们会自动去除水印，让你保存高清无水印视频，整个过程不到10秒。</p>
+        </details>
+        
+        <details class="faq-item">
+          <summary>需要下载APP吗？</summary>
+          <p>不需要。DLTK是网页版TikTok下载器，完全在浏览器中运行，无需下载任何应用程序或软件，直接访问网站即可使用。</p>
+        </details>
+        
+        <details class="faq-item">
+          <summary>可以下载私密视频吗？</summary>
+          <p>不可以。DLTK只能下载公开的TikTok视频。如果视频设置为私密或仅好友可见，我们无法获取该视频。</p>
+        </details>
+        
+        <details class="faq-item">
+          <summary>支持哪些设备？</summary>
+          <p>DLTK支持所有设备，包括iPhone、Android手机、Windows电脑、Mac、iPad等，只要有浏览器就可以使用。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>关于DLTK</h4>
+          <p>DLTK.io 是免费的TikTok视频下载工具，支持无水印下载、MP3音频提取、封面图保存和快拍下载。快速、简单、永久免费。</p>
+        </div>
+        
+        <div class="footer-col">
+          <h4>快速链接</h4>
+          <ul>
+            <li><a href="/zh">视频下载</a></li>
+            <li><a href="/zh/yinpin">MP3转换</a></li>
+            <li><a href="/zh/fengmian">封面图下载</a></li>
+            <li><a href="/zh/kuaipai">快拍下载</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>法律信息</h4>
+          <ul>
+            <li><a href="/zh/lianxi">联系我们</a></li>
+            <li><a href="/zh/yinsi">隐私政策</a></li>
+            <li><a href="/zh/tiaokuan">使用条款</a></li>
+            <li><a href="/zh/mianze">免责声明</a></li>
+            <li><a href="/zh/banquan">版权政策</a></li>
+            <li><a href="/zh/cookie">Cookie政策</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 DLTK.io - 免费TikTok视频下载器。保留所有权利。</p>
+        <p class="disclaimer-note">DLTK与TikTok无关联。请尊重版权，合理使用。</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="/static/lang-switcher.js"></script>
+  <script src="/static/main.js"></script>
+  
+  <script>
+    // 语言切换函数
+    function switchLang(lang) {
+      const langMap = {
+        'en': '/',
+        'es': '/es',
+        'pt': '/pt',
+        'id': '/id'
+      };
+      window.location.href = langMap[lang] || '/';
+    }
+    
+    // 下载视频函数
+    async function downloadVideo() {
+      const url = document.getElementById('videoUrl').value.trim();
+      const resultDiv = document.getElementById('result');
+      
+      if (!url) {
+        alert('请输入TikTok视频链接');
+        return;
+      }
+      
+      resultDiv.innerHTML = '<p class="loading">正在处理...</p>';
+      resultDiv.style.display = 'block';
+      
+      try {
+        const response = await fetch('/api/parse', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url })
+        });
+        
+        if (!response.ok) {
+          throw new Error('下载失败');
+        }
+        
+        const data = await response.json();
+        
+        resultDiv.innerHTML = `
+          <div class="video-result">
+            <img src="${data.thumbnail}" alt="视频封面" />
+            <h3>${data.title}</h3>
+            <p>作者: ${data.author}</p>
+            <a href="${data.video_url}" download class="btn-download">下载视频</a>
+          </div>
+        `;
+      } catch (error) {
+        resultDiv.innerHTML = '<p class="error">下载失败，请检查链接后重试</p>';
+      }
+    }
+  </script>
+</body>
+</html>
