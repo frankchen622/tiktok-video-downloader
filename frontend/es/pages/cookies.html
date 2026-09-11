@@ -1,25 +1,127 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Política de Cookies - DLTK</title>
-  <link rel="canonical" href="https://dltk.io/es/cookies" />
-  <link rel="stylesheet" href="/static/style.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Política de Cookies - DLTK.io</title>
+  <link rel="icon" type="image/svg+xml" href="/static/dltk-logo-v3.svg"/>
+  <link rel="stylesheet" href="/static/style.css"/>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7104GGSQ1S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7104GGSQ1S');
+  </script>
+
+  <link rel="stylesheet" href="/static/lang-switcher.css" />
+  <script src="/static/i18n.js"></script>
 </head>
 <body>
-  <nav class="navbar"><div class="container"><a href="/es" class="logo"><span>DLTK</span></a></div></nav>
-  <section class="legal-page"><div class="container">
-    <h1>Política de Cookies</h1>
-    <h2>¿Qué son las Cookies?</h2>
-    <p>Las cookies son pequeños archivos de texto que los sitios web almacenan en tu dispositivo para mejorar la experiencia del usuario.</p>
-    <h2>Cookies que Usamos</h2>
-    <h3>Cookies Necesarias</h3>
-    <p>Usadas para guardar preferencias de idioma y otras funciones básicas.</p>
-    <h3>Cookies de Análisis</h3>
-    <p>Google Analytics recopila datos de uso anónimos para ayudarnos a mejorar el servicio.</p>
-    <h2>Gestión de Cookies</h2>
-    <p>Puedes desactivar las cookies en la configuración de tu navegador, pero esto puede afectar algunas funciones.</p>
-  </div></section>
-  <footer class="footer"><div class="container"><p>&copy; 2024 DLTK.io</p></div></footer>
+  <div class="lang-switcher">
+    <button class="lang-btn" data-lang="es" onclick="i18n.setLanguage('en')">EN</button>
+    <button class="lang-btn" data-lang="zh" onclick="i18n.setLanguage('zh')">中文</button>
+    <button class="lang-btn" data-lang="es" onclick="i18n.setLanguage('es')">ES</button>
+    <button class="lang-btn" data-lang="pt" onclick="i18n.setLanguage('pt')">PT</button>
+    <button class="lang-btn" data-lang="id" onclick="i18n.setLanguage('id')">ID</button>
+  </div>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <svg width="40" height="40" viewBox="0 0 200 200" fill="none">
+          <defs>
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#EE1D52"/>
+              <stop offset="100%" stop-color="#69C9D0"/>
+            </linearGradient>
+          </defs>
+          <rect width="200" height="200" rx="40" fill="url(#logoGradient)"/>
+          <g transform="translate(100, 70)">
+            <circle cx="0" cy="0" r="35" fill="rgba(255,255,255,0.2)"/>
+            <path d="M 0,-18 L 0,18" stroke="white" stroke-width="10" stroke-linecap="round"/>
+            <path d="M -15,10 L 0,25 L 15,10" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </g>
+          <text x="100" y="155" font-family="Arial" font-size="52" font-weight="900" text-anchor="middle" fill="white" letter-spacing="2">DLTK</text>
+        </svg>
+        <span>DLTK</span>
+      </div>
+      <nav class="site-nav">
+        <a href="/es">Video</a>
+        <a href="/es/mp3">MP3</a>
+        <a href="/es/miniatura">Thumbnail</a>
+        <a href="/es/historia">Story</a>
+      </nav>
+    </div>
+  </header>
+  <main class="page-content">
+    <div class="container">
+      <h1>Política de Cookies</h1>
+      <p class="page-date">Last Updated: September 8, 2024</p>
+      <div class="content-card">
+        <h2>What Are Cookies?</h2>
+        <p>Cookies are small text files that are placed on your device when you visit a website. They help the website remember information about your visit, making it easier to use and more useful.</p>
+        
+        <h2>How We Use Cookies</h2>
+        <p>DLTK uses minimal cookies to ensure the website functions properly. We do not use tracking or advertising cookies.</p>
+        
+        <h3>Essential Cookies</h3>
+        <p>These cookies are necessary for the website to function and cannot be disabled:</p>
+        <ul>
+          <li><strong>Session Cookies:</strong> Temporary cookies that help maintain your session state</li>
+          <li><strong>Security Cookies:</strong> Protect against security threats and ensure safe browsing</li>
+        </ul>
+        
+        <h3>Analytics Cookies (Optional)</h3>
+        <p>We may use analytics cookies to understand how visitors use our website:</p>
+        <ul>
+          <li>Page views and popular features</li>
+          <li>Browser type and device information</li>
+          <li>Geographic location (country/region level only)</li>
+          <li>Referral sources</li>
+        </ul>
+        <p>These cookies collect anonymous data and cannot identify individual users.</p>
+        
+        <h2>Third-Party Cookies</h2>
+        <p>We do not allow third-party cookies on our website. All cookies are set by DLTK only.</p>
+        
+        <h2>Managing Cookies</h2>
+        <p>You can control cookies through your browser settings:</p>
+        <ul>
+          <li><strong>Chrome:</strong> Settings → Privacy and Security → Cookies and other site data</li>
+          <li><strong>Firefox:</strong> Preferences → Privacy & Security → Cookies and Site Data</li>
+          <li><strong>Safari:</strong> Preferences → Privacy → Manage Website Data</li>
+          <li><strong>Edge:</strong> Settings → Cookies and site permissions → Cookies and site data</li>
+        </ul>
+        
+        <h3>Disabling Cookies</h3>
+        <p>You can disable cookies in your browser, but this may affect website functionality. Essential features like the download form may not work properly without cookies.</p>
+        
+        <h2>Cookie Duration</h2>
+        <p>Most cookies we use are session cookies that expire when you close your browser. Some may persist for up to 30 days to improve your experience on return visits.</p>
+        
+        <h2>Do Not Track</h2>
+        <p>We respect Do Not Track (DNT) signals. If your browser sends a DNT signal, we will not collect analytics data from your visit.</p>
+        
+        <h2>Children's Privacy</h2>
+        <p>Our website is not directed at children under 13, and we do not knowingly collect cookies from children.</p>
+        
+        <h2>Updates to This Policy</h2>
+        <p>We may update this cookie policy as our practices change. Check this page periodically for updates.</p>
+        
+        <h2>Contact</h2>
+        <p>Questions about our cookie policy?<br>
+        Email: <a href="mailto:privacy@dltk.io">privacy@dltk.io</a></p>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-about"><h3>About DLTK</h3><p>Free TikTok downloader tools.</p></div>
+      <div class="footer-links"><h3>Quick Links</h3><ul><li><a href="/es">Video</a></li><li><a href="/es/mp3">MP3</a></li><li><a href="/es/miniatura">Thumbnail</a></li><li><a href="/es/historia">Story</a></li></ul></div>
+      <div class="footer-legal"><h3>Legal</h3><ul><li><a href="/es/pages/contacto.html">Contact</a></li><li><a href="/es/pages/privacidad.html">Privacy</a></li><li><a href="/es/pages/terminos.html">Terms</a></li><li><a href="/es/pages/descargo.html">Descargo de Responsabilidad</a></li><li><a href="/pages/dmca.html">DMCA</a></li><li><a href="/es/pages/cookies.html">Cookies</a></li></ul></div>
+    </div>
+    <div class="container footer-bottom"><p>© 2024 DLTK.io</p></div>
+  </footer>
 </body>
 </html>

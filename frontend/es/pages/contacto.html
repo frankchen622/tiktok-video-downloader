@@ -3,34 +3,113 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contacto - DLTK</title>
-  <meta name="description" content="Ponte en contacto con el equipo de DLTK." />
-  <link rel="canonical" href="https://dltk.io/es/contacto" />
-  <link rel="alternate" hreflang="es" href="https://dltk.io/es/contacto" />
-  <link rel="alternate" hreflang="en" href="https://dltk.io/pages/contact.html" />
-  <link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/lianxi" />
+  <title>Contáctanos - DLTK.io</title>
   <link rel="icon" type="image/svg+xml" href="/static/dltk-logo-v3.svg" />
   <link rel="stylesheet" href="/static/style.css" />
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7104GGSQ1S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7104GGSQ1S');
+  </script>
+
+  <link rel="stylesheet" href="/static/lang-switcher.css" />
+  <script src="/static/i18n.js"></script>
 </head>
 <body>
-  <nav class="navbar">
+  <div class="lang-switcher">
+    <button class="lang-btn" data-lang="es" onclick="i18n.setLanguage('en')">EN</button>
+    <button class="lang-btn" data-lang="zh" onclick="i18n.setLanguage('zh')">中文</button>
+    <button class="lang-btn" data-lang="es" onclick="i18n.setLanguage('es')">ES</button>
+    <button class="lang-btn" data-lang="pt" onclick="i18n.setLanguage('pt')">PT</button>
+    <button class="lang-btn" data-lang="id" onclick="i18n.setLanguage('id')">ID</button>
+  </div>
+  <header class="site-header">
     <div class="container">
-      <a href="/es" class="logo"><img src="/static/dltk-logo-v3.svg" alt="DLTK" /><span>DLTK</span></a>
+      <div class="logo">
+        <svg width="40" height="40" viewBox="0 0 200 200" fill="none">
+          <defs>
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#EE1D52"/>
+              <stop offset="100%" stop-color="#69C9D0"/>
+            </linearGradient>
+          </defs>
+          <rect width="200" height="200" rx="40" fill="url(#logoGradient)"/>
+          <g transform="translate(100, 70)">
+            <circle cx="0" cy="0" r="35" fill="rgba(255,255,255,0.2)"/>
+            <path d="M 0,-18 L 0,18" stroke="white" stroke-width="10" stroke-linecap="round"/>
+            <path d="M -15,10 L 0,25 L 15,10" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </g>
+          <text x="100" y="155" font-family="Arial" font-size="52" font-weight="900" text-anchor="middle" fill="white" letter-spacing="2">DLTK</text>
+        </svg>
+        <span>DLTK</span>
+      </div>
+      <nav class="site-nav">
+        <a href="/es">Video</a>
+        <a href="/es/mp3">MP3</a>
+        <a href="/es/miniatura">Thumbnail</a>
+        <a href="/es/historia">Story</a>
+      </nav>
     </div>
-  </nav>
-  <section class="legal-page">
+  </header>
+
+  <main class="page-content">
     <div class="container">
-      <h1>Contacto</h1>
-      <p>Si tienes alguna pregunta, sugerencia o comentario, no dudes en contactarnos:</p>
-      <ul>
-        <li>Email: support@dltk.io</li>
-        <li>Tiempo de respuesta: Normalmente respondemos en 24-48 horas</li>
-      </ul>
-      <p>Valoramos tus comentarios. ¡Gracias por usar DLTK!</p>
+      <h1>Contáctanos</h1>
+      
+      <div class="content-card">
+        <h2>Ponte en Contacto</h2>
+        <p>We'd love to hear from you! Whether you have questions, feedback, or need support, feel free to reach out.</p>
+        
+        <h3>Email</h3>
+        <p>For general inquiries: <a href="mailto:support@dltk.io">support@dltk.io</a></p>
+        <p>For business inquiries: <a href="mailto:business@dltk.io">business@dltk.io</a></p>
+        
+        <h3>Response Time</h3>
+        <p>We typically respond within 24-48 hours during business days.</p>
+        
+        <h3>Before You Contáctanos</h3>
+        <p>Please check our <a href="/pages/faq.html">FAQ page</a> first—your question might already be answered there!</p>
+      </div>
     </div>
-  </section>
-  <footer class="footer">
-    <div class="container"><p>&copy; 2024 DLTK.io</p></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-about">
+        <h3>About DLTK</h3>
+        <p>DLTK.io is a free online tool for downloading TikTok videos, extracting audio, saving thumbnails, and preserving stories. Fast, simple, and always free.</p>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="/es">TikTok Video Downloader</a></li>
+          <li><a href="/es/mp3">TikTok to MP3</a></li>
+          <li><a href="/es/miniatura">Thumbnail Downloader</a></li>
+          <li><a href="/es/historia">Story Downloader</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-legal">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="/es/pages/contacto.html">Contáctanos</a></li>
+          <li><a href="/es/pages/privacidad.html">Política de Privacidad</a></li>
+          <li><a href="/es/pages/terminos.html">Términos de Servicio</a></li>
+          <li><a href="/es/pages/descargo.html">Descargo de Responsabilidad</a></li>
+          <li><a href="/pages/dmca.html">DMCA & Copyright</a></li>
+          <li><a href="/es/pages/cookies.html">Política de Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="container footer-bottom">
+      <p>DLTK.io — Free TikTok Tools</p>
+      <p class="footer-note">We are not affiliated with TikTok or ByteDance. © 2024 DLTK.io. All rights belong to their respective owners.</p>
+    </div>
   </footer>
 </body>
 </html>
