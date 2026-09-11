@@ -153,6 +153,57 @@ async def serve_page_zh(page_name: str):
     return FileResponse(os.path.join(frontend_path, "zh", "pages", filename))
 
 
+# ========== 西班牙语站路由 (Spanish Localized URLs) ==========
+
+@app.get("/es")
+async def serve_index_es():
+    """西班牙语首页 - Descargador de Videos de TikTok"""
+    return FileResponse(os.path.join(frontend_path, "es", "index.html"))
+
+
+@app.get("/es/mp3")
+async def serve_mp3_es():
+    """西班牙语MP3转换页面"""
+    return FileResponse(os.path.join(frontend_path, "es", "mp3.html"))
+
+
+@app.get("/es/miniatura")
+async def serve_thumbnail_es():
+    """西班牙语封面图下载页面"""
+    return FileResponse(os.path.join(frontend_path, "es", "miniatura.html"))
+
+
+@app.get("/es/historia")
+async def serve_story_es():
+    """西班牙语快拍下载页面"""
+    return FileResponse(os.path.join(frontend_path, "es", "historia.html"))
+
+
+# 西班牙语法律页面路由
+@app.get("/es/{page_name}")
+async def serve_page_es(page_name: str):
+    """西班牙语法律/信息页面"""
+    allowed_pages = ["contacto", "privacidad", "terminos", "descargo", "dmca", "cookies"]
+    if page_name not in allowed_pages:
+        raise HTTPException(status_code=404, detail="Página no encontrada")
+    
+    # 映射到对应的HTML文件
+    page_map = {
+        "contacto": "contacto.html",       # Contacto
+        "privacidad": "privacidad.html",   # Política de Privacidad
+        "terminos": "terminos.html",       # Términos de Servicio
+        "descargo": "descargo.html",       # Descargo de Responsabilidad
+        "dmca": "dmca.html",               # DMCA
+        "cookies": "cookies.html"          # Política de Cookies
+    }
+    
+    filename = page_map.get(page_name)
+    if not filename:
+        raise HTTPException(status_code=404, detail="Página no encontrada")
+    
+    return FileResponse(os.path.join(frontend_path, "es", "pages", filename))
+
+
 @app.post("/api/parse")
 @limiter.limit("20/minute")
 async def parse_video(request: Request, body: ParseRequest):
