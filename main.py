@@ -254,6 +254,56 @@ async def serve_page_pt(page_name: str):
     return FileResponse(os.path.join(frontend_path, "pt", "pages", filename))
 
 
+# 法语首页
+@app.get("/fr")
+async def serve_index_fr():
+    """法语首页 - Télécharger des Vidéos TikTok"""
+    return FileResponse(os.path.join(frontend_path, "fr", "index.html"))
+
+
+@app.get("/fr/mp3")
+async def serve_mp3_fr():
+    """法语MP3转换页面"""
+    return FileResponse(os.path.join(frontend_path, "fr", "mp3.html"))
+
+
+@app.get("/fr/miniatura")
+async def serve_thumbnail_fr():
+    """法语缩略图页面"""
+    return FileResponse(os.path.join(frontend_path, "fr", "miniatura.html"))
+
+
+@app.get("/fr/historia")
+async def serve_story_fr():
+    """法语Story页面"""
+    return FileResponse(os.path.join(frontend_path, "fr", "historia.html"))
+
+
+# 法语法律页面路由
+@app.get("/fr/{page_name}")
+async def serve_page_fr(page_name: str):
+    """法语法律/信息页面"""
+    allowed_pages = ["contact", "confidentialite", "conditions", "avertissement", "dmca", "cookies"]
+    if page_name not in allowed_pages:
+        raise HTTPException(status_code=404, detail="Page non trouvée")
+    
+    # 映射到对应的HTML文件
+    page_map = {
+        "contact": "contact.html",                     # Contact
+        "confidentialite": "confidentialite.html",     # Politique de Confidentialité
+        "conditions": "conditions.html",               # Conditions de Service
+        "avertissement": "avertissement.html",         # Avertissement Légal
+        "dmca": "dmca.html",                           # DMCA
+        "cookies": "cookies.html"                      # Politique de Cookies
+    }
+    
+    filename = page_map.get(page_name)
+    if not filename:
+        raise HTTPException(status_code=404, detail="Page non trouvée")
+    
+    return FileResponse(os.path.join(frontend_path, "fr", "pages", filename))
+
+
 @app.post("/api/parse")
 @limiter.limit("20/minute")
 async def parse_video(request: Request, body: ParseRequest):
