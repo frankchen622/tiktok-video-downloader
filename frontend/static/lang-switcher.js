@@ -11,7 +11,8 @@
     'es': '/es/',
     'pt': '/pt/',
     'fr': '/fr/',
-    'de': '/de/'
+    'de': '/de/',
+    'id': '/id/'
   };
   
   // 语言显示名称
@@ -21,7 +22,8 @@
     'es': '🇪🇸 ES',
     'pt': '🇧🇷 PT',
     'fr': '🇫🇷 FR',
-    'de': '🇩🇪 DE'
+    'de': '🇩🇪 DE',
+    'id': '🇮🇩 ID'
   };
   
   // 页面名称映射（不同语言的页面名称）
@@ -32,7 +34,8 @@
       'es': 'mp3',
       'pt': 'mp3',
       'fr': 'mp3',
-      'de': 'mp3'
+      'de': 'mp3',
+      'id': 'mp3'
     },
     'thumbnail': {
       'en': 'thumbnail',
@@ -40,7 +43,8 @@
       'es': 'miniatura',
       'pt': 'miniatura',
       'fr': 'miniatura',
-      'de': 'miniatur'
+      'de': 'miniatur',
+      'id': 'thumbnail'
     },
     'story': {
       'en': 'story',
@@ -48,7 +52,8 @@
       'es': 'historia',
       'pt': 'historia',
       'fr': 'historia',
-      'de': 'story'
+      'de': 'story',
+      'id': 'story'
     }
   };
   
@@ -62,6 +67,7 @@
     if (path.startsWith('/pt/')) return 'pt';
     if (path.startsWith('/fr/')) return 'fr';
     if (path.startsWith('/de/')) return 'de';
+    if (path.startsWith('/id/')) return 'id';
     
     return 'en';
   }
