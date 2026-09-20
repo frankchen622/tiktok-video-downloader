@@ -118,12 +118,12 @@
       // 首页
       targetPath = langPaths[targetLang];
     } else {
-      // 其他页面
+      // 其他页面（不带 .html 后缀）
       const pageName = pageNames[pageType][targetLang];
       if (targetLang === 'en') {
-        targetPath = `/${pageName}.html`;
+        targetPath = `/${pageName}.html`; // 英文版保留 .html
       } else {
-        targetPath = `/${targetLang}/${pageName}.html`;
+        targetPath = `/${targetLang}/${pageName}`; // 其他语言不带 .html
       }
     }
     
