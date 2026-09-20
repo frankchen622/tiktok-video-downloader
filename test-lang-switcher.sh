@@ -101,6 +101,26 @@ check_content "static/lang-switcher.js" "getPageType" "getPageType 函数已定�
 check_content "static/lang-switcher.js" "pageNames" "页面名称映射已定义"
 echo ""
 
+echo "🔗 检查 URL 路径格式..."
+# 检查非英语版本不应该有 .html 后缀
+if grep -q 'targetPath = `/${targetLang}/${pageName}`;' "static/lang-switcher.js"; then
+    echo -e "${GREEN}✓${NC} 非英语版本 URL 格式正确（无 .html）"
+    ((PASSED++))
+else
+    echo -e "${RED}✗${NC} 非英语版本 URL 格式错误"
+    ((FAILED++))
+fi
+
+# 检查英语版本应该有 .html 后缀
+if grep -q 'targetPath = `/${pageName}.html`;' "static/lang-switcher.js"; then
+    echo -e "${GREEN}✓${NC} 英语版本 URL 格式正确（有 .html）"
+    ((PASSED++))
+else
+    echo -e "${RED}✗${NC} 英语版本 URL 格式错误"
+    ((FAILED++))
+fi
+echo ""
+
 echo "🎨 检查 CSS 样式..."
 check_content "static/lang-switcher.css" ".lang-btn.active" "active 样式已定义"
 check_content "static/lang-switcher.css" ".lang-dropdown" "下拉菜单样式已定义"
