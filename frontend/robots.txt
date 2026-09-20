@@ -1,18 +1,98 @@
-# robots.txt for DLTK.io
+# robots.txt for DLTK.io - TikTok Video Downloader
+# Fully open for crawling by Google and AI model crawlers
 
+# === Google Crawlers ===
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+# === Bing ===
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: BingPreview
+Allow: /
+
+# === AI Model Crawlers ===
+# OpenAI (ChatGPT, GPT-4)
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 0
+
+# Google Bard / Gemini
+User-agent: Google-Extended
+Allow: /
+Crawl-delay: 0
+
+# Anthropic Claude
+User-agent: anthropic-ai
+Allow: /
+Crawl-delay: 0
+
+User-agent: Claude-Web
+Allow: /
+Crawl-delay: 0
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 0
+
+# Common Crawl (used by many AI models)
+User-agent: CCBot
+Allow: /
+Crawl-delay: 1
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# === Other Major Search Engines ===
+User-agent: Yandex
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# === Default for all other crawlers ===
 User-agent: *
 Allow: /
-Allow: /mp3.html
-Allow: /thumbnail.html
-Allow: /story.html
-Allow: /pages/
+
+# Allow all static resources
 Allow: /static/
+Allow: /pages/
 
-# Disallow dynamic/processing paths if any
+# === Disallow (minimal restrictions) ===
+# Only block API endpoints to prevent unnecessary load
 Disallow: /api/
+Disallow: /download
 
-# Sitemap location
+# === Sitemap ===
 Sitemap: https://dltk.io/sitemap.xml
 
-# Crawl-delay for polite crawling
-Crawl-delay: 1
+# === Crawl optimization ===
+# Request-rate: 1/1s would allow 1 request per second
+# Not setting this to allow maximum crawl speed
