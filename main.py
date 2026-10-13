@@ -92,6 +92,19 @@ async def serve_thumbnail():
 async def serve_story():
     return FileResponse(os.path.join(frontend_path, "story.html"))
 
+# === 英文标准化URL路由（无.html后缀） ===
+@app.get("/mp3")
+async def mp3_standard():
+    return FileResponse(os.path.join(frontend_path, "mp3.html"))
+
+@app.get("/thumbnail")
+async def thumbnail_standard():
+    return FileResponse(os.path.join(frontend_path, "thumbnail.html"))
+
+@app.get("/story")
+async def story_standard():
+    return FileResponse(os.path.join(frontend_path, "story.html"))
+
 
 @app.get("/pages/{page_name}")
 async def serve_page(page_name: str):
@@ -178,6 +191,20 @@ async def serve_story_es():
     """西班牙语快拍下载页面"""
     return FileResponse(os.path.join(frontend_path, "es", "historia.html"))
 
+# 西班牙语标准化路由
+@app.get("/es/thumbnail")
+async def es_thumbnail_standard():
+    return FileResponse(os.path.join(frontend_path, "es", "miniatura.html"))
+
+@app.get("/es/story")
+async def es_story_standard():
+    return FileResponse(os.path.join(frontend_path, "es", "historia.html"))
+
+# 西班牙语301重定向
+@app.get("/es/miniatura")
+async def es_miniatura_redirect():
+    return RedirectResponse(url="/es/thumbnail", status_code=301)
+
 
 # 西班牙语法律页面路由
 @app.get("/es/{page_name}")
@@ -227,6 +254,20 @@ async def serve_thumbnail_pt():
 async def serve_story_pt():
     """葡萄牙语Story下载页面"""
     return FileResponse(os.path.join(frontend_path, "pt", "historia.html"))
+
+# 葡萄牙语标准化路由
+@app.get("/pt/thumbnail")
+async def pt_thumbnail_standard():
+    return FileResponse(os.path.join(frontend_path, "pt", "miniatura.html"))
+
+@app.get("/pt/story")
+async def pt_story_standard():
+    return FileResponse(os.path.join(frontend_path, "pt", "historia.html"))
+
+# 葡萄牙语301重定向
+@app.get("/pt/miniatura")
+async def pt_miniatura_redirect():
+    return RedirectResponse(url="/pt/thumbnail", status_code=301)
 
 
 # 葡萄牙语法律页面路由
@@ -278,6 +319,20 @@ async def serve_story_fr():
     """法语Story页面"""
     return FileResponse(os.path.join(frontend_path, "fr", "historia.html"))
 
+# 法语标准化路由
+@app.get("/fr/thumbnail")
+async def fr_thumbnail_standard():
+    return FileResponse(os.path.join(frontend_path, "fr", "miniatura.html"))
+
+@app.get("/fr/story")
+async def fr_story_standard():
+    return FileResponse(os.path.join(frontend_path, "fr", "historia.html"))
+
+# 法语301重定向（旧URL → 新URL）
+@app.get("/fr/miniatura")
+async def fr_miniatura_redirect():
+    return RedirectResponse(url="/fr/thumbnail", status_code=301)
+
 
 # 法语法律页面路由
 @app.get("/fr/{page_name}")
@@ -327,6 +382,16 @@ async def serve_thumbnail_de():
 async def serve_story_de():
     """德语Story页面"""
     return FileResponse(os.path.join(frontend_path, "de", "story.html"))
+
+# 德语标准化路由
+@app.get("/de/thumbnail")
+async def de_thumbnail_standard():
+    return FileResponse(os.path.join(frontend_path, "de", "miniatur.html"))
+
+# 德语301重定向
+@app.get("/de/miniatur")
+async def de_miniatur_redirect():
+    return RedirectResponse(url="/de/thumbnail", status_code=301)
 
 
 # 德语法律页面路由

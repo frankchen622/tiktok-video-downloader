@@ -35,8 +35,8 @@
   
   <!-- MP3 Pages -->
   <url>
-    <loc>https://dltk.io/mp3.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/mp3.html" />
+    <loc>https://dltk.io/mp3</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/mp3" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/yinpin" />
     <xhtml:link rel="alternate" hreflang="es" href="https://dltk.io/es/mp3" />
     <priority>0.9</priority>
@@ -52,10 +52,10 @@
   
   <!-- Thumbnail Pages -->
   <url>
-    <loc>https://dltk.io/thumbnail.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/thumbnail.html" />
+    <loc>https://dltk.io/thumbnail</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/thumbnail" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/fengmian" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://dltk.io/es/miniatura" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dltk.io/es/thumbnail" />
     <priority>0.9</priority>
   </url>
   <url>
@@ -63,16 +63,16 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://dltk.io/es/miniatura</loc>
+    <loc>https://dltk.io/es/thumbnail</loc>
     <priority>0.9</priority>
   </url>
   
   <!-- Story Pages -->
   <url>
-    <loc>https://dltk.io/story.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/story.html" />
+    <loc>https://dltk.io/story</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/story" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/kuaipai" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://dltk.io/es/historia" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dltk.io/es/story" />
     <priority>0.9</priority>
   </url>
   <url>
@@ -80,7 +80,7 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://dltk.io/es/historia</loc>
+    <loc>https://dltk.io/es/story</loc>
     <priority>0.9</priority>
   </url>
   
