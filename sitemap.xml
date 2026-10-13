@@ -2,15 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
+  <!-- ========== Homepage ========== -->
+  
   <!-- English Homepage -->
   <url>
     <loc>https://dltk.io/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh" />
     <xhtml:link rel="alternate" hreflang="es" href="https://dltk.io/es" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dltk.io/pt" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dltk.io/fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://dltk.io/de" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dltk.io/" />
     <priority>1.0</priority>
     <changefreq>daily</changefreq>
+    <lastmod>2026-10-13</lastmod>
   </url>
   
   <!-- Chinese Homepage -->
@@ -19,8 +25,12 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://dltk.io/es" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dltk.io/pt" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dltk.io/fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://dltk.io/de" />
     <priority>1.0</priority>
     <changefreq>daily</changefreq>
+    <lastmod>2026-10-13</lastmod>
   </url>
   
   <!-- Spanish Homepage -->
@@ -29,83 +39,270 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://dltk.io/es" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dltk.io/pt" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dltk.io/fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://dltk.io/de" />
     <priority>1.0</priority>
     <changefreq>daily</changefreq>
+    <lastmod>2026-10-13</lastmod>
   </url>
   
-  <!-- MP3 Pages -->
+  <!-- Portuguese Homepage -->
+  <url>
+    <loc>https://dltk.io/pt</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dltk.io/pt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dltk.io/es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dltk.io/fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://dltk.io/de" />
+    <priority>1.0</priority>
+    <changefreq>daily</changefreq>
+    <lastmod>2026-10-13</lastmod>
+  </url>
+  
+  <!-- French Homepage -->
+  <url>
+    <loc>https://dltk.io/fr</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dltk.io/fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dltk.io/es" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dltk.io/pt" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://dltk.io/de" />
+    <priority>1.0</priority>
+    <changefreq>daily</changefreq>
+    <lastmod>2026-10-13</lastmod>
+  </url>
+  
+  <!-- German Homepage -->
+  <url>
+    <loc>https://dltk.io/de</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dltk.io/de" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dltk.io/es" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dltk.io/pt" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dltk.io/fr" />
+    <priority>1.0</priority>
+    <changefreq>daily</changefreq>
+    <lastmod>2026-10-13</lastmod>
+  </url>
+  
+  <!-- ========== MP3 Converter Pages ========== -->
+  
   <url>
     <loc>https://dltk.io/mp3</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/mp3" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/yinpin" />
     <xhtml:link rel="alternate" hreflang="es" href="https://dltk.io/es/mp3" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dltk.io/pt/mp3" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dltk.io/fr/mp3" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://dltk.io/de/mp3" />
     <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-13</lastmod>
   </url>
+  
   <url>
     <loc>https://dltk.io/zh/yinpin</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/yinpin" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/mp3" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dltk.io/es/mp3" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dltk.io/pt/mp3" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dltk.io/fr/mp3" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://dltk.io/de/mp3" />
     <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-13</lastmod>
   </url>
+  
   <url>
     <loc>https://dltk.io/es/mp3</loc>
     <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-13</lastmod>
   </url>
   
-  <!-- Thumbnail Pages -->
+  <url>
+    <loc>https://dltk.io/pt/mp3</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-13</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dltk.io/fr/mp3</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-13</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dltk.io/de/mp3</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-13</lastmod>
+  </url>
+  
+  <!-- ========== Thumbnail Downloader Pages ========== -->
+  
   <url>
     <loc>https://dltk.io/thumbnail</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/thumbnail" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/fengmian" />
     <xhtml:link rel="alternate" hreflang="es" href="https://dltk.io/es/thumbnail" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dltk.io/pt/thumbnail" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dltk.io/fr/thumbnail" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://dltk.io/de/thumbnail" />
     <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-13</lastmod>
   </url>
+  
   <url>
     <loc>https://dltk.io/zh/fengmian</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/fengmian" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/thumbnail" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dltk.io/es/thumbnail" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dltk.io/pt/thumbnail" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dltk.io/fr/thumbnail" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://dltk.io/de/thumbnail" />
     <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-13</lastmod>
   </url>
+  
   <url>
     <loc>https://dltk.io/es/thumbnail</loc>
     <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-13</lastmod>
   </url>
   
-  <!-- Story Pages -->
+  <url>
+    <loc>https://dltk.io/pt/thumbnail</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-13</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dltk.io/fr/thumbnail</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-13</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dltk.io/de/thumbnail</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-13</lastmod>
+  </url>
+  
+  <!-- ========== Story Saver Pages ========== -->
+  
   <url>
     <loc>https://dltk.io/story</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/story" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/kuaipai" />
     <xhtml:link rel="alternate" hreflang="es" href="https://dltk.io/es/story" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dltk.io/pt/story" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dltk.io/fr/story" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://dltk.io/de/story" />
     <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-13</lastmod>
   </url>
+  
   <url>
     <loc>https://dltk.io/zh/kuaipai</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://dltk.io/zh/kuaipai" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dltk.io/story" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://dltk.io/es/story" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dltk.io/pt/story" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dltk.io/fr/story" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://dltk.io/de/story" />
     <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-13</lastmod>
   </url>
+  
   <url>
     <loc>https://dltk.io/es/story</loc>
     <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-13</lastmod>
   </url>
   
-  <!-- English Legal Pages -->
-  <url><loc>https://dltk.io/pages/contact.html</loc><priority>0.5</priority></url>
-  <url><loc>https://dltk.io/pages/privacy.html</loc><priority>0.5</priority></url>
-  <url><loc>https://dltk.io/pages/terms.html</loc><priority>0.5</priority></url>
-  <url><loc>https://dltk.io/pages/disclaimer.html</loc><priority>0.5</priority></url>
-  <url><loc>https://dltk.io/pages/dmca.html</loc><priority>0.5</priority></url>
-  <url><loc>https://dltk.io/pages/cookies.html</loc><priority>0.5</priority></url>
+  <url>
+    <loc>https://dltk.io/pt/story</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-13</lastmod>
+  </url>
   
-  <!-- Chinese Legal Pages -->
-  <url><loc>https://dltk.io/zh/lianxi</loc><priority>0.5</priority></url>
-  <url><loc>https://dltk.io/zh/yinsi</loc><priority>0.5</priority></url>
-  <url><loc>https://dltk.io/zh/tiaokuan</loc><priority>0.5</priority></url>
-  <url><loc>https://dltk.io/zh/mianze</loc><priority>0.5</priority></url>
-  <url><loc>https://dltk.io/zh/banquan</loc><priority>0.5</priority></url>
-  <url><loc>https://dltk.io/zh/cookie</loc><priority>0.5</priority></url>
+  <url>
+    <loc>https://dltk.io/fr/story</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-13</lastmod>
+  </url>
   
-  <!-- Spanish Legal Pages -->
-  <url><loc>https://dltk.io/es/contacto</loc><priority>0.5</priority></url>
-  <url><loc>https://dltk.io/es/privacidad</loc><priority>0.5</priority></url>
-  <url><loc>https://dltk.io/es/terminos</loc><priority>0.5</priority></url>
-  <url><loc>https://dltk.io/es/descargo</loc><priority>0.5</priority></url>
-  <url><loc>https://dltk.io/es/dmca</loc><priority>0.5</priority></url>
-  <url><loc>https://dltk.io/es/cookies</loc><priority>0.5</priority></url>
+  <url>
+    <loc>https://dltk.io/de/story</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-13</lastmod>
+  </url>
+  
+  <!-- ========== English Legal Pages ========== -->
+  <url><loc>https://dltk.io/pages/contact.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/pages/privacy.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/pages/terms.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/pages/disclaimer.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/pages/dmca.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/pages/cookies.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  
+  <!-- ========== Chinese Legal Pages ========== -->
+  <url><loc>https://dltk.io/zh/lianxi</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/zh/yinsi</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/zh/tiaokuan</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/zh/mianze</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/zh/banquan</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/zh/cookie</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  
+  <!-- ========== Spanish Legal Pages ========== -->
+  <url><loc>https://dltk.io/es/pages/contacto.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/es/pages/privacidad.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/es/pages/terminos.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/es/pages/descargo.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/es/pages/dmca.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/es/pages/cookies.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  
+  <!-- ========== Portuguese Legal Pages ========== -->
+  <url><loc>https://dltk.io/pt/pages/contato.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/pt/pages/privacidade.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/pt/pages/termos.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/pt/pages/aviso-legal.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/pt/pages/dmca.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/pt/pages/cookies.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  
+  <!-- ========== French Legal Pages ========== -->
+  <url><loc>https://dltk.io/fr/pages/contact.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/fr/pages/confidentialite.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/fr/pages/conditions.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/fr/pages/avertissement.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/fr/pages/dmca.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/fr/pages/cookies.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  
+  <!-- ========== German Legal Pages ========== -->
+  <url><loc>https://dltk.io/de/pages/kontakt.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/de/pages/datenschutz.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/de/pages/nutzungsbedingungen.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/de/pages/haftungsausschluss.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/de/pages/dmca.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dltk.io/de/pages/cookies.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
   
 </urlset>
