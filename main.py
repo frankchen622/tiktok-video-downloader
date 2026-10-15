@@ -692,3 +692,17 @@ async def download_thumbnail(request: Request, url: str):
 
 
 
+
+# === Blog Routes ===
+@app.get("/blog/")
+@app.get("/blog/index.html")
+async def blog_index():
+    return FileResponse(os.path.join(frontend_path, "blog", "index.html"))
+
+@app.get("/blog/how-to-download-tiktok-videos-2026.html")
+async def blog_article_1():
+    return FileResponse(os.path.join(frontend_path, "blog", "how-to-download-tiktok-videos-2026.html"))
+
+@app.get("/blog/free-download-tiktok-without-watermark-2026.html")
+async def blog_article_2():
+    return FileResponse(os.path.join(frontend_path, "blog", "free-download-tiktok-without-watermark-2026.html"))
