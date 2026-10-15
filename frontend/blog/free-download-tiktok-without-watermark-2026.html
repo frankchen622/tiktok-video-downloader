@@ -285,17 +285,48 @@
   </style>
 </head>
 <body>
-  <header class="header">
-    <nav class="nav container">
-      <a href="/" class="logo">DLTK</a>
-      <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/mp3">MP3</a></li>
-        <li><a href="/thumbnail">Thumbnail</a></li>
-        <li><a href="/story">Story</a></li>
-        <li><a href="/blog/">Blog</a></li>
-      </ul>
-    </nav>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <svg width="40" height="40" viewBox="0 0 200 200" fill="none" aria-label="DLTK Logo - Free TikTok Video Downloader">
+          <defs>
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#EE1D52;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#69C9D0;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <rect width="200" height="200" rx="40" fill="url(#logoGradient)"/>
+          <g transform="translate(100, 70)">
+            <circle cx="0" cy="0" r="35" fill="rgba(255,255,255,0.2)"/>
+            <path d="M 0,-18 L 0,18" stroke="white" stroke-width="10" stroke-linecap="round"/>
+            <path d="M -15,10 L 0,25 L 15,10" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </g>
+          <text x="100" y="155" font-family="Arial, sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="white" letter-spacing="2">DLTK</text>
+        </svg>
+        <span data-i18n="logo_text">DLTK</span>
+      </div>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/" data-i18n="nav_video">Video</a>
+        <a href="/mp3" data-i18n="nav_mp3">MP3</a>
+        <a href="/thumbnail" data-i18n="nav_thumbnail">Thumbnail</a>
+        <a href="/story" data-i18n="nav_story">Story</a>
+        
+        <!-- Language Switcher Dropdown -->
+        <div class="lang-switcher" id="langSwitcher">
+          <button class="lang-current" id="langCurrent" aria-label="Select language">
+            <span id="currentLangText">EN</span>
+          </button>
+          <div class="lang-dropdown">
+            <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">🇺🇸 English</button>
+            <button class="lang-btn" data-lang="zh" onclick="switchLanguage('zh')">🇨🇳 简体中文</button>
+            <button class="lang-btn" data-lang="es" onclick="switchLanguage('es')">🇪🇸 Español</button>
+            <button class="lang-btn" data-lang="pt" onclick="switchLanguage('pt')">🇧🇷 Português</button>
+            <button class="lang-btn" data-lang="fr" onclick="switchLanguage('fr')">🇫🇷 Français</button>
+            <button class="lang-btn" data-lang="de" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
+          </div>
+        </div>
+      </nav>
+    </div>
   </header>
 
   <main class="article-container">
@@ -304,15 +335,49 @@
     </nav>
 
     <article>
-      <header class="article-header">
-        <div class="article-meta">
-          <span>📅 October 15, 2026</span>
-          <span>⏱️ 7 min read</span>
-          <span>👤 DLTK Team</span>
+      <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <svg width="40" height="40" viewBox="0 0 200 200" fill="none" aria-label="DLTK Logo - Free TikTok Video Downloader">
+          <defs>
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#EE1D52;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#69C9D0;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <rect width="200" height="200" rx="40" fill="url(#logoGradient)"/>
+          <g transform="translate(100, 70)">
+            <circle cx="0" cy="0" r="35" fill="rgba(255,255,255,0.2)"/>
+            <path d="M 0,-18 L 0,18" stroke="white" stroke-width="10" stroke-linecap="round"/>
+            <path d="M -15,10 L 0,25 L 15,10" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </g>
+          <text x="100" y="155" font-family="Arial, sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="white" letter-spacing="2">DLTK</text>
+        </svg>
+        <span data-i18n="logo_text">DLTK</span>
+      </div>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/" data-i18n="nav_video">Video</a>
+        <a href="/mp3" data-i18n="nav_mp3">MP3</a>
+        <a href="/thumbnail" data-i18n="nav_thumbnail">Thumbnail</a>
+        <a href="/story" data-i18n="nav_story">Story</a>
+        
+        <!-- Language Switcher Dropdown -->
+        <div class="lang-switcher" id="langSwitcher">
+          <button class="lang-current" id="langCurrent" aria-label="Select language">
+            <span id="currentLangText">EN</span>
+          </button>
+          <div class="lang-dropdown">
+            <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">🇺🇸 English</button>
+            <button class="lang-btn" data-lang="zh" onclick="switchLanguage('zh')">🇨🇳 简体中文</button>
+            <button class="lang-btn" data-lang="es" onclick="switchLanguage('es')">🇪🇸 Español</button>
+            <button class="lang-btn" data-lang="pt" onclick="switchLanguage('pt')">🇧🇷 Português</button>
+            <button class="lang-btn" data-lang="fr" onclick="switchLanguage('fr')">🇫🇷 Français</button>
+            <button class="lang-btn" data-lang="de" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
+          </div>
         </div>
-        <h1 class="article-title">Free Download TikTok Video Without Watermark (2026)</h1>
-        <p class="article-excerpt">Learn how to download TikTok videos without watermark completely free in 2026. This guide covers the best free methods to remove TikTok watermark and save videos in HD quality.</p>
-      </header>
+      </nav>
+    </div>
+  </header>
 
       <div class="article-content">
         <p>TikTok's watermark can be frustrating when you want to save videos for personal use or share content across different platforms. The good news is that you can <strong>download TikTok videos without watermark completely free</strong> using several proven methods.</p>
@@ -598,35 +663,40 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>DLTK</h3>
-          <p>Free TikTok video downloader without watermark</p>
-        </div>
-        <div class="footer-section">
-          <h4>Tools</h4>
-          <ul>
-            <li><a href="/">Video Downloader</a></li>
-            <li><a href="/mp3">TikTok to MP3</a></li>
-            <li><a href="/thumbnail">Thumbnail Downloader</a></li>
-            <li><a href="/story">Story Saver</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="/blog/">Blog</a></li>
-            <li><a href="/pages/contact.html">Contact</a></li>
-            <li><a href="/pages/privacy.html">Privacy Policy</a></li>
-            <li><a href="/pages/terms.html">Terms of Service</a></li>
-          </ul>
-        </div>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-about">
+        <h3 data-i18n="footer_about_title">About DLTK</h3>
+        <p data-i18n="footer_about_text">DLTK.io is a free online TikTok video downloader for downloading TikTok videos without watermark, extracting audio to MP3, saving thumbnails, and preserving stories. Fast, simple, and always free.</p>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 DLTK.io - Free TikTok Downloader. Not affiliated with TikTok.</p>
+      
+      <div class="footer-links">
+        <h3 data-i18n="footer_links_title">Quick Links</h3>
+        <ul>
+          <li><a href="/" data-i18n="nav_video">TikTok Video Downloader</a></li>
+          <li><a href="/mp3" data-i18n="nav_mp3">TikTok to MP3</a></li>
+          <li><a href="/thumbnail" data-i18n="nav_thumbnail">Thumbnail Downloader</a></li>
+          <li><a href="/story" data-i18n="nav_story">Story Downloader</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
       </div>
+      
+      <div class="footer-legal">
+        <h3 data-i18n="footer_legal_title">Legal</h3>
+        <ul>
+          <li><a href="/pages/contact.html" data-i18n="contact_us">Contact Us</a></li>
+          <li><a href="/pages/privacy.html" data-i18n="privacy_policy">Privacy Policy</a></li>
+          <li><a href="/pages/terms.html" data-i18n="terms_service">Terms of Service</a></li>
+          <li><a href="/pages/disclaimer.html" data-i18n="disclaimer">Disclaimer</a></li>
+          <li><a href="/pages/dmca.html">DMCA & Copyright</a></li>
+          <li><a href="/pages/cookies.html" data-i18n="cookies">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="container footer-bottom">
+      <p>DLTK.io — Free TikTok Video Downloader Without Watermark</p>
+      <p class="footer-note">We are not affiliated with TikTok or ByteDance. © 2024 DLTK.io. All rights belong to their respective owners.</p>
     </div>
   </footer>
 </body>
