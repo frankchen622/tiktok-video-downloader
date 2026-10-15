@@ -306,3 +306,19 @@
   <url><loc>https://dltk.io/de/pages/cookies.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
   
 </urlset>
+
+  <!-- ========== Blog Pages ========== -->
+  <url>
+    <loc>https://dltk.io/blog/</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-15</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dltk.io/blog/how-to-download-tiktok-videos-2026.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-15</lastmod>
+  </url>
+</urlset>
