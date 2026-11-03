@@ -4,16 +4,6 @@
   
   console.log('🌍 Language switcher loading...');
   
-  // 语言路径映射
-  const langPaths = {
-    'en': '/',
-    'zh': '/zh',
-    'es': '/es',
-    'pt': '/pt',
-    'fr': '/fr',
-    'de': '/de'
-  };
-  
   // 语言显示名称
   const langNames = {
     'en': '🇺🇸 EN',
@@ -24,79 +14,51 @@
     'de': '🇩🇪 DE'
   };
   
-  // 页面名称映射（不同语言的页面名称）
-  const pageNames = {
-    'mp3': {
-      'en': 'mp3',
-      'zh': 'yinpin',
-      'es': 'mp3',
-      'pt': 'mp3',
-      'fr': 'mp3',
-      'de': 'mp3'
-    },
-    'thumbnail': {
-      'en': 'thumbnail',
-      'zh': 'fengmian',
-      'es': 'thumbnail',
-      'pt': 'thumbnail',
-      'fr': 'thumbnail',
-      'de': 'thumbnail'
-    },
-    'story': {
-      'en': 'story',
-      'zh': 'kuaipai',
-      'es': 'story',
-      'pt': 'story',
-      'fr': 'story',
-      'de': 'story'
-    }
+  // 每种页面在各语言下的标准路径
+  const pagePaths = {
+    'index':      { en: '/',                       zh: '/zh',          es: '/es',            pt: '/pt',             fr: '/fr',                 de: '/de' },
+    'mp3':        { en: '/mp3',                    zh: '/zh/yinpin',   es: '/es/mp3',        pt: '/pt/mp3',         fr: '/fr/mp3',             de: '/de/mp3' },
+    'thumbnail':  { en: '/thumbnail',              zh: '/zh/fengmian', es: '/es/thumbnail',  pt: '/pt/thumbnail',   fr: '/fr/thumbnail',       de: '/de/thumbnail' },
+    'story':      { en: '/story',                  zh: '/zh/kuaipai',  es: '/es/story',      pt: '/pt/story',       fr: '/fr/story',           de: '/de/story' },
+    'contact':    { en: '/pages/contact.html',     zh: '/zh/lianxi',   es: '/es/contacto',   pt: '/pt/contato',     fr: '/fr/contact',         de: '/de/kontakt' },
+    'privacy':    { en: '/pages/privacy.html',     zh: '/zh/yinsi',    es: '/es/privacidad', pt: '/pt/privacidade', fr: '/fr/confidentialite', de: '/de/datenschutz' },
+    'terms':      { en: '/pages/terms.html',       zh: '/zh/tiaokuan', es: '/es/terminos',   pt: '/pt/termos',      fr: '/fr/conditions',      de: '/de/nutzungsbedingungen' },
+    'disclaimer': { en: '/pages/disclaimer.html',  zh: '/zh/mianze',   es: '/es/descargo',   pt: '/pt/aviso-legal', fr: '/fr/avertissement',   de: '/de/haftungsausschluss' },
+    'dmca':       { en: '/pages/dmca.html',        zh: '/zh/banquan',  es: '/es/dmca',       pt: '/pt/dmca',        fr: '/fr/dmca',            de: '/de/dmca' },
+    'cookies':    { en: '/pages/cookies.html',     zh: '/zh/cookie',   es: '/es/cookies',    pt: '/pt/cookies',     fr: '/fr/cookies',         de: '/de/cookies' }
   };
 
-  // 旧URL名称，仅用于识别页面类型（服务端会301到标准URL）
-  const legacyPageNames = {
-    'miniatura': 'thumbnail',
-    'miniatur': 'thumbnail',
-    'historia': 'story'
+  // 旧URL，仅用于识别页面类型（服务端会301到标准URL）
+  const legacyPaths = {
+    '/mp3.html': 'mp3', '/thumbnail.html': 'thumbnail', '/story.html': 'story',
+    '/es/miniatura': 'thumbnail', '/pt/miniatura': 'thumbnail', '/fr/miniatura': 'thumbnail', '/de/miniatur': 'thumbnail',
+    '/es/historia': 'story', '/pt/historia': 'story', '/fr/historia': 'story'
   };
   
   // 检测当前语言
   function getCurrentLanguage() {
     const path = window.location.pathname;
-    
-    // 从路径检测语言
     const match = path.match(/^\/(zh|es|pt|fr|de)(\/|$)/);
     return match ? match[1] : 'en';
   }
   
   // 检测当前页面类型
   function getPageType() {
-    const path = window.location.pathname;
-    const filename = path.split('/').pop().replace('.html', '');
-    
-    // 检查是否是首页
-    if (filename === '' || filename === 'index' || langPaths[filename]) {
-      return 'index';
+    let path = window.location.pathname;
+    if (path.length > 1) path = path.replace(/\/+$/, '');
+    if (path === '/index.html') return 'index';
+    if (legacyPaths[path]) return legacyPaths[path];
+    for (const [pageType, paths] of Object.entries(pagePaths)) {
+      if (Object.values(paths).includes(path)) return pageType;
     }
-    
-    if (legacyPageNames[filename]) {
-      return legacyPageNames[filename];
-    }
-    
-    // 检查各种页面名称映射
-    for (const [pageType, names] of Object.entries(pageNames)) {
-      if (Object.values(names).includes(filename)) {
-        return pageType;
-      }
-    }
-    
-    return 'index'; // 默认返回首页
+    return 'index';
   }
   
   // 切换语言函数
   window.switchLanguage = function(targetLang) {
     console.log('🔄 Switching to:', targetLang);
     
-    if (!langPaths[targetLang]) {
+    if (!pagePaths.index[targetLang]) {
       console.error('❌ Language not supported:', targetLang);
       return;
     }
@@ -117,16 +79,7 @@
     // 获取当前页面类型
     const pageType = getPageType();
     
-    // 构建目标 URL
-    let targetPath;
-    
-    if (pageType === 'index') {
-      // 首页
-      targetPath = langPaths[targetLang];
-    } else {
-      const pageName = pageNames[pageType][targetLang];
-      targetPath = targetLang === 'en' ? `/${pageName}` : `/${targetLang}/${pageName}`;
-    }
+    const targetPath = pagePaths[pageType][targetLang];
     
     console.log('🚀 Navigating from', pageType, 'to:', targetPath);
     window.location.href = targetPath;
@@ -139,25 +92,22 @@
     const langCurrent = document.getElementById('langCurrent');
     const langSwitcher = document.getElementById('langSwitcher');
     const currentLangText = document.getElementById('currentLangText');
+    const currentLang = getCurrentLanguage();
     
+    // 高亮当前语言按钮
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === currentLang);
+    });
+    
+    // 法律页面只有按钮、没有下拉菜单
     if (!langCurrent || !langSwitcher) {
-      console.error('❌ Language switcher elements not found');
       return;
     }
     
     // 设置当前语言显示
-    const currentLang = getCurrentLanguage();
     if (currentLangText) {
       currentLangText.textContent = langNames[currentLang];
     }
-    
-    // 高亮当前语言按钮
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      const btnLang = btn.getAttribute('data-lang');
-      if (btnLang === currentLang) {
-        btn.classList.add('active');
-      }
-    });
     
     // 切换下拉菜单
     langCurrent.addEventListener('click', function(e) {
