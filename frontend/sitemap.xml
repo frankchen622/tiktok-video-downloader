@@ -134,32 +134,32 @@
   
   <!-- Legal Pages (English) -->
   <url>
-    <loc>https://dltk.io/pages/contact</loc>
+    <loc>https://dltk.io/pages/contact.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://dltk.io/pages/privacy</loc>
+    <loc>https://dltk.io/pages/privacy.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://dltk.io/pages/terms</loc>
+    <loc>https://dltk.io/pages/terms.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://dltk.io/pages/disclaimer</loc>
+    <loc>https://dltk.io/pages/disclaimer.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://dltk.io/pages/dmca</loc>
+    <loc>https://dltk.io/pages/dmca.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://dltk.io/pages/cookies</loc>
+    <loc>https://dltk.io/pages/cookies.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
