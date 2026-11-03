@@ -7,11 +7,11 @@
   // 语言路径映射
   const langPaths = {
     'en': '/',
-    'zh': '/zh/',
-    'es': '/es/',
-    'pt': '/pt/',
-    'fr': '/fr/',
-    'de': '/de/'
+    'zh': '/zh',
+    'es': '/es',
+    'pt': '/pt',
+    'fr': '/fr',
+    'de': '/de'
   };
   
   // 语言显示名称
@@ -37,19 +37,26 @@
     'thumbnail': {
       'en': 'thumbnail',
       'zh': 'fengmian',
-      'es': 'miniatura',
-      'pt': 'miniatura',
-      'fr': 'miniatura',
-      'de': 'miniatur'
+      'es': 'thumbnail',
+      'pt': 'thumbnail',
+      'fr': 'thumbnail',
+      'de': 'thumbnail'
     },
     'story': {
       'en': 'story',
       'zh': 'kuaipai',
-      'es': 'historia',
-      'pt': 'historia',
-      'fr': 'historia',
+      'es': 'story',
+      'pt': 'story',
+      'fr': 'story',
       'de': 'story'
     }
+  };
+
+  // 旧URL名称，仅用于识别页面类型（服务端会301到标准URL）
+  const legacyPageNames = {
+    'miniatura': 'thumbnail',
+    'miniatur': 'thumbnail',
+    'historia': 'story'
   };
   
   // 检测当前语言
@@ -57,13 +64,8 @@
     const path = window.location.pathname;
     
     // 从路径检测语言
-    if (path.startsWith('/zh/')) return 'zh';
-    if (path.startsWith('/es/')) return 'es';
-    if (path.startsWith('/pt/')) return 'pt';
-    if (path.startsWith('/fr/')) return 'fr';
-    if (path.startsWith('/de/')) return 'de';
-    
-    return 'en';
+    const match = path.match(/^\/(zh|es|pt|fr|de)(\/|$)/);
+    return match ? match[1] : 'en';
   }
   
   // 检测当前页面类型
@@ -72,8 +74,12 @@
     const filename = path.split('/').pop().replace('.html', '');
     
     // 检查是否是首页
-    if (filename === '' || filename === 'index') {
+    if (filename === '' || filename === 'index' || langPaths[filename]) {
       return 'index';
+    }
+    
+    if (legacyPageNames[filename]) {
+      return legacyPageNames[filename];
     }
     
     // 检查各种页面名称映射
@@ -118,13 +124,8 @@
       // 首页
       targetPath = langPaths[targetLang];
     } else {
-      // 其他页面（不带 .html 后缀）
       const pageName = pageNames[pageType][targetLang];
-      if (targetLang === 'en') {
-        targetPath = `/${pageName}.html`; // 英文版保留 .html
-      } else {
-        targetPath = `/${targetLang}/${pageName}`; // 其他语言不带 .html
-      }
+      targetPath = targetLang === 'en' ? `/${pageName}` : `/${targetLang}/${pageName}`;
     }
     
     console.log('🚀 Navigating from', pageType, 'to:', targetPath);
