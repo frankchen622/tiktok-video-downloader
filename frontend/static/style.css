@@ -854,16 +854,14 @@ a:hover {
   text-align: center;
 }
 
-.footer-inner {
-  text-align: center;
-}
-
+.footer-bottom p,
 .footer-inner p {
   color: var(--text-secondary);
   font-size: 0.9375rem;
   margin-bottom: var(--sp-2);
 }
 
+.footer-bottom p:first-child,
 .footer-inner p:first-child {
   font-weight: 600;
   color: var(--heading);
