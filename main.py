@@ -657,3 +657,11 @@ async def blog_article_1():
 @app.get("/blog/free-download-tiktok-without-watermark-2026.html")
 async def blog_article_2():
     return FileResponse(os.path.join(frontend_path, "blog", "free-download-tiktok-without-watermark-2026.html"))
+
+@app.get("/blog/how-to-convert-tiktok-video-to-mp3-2026.html")
+async def blog_article_3():
+    return FileResponse(os.path.join(frontend_path, "blog", "how-to-convert-tiktok-video-to-mp3-2026.html"))
+
+@app.get("/blog/how-to-download-tiktok-video-on-pc-2026.html")
+async def blog_article_4():
+    return FileResponse(os.path.join(frontend_path, "blog", "how-to-download-tiktok-video-on-pc-2026.html"))
