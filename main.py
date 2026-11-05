@@ -19,9 +19,97 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 limiter = Limiter(key_func=get_remote_address)
-app = FastAPI(title="TikTok Downloader API")
+# Starlette slash redirects build an absolute URL from the ASGI scheme.
+# Behind Railway that scheme is http unless proxy headers are trusted, so
+# /zh/ and /blog become 307 → http://dltk.io/... which phones/WeChat often
+# fail to follow. Normalize slashes ourselves with relative Location headers.
+app = FastAPI(title="TikTok Downloader API", redirect_slashes=False)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
+CANONICAL_HOST = "dltk.io"
+PUBLIC_HOSTS = {"dltk.io", "www.dltk.io"}
+HSTS_VALUE = b"max-age=31536000; includeSubDomains"
+
+
+def _header(scope, name: bytes) -> str:
+    name = name.lower()
+    for key, value in scope.get("headers") or []:
+        if key.lower() == name:
+            return value.decode("latin-1")
+    return ""
+
+
+def _request_host(scope) -> str:
+    return _header(scope, b"host").split(":")[0].strip().lower()
+
+
+def _forwarded_proto(scope) -> str:
+    proto = _header(scope, b"x-forwarded-proto").split(",")[0].strip().lower()
+    return proto or (scope.get("scheme") or "http")
+
+
+def _slash_target(path: str) -> str | None:
+    """Canonicalize trailing slashes. /blog/ is the sitemap URL; everything else drops the slash."""
+    if path == "/blog":
+        return "/blog/"
+    if len(path) > 1 and path.endswith("/") and path != "/blog/":
+        return path.rstrip("/") or "/"
+    return None
+
+
+class CanonicalHTTPSMiddleware:
+    """Force https://dltk.io, relative slash redirects, HSTS, and HEAD support."""
+
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] != "http":
+            await self.app(scope, receive, send)
+            return
+
+        method = scope.get("method") or "GET"
+        path = scope.get("path") or "/"
+        query = scope.get("query_string") or b""
+        host = _request_host(scope)
+        proto = _forwarded_proto(scope)
+        inner_scope = {**scope, "method": "GET"} if method == "HEAD" else scope
+
+        public_request = host in PUBLIC_HOSTS and path != "/health"
+        if public_request and (host == "www.dltk.io" or proto == "http"):
+            dest = f"https://{CANONICAL_HOST}{path}"
+            if query:
+                dest += "?" + query.decode("latin-1")
+            await RedirectResponse(url=dest, status_code=301)(inner_scope, receive, send)
+            return
+
+        slash_to = _slash_target(path)
+        if slash_to is not None:
+            location = slash_to
+            if query:
+                location += "?" + query.decode("latin-1")
+            await RedirectResponse(url=location, status_code=301)(inner_scope, receive, send)
+            return
+
+        async def send_wrapper(message):
+            if message["type"] == "http.response.start":
+                headers = []
+                for key, value in message.get("headers") or []:
+                    if key.lower() == b"location" and value.lower().startswith(b"http://"):
+                        value = b"https://" + value[7:]
+                    headers.append((key, value))
+                if proto == "https" or host in PUBLIC_HOSTS:
+                    headers.append((b"strict-transport-security", HSTS_VALUE))
+                message = {**message, "headers": headers}
+            elif method == "HEAD" and message["type"] == "http.response.body":
+                if message.get("more_body"):
+                    return
+                message = {**message, "body": b""}
+            await send(message)
+
+        await self.app(inner_scope, receive, send_wrapper)
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -31,10 +119,12 @@ app.add_middleware(
         "http://localhost:3000",
         "http://localhost:8000",
     ],
-    allow_methods=["GET", "POST"],
+    allow_methods=["GET", "HEAD", "POST"],
     allow_headers=["*"],
     allow_credentials=True,
 )
+# Outermost: last added runs first.
+app.add_middleware(CanonicalHTTPSMiddleware)
 
 # Serve frontend static files
 frontend_path = os.path.join(os.path.dirname(__file__), "frontend")
