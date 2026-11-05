@@ -141,14 +141,18 @@
         </svg>
         <span>DLTK</span>
       </div>
-      <nav class="site-nav" aria-label="Hauptnavigation">
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" aria-label="Hauptnavigation" id="siteNav">
         <a href="/de">Video</a>
         <a href="/de/mp3">MP3</a>
         <a href="/de/thumbnail">Miniatur</a>
         <a href="/de/story">Story</a>
-              
-        <!-- Language Switcher Dropdown -->
-        <div class="lang-switcher" id="langSwitcher">
+      </nav>
+      <div class="lang-switcher" id="langSwitcher">
           <button class="lang-current" id="langCurrent" aria-label="Sprache wählen">
             <span id="currentLangText">DE</span>
           </button>
@@ -161,7 +165,7 @@
             <button class="lang-btn" data-lang="de" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
           </div>
         </div>
-      </nav>
+      
     </div>
   </header>
 
@@ -188,7 +192,7 @@
                 type="url"
                 id="videoUrl"
                 name="url"
-                placeholder="TikTok-Story-Link hier einfügen..."
+                placeholder="TikTok-Link einfügen..."
                 autocomplete="off"
                 spellcheck="false"
                 aria-describedby="urlError"
@@ -236,7 +240,7 @@
       <div class="container">
         <h2>So laden Sie TikTok-Stories herunter</h2>
         <p class="section-sub">Speichern Sie TikTok-Stories dauerhaft in 3 einfachen Schritten, bevor sie verschwinden.</p>
-        <ul class="features-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <ul class="features-grid">
           <li class="feature-card">
             <div class="step-num" style="margin: 0 auto var(--sp-4);">01</div>
             <h3>TikTok-Story finden</h3>
@@ -400,7 +404,7 @@
       <div class="container">
         <h2>Was Nutzer über den Story-Downloader von DLTK sagen</h2>
         <p class="section-sub">Von Millionen TikTok-Benutzern weltweit vertraut.</p>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--sp-6); max-width: 1000px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--sp-6); max-width: 1000px; margin: 0 auto;">
           <div class="content-card" style="padding: var(--sp-6);">
             <div style="color: #EE1D52; font-size: 1.5rem; margin-bottom: var(--sp-3);">★★★★★</div>
             <p style="font-style: italic; margin-bottom: var(--sp-4);">"Der beste TikTok-Downloader, den ich gefunden habe! Schnell, einfach und entfernt tatsächlich das Wasserzeichen. Ich benutze es täglich für meine Content-Erstellung."</p>

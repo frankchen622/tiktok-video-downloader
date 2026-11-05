@@ -93,35 +93,61 @@
     const langSwitcher = document.getElementById('langSwitcher');
     const currentLangText = document.getElementById('currentLangText');
     const currentLang = getCurrentLanguage();
+    const header = document.querySelector('.site-header');
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
     
     // 高亮当前语言按钮
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('active', btn.getAttribute('data-lang') === currentLang);
     });
-    
-    // 法律页面只有按钮、没有下拉菜单
-    if (!langCurrent || !langSwitcher) {
-      return;
+
+    function closeNav() {
+      if (!header || !navToggle) return;
+      header.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open menu');
+    }
+
+    if (navToggle && header) {
+      navToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const open = header.classList.toggle('nav-open');
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        if (open && langSwitcher) langSwitcher.classList.remove('active');
+      });
     }
     
-    // 设置当前语言显示
-    if (currentLangText) {
-      currentLangText.textContent = langNames[currentLang];
+    if (langCurrent && langSwitcher) {
+      if (currentLangText) {
+        currentLangText.textContent = langNames[currentLang];
+      }
+
+      langCurrent.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        langSwitcher.classList.toggle('active');
+        closeNav();
+        console.log('🖱️ Dropdown toggled');
+      });
     }
-    
-    // 切换下拉菜单
-    langCurrent.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      langSwitcher.classList.toggle('active');
-      console.log('🖱️ Dropdown toggled');
-    });
-    
-    // 点击外部关闭下拉菜单
+
     document.addEventListener('click', function(e) {
-      if (!langSwitcher.contains(e.target)) {
+      if (langSwitcher && !langSwitcher.contains(e.target)) {
         langSwitcher.classList.remove('active');
       }
+      if (header && navToggle && siteNav &&
+          header.classList.contains('nav-open') &&
+          !siteNav.contains(e.target) &&
+          !navToggle.contains(e.target)) {
+        closeNav();
+      }
+    });
+
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) closeNav();
     });
     
     console.log('✅ Language switcher ready! Current:', currentLang, '| Page:', getPageType());

@@ -193,14 +193,18 @@
         </svg>
         <span data-i18n="logo_text">DLTK</span>
       </div>
-      <nav class="site-nav" aria-label="Navegação principal">
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" aria-label="Navegação principal" id="siteNav">
         <a href="/pt" data-i18n="nav_vídeo">Vídeo</a>
         <a href="/pt/mp3">MP3</a>
         <a href="/pt/thumbnail" data-i18n="nav_thumbnail">Miniatura</a>
         <a href="/pt/story" data-i18n="nav_story">Story</a>
-        
-        <!-- Language Switcher Dropdown -->
-        <div class="lang-switcher" id="langSwitcher">
+      </nav>
+      <div class="lang-switcher" id="langSwitcher">
           <button class="lang-current" id="langCurrent" aria-label="Selecionar idioma">
             <span id="currentLangText">PT</span>
           </button>
@@ -213,7 +217,7 @@
             <button class="lang-btn" data-lang="de" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
           </div>
         </div>
-      </nav>
+      
     </div>
   </header>
 
@@ -245,7 +249,7 @@
                 type="url"
                 id="vídeoUrl"
                 name="url"
-                placeholder="Cole aqui o link do vídeo do TikTok..."
+                placeholder="Cole o link do TikTok..."
                 data-i18n="input_placeholder"
                 autocomplete="off"
                 spellcheck="false"
@@ -324,7 +328,7 @@
       <div class="container">
         <h2 data-i18n="how_to_title">Como Baixar Vídeos do TikTok Sem Marca d'Água</h2>
         <p class="section-sub" data-i18n="how_to_subtitle">Processo simples em 3 passos para salvar vídeos do TikTok. Sem app e sem cadastro.</p>
-        <ul class="features-grid" style="max-width: 900px; margin: 0 auto; grid-template-columns: repeat(3, 1fr);">
+        <ul class="features-grid" style="max-width: 900px; margin: 0 auto;">
           <li class="feature-card">
             <div class="step-num" style="margin: 0 auto var(--sp-4);" data-i18n="step1_num">01</div>
             <h3 data-i18n="step1_title">Copie o Link do Vídeo do TikTok</h3>
@@ -529,7 +533,7 @@
       <div class="container">
         <h2>O Que os Usuários Dizem Sobre o DLTK</h2>
         <p class="section-sub">A escolha de milhões de usuários do TikTok no mundo todo.</p>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--sp-6); max-width: 1000px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--sp-6); max-width: 1000px; margin: 0 auto;">
           <div class="content-card" style="padding: var(--sp-6);">
             <div style="color: #EE1D52; font-size: 1.5rem; margin-bottom: var(--sp-3);">★★★★★</div>
             <p style="font-style: italic; margin-bottom: var(--sp-4);">"O melhor baixador de TikTok que já encontrei! Rápido, simples e remove mesmo a marca d'água. Uso todos os dias para criar meu conteúdo."</p>

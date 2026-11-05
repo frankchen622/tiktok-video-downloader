@@ -142,14 +142,18 @@
         </svg>
         <span>DLTK</span>
       </div>
-      <nav class="site-nav" aria-label="Navegación principal">
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" aria-label="Navegación principal" id="siteNav">
         <a href="/es">Video</a>
         <a href="/es/mp3">MP3</a>
         <a href="/es/thumbnail">Miniatura</a>
         <a href="/es/story">Historia</a>
-              
-        <!-- Language Switcher Dropdown -->
-        <div class="lang-switcher" id="langSwitcher">
+      </nav>
+      <div class="lang-switcher" id="langSwitcher">
           <button class="lang-current" id="langCurrent" aria-label="Seleccionar idioma">
             <span id="currentLangText">ES</span>
           </button>
@@ -162,7 +166,7 @@
             <button class="lang-btn" data-lang="de" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
           </div>
         </div>
-      </nav>
+      
     </div>
   </header>
 
@@ -189,7 +193,7 @@
                 type="url"
                 id="videoUrl"
                 name="url"
-                placeholder="Pega el Enlace de la Historia de TikTok Aquí..."
+                placeholder="Pega el enlace de TikTok..."
                 autocomplete="off"
                 spellcheck="false"
                 aria-describedby="urlError"
@@ -237,7 +241,7 @@
       <div class="container">
         <h2>Cómo Descargar Historias de TikTok</h2>
         <p class="section-sub">Guarda historias de TikTok de forma permanente en 3 pasos simples, antes de que desaparezcan.</p>
-        <ul class="features-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <ul class="features-grid">
           <li class="feature-card">
             <div class="step-num" style="margin: 0 auto var(--sp-4);">01</div>
             <h3>Encuentra la Historia de TikTok</h3>
@@ -401,7 +405,7 @@
       <div class="container">
         <h2>Lo Que Dicen los Usuarios Sobre el Descargador de Historias DLTK</h2>
         <p class="section-sub">Con la confianza de millones de usuarios de TikTok en todo el mundo.</p>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--sp-6); max-width: 1000px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--sp-6); max-width: 1000px; margin: 0 auto;">
           <div class="content-card" style="padding: var(--sp-6);">
             <div style="color: #EE1D52; font-size: 1.5rem; margin-bottom: var(--sp-3);">★★★★★</div>
             <p style="font-style: italic; margin-bottom: var(--sp-4);">"¡El mejor descargador de TikTok que he encontrado! Rápido, simple y realmente elimina la marca de agua. Lo uso diariamente para mi creación de contenido."</p>

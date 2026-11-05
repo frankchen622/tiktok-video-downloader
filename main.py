@@ -183,6 +183,10 @@ LEGACY_REDIRECTS = {
     "/fr/miniature": "/fr/thumbnail",
     "/de/miniatur": "/de/thumbnail",
     "/blog/index.html": "/blog/",
+    "/pages/faq.html": "/#faq",
+    "/pages/faq": "/#faq",
+    "/faq": "/#faq",
+    "/faq.html": "/#faq",
 }
 
 

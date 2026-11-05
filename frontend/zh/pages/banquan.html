@@ -31,6 +31,8 @@
   <link rel="alternate" hreflang="de" href="https://dltk.io/de/dmca" />
   <link rel="alternate" hreflang="x-default" href="https://dltk.io/pages/dmca.html" />
   <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="/static/lang-switcher.css" />
+  <script src="/static/lang-switcher.js"></script>
 
   <script type="application/ld+json">
 {
@@ -48,8 +50,56 @@
   </script>
 </head>
 <body>
-  <nav class="navbar"><div class="container"><a href="/zh" class="logo"><span>DLTK</span></a></div></nav>
-  <section class="legal-page"><div class="container">
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <svg width="40" height="40" viewBox="0 0 200 200" fill="none" aria-label="DLTK标志">
+          <defs>
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#EE1D52;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#69C9D0;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <rect width="200" height="200" rx="40" fill="url(#logoGradient)"/>
+          <g transform="translate(100, 70)">
+            <circle cx="0" cy="0" r="35" fill="rgba(255,255,255,0.2)"/>
+            <path d="M 0,-18 L 0,18" stroke="white" stroke-width="10" stroke-linecap="round"/>
+            <path d="M -15,10 L 0,25 L 15,10" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </g>
+          <text x="100" y="155" font-family="Arial, sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="white" letter-spacing="2">DLTK</text>
+        </svg>
+        <span>DLTK</span>
+      </div>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="siteNav">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" aria-label="主导航" id="siteNav">
+        <a href="/zh">视频</a>
+        <a href="/zh/yinpin">音频</a>
+        <a href="/zh/fengmian">封面</a>
+        <a href="/zh/kuaipai">快拍</a>
+      </nav>
+      <div class="lang-switcher" id="langSwitcher">
+        <button class="lang-current" id="langCurrent" aria-label="选择语言">
+          <span id="currentLangText">中文</span>
+        </button>
+        <div class="lang-dropdown">
+          <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">🇺🇸 English</button>
+          <button class="lang-btn" data-lang="zh" onclick="switchLanguage('zh')">🇨🇳 简体中文</button>
+          <button class="lang-btn" data-lang="es" onclick="switchLanguage('es')">🇪🇸 Español</button>
+          <button class="lang-btn" data-lang="pt" onclick="switchLanguage('pt')">🇧🇷 Português</button>
+          <button class="lang-btn" data-lang="fr" onclick="switchLanguage('fr')">🇫🇷 Français</button>
+          <button class="lang-btn" data-lang="de" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="page-content">
+    <div class="container">
+      <div class="content-card">
+
     <h1>版权政策（DMCA）</h1>
     <h2>版权侵权通知</h2>
     <p>如果您认为DLTK侵犯了您的版权，请通过以下邮箱联系我们：support@dltk.io</p>
@@ -62,7 +112,9 @@
     </ul>
     <h2>我们的立场</h2>
     <p>DLTK尊重版权，仅提供技术工具。我们不托管、不存储任何视频内容。用户需自行承担下载内容的法律责任。</p>
-  </div></section>
+        </div>
+    </div>
+  </main>
   <footer class="site-footer">
     <div class="container footer-content">
       <div class="footer-about">

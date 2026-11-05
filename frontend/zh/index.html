@@ -192,14 +192,18 @@
         </svg>
         <span data-i18n="logo_text">DLTK</span>
       </div>
-      <nav class="site-nav" aria-label="主导航">
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" aria-label="主导航" id="siteNav">
         <a href="/zh">视频</a>
         <a href="/zh/yinpin">音频</a>
         <a href="/zh/fengmian">封面</a>
         <a href="/zh/kuaipai">快拍</a>
-        
-        <!-- Language Switcher Dropdown -->
-        <div class="lang-switcher" id="langSwitcher">
+      </nav>
+      <div class="lang-switcher" id="langSwitcher">
           <button class="lang-current" id="langCurrent" aria-label="选择语言">
             <span id="currentLangText">中文</span>
           </button>
@@ -212,7 +216,7 @@
             <button class="lang-btn" data-lang="de" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
           </div>
         </div>
-      </nav>
+      
     </div>
   </header>
 
@@ -323,7 +327,7 @@
       <div class="container">
         <h2 data-i18n="how_to_title">如何下载TikTok无水印视频</h2>
         <p class="section-sub" data-i18n="how_to_subtitle">简单3步即可保存TikTok视频，无需APP，无需注册</p>
-        <ul class="features-grid" style="max-width: 900px; margin: 0 auto; grid-template-columns: repeat(3, 1fr);">
+        <ul class="features-grid" style="max-width: 900px; margin: 0 auto;">
           <li class="feature-card">
             <div class="step-num" style="margin: 0 auto var(--sp-4);" data-i18n="step1_num">01</div>
             <h3 data-i18n="step1_title">复制TikTok视频链接</h3>
@@ -528,7 +532,7 @@
       <div class="container">
         <h2>用户对DLTK的评价</h2>
         <p class="section-sub">数百万用户信赖 </p>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--sp-6); max-width: 1000px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--sp-6); max-width: 1000px; margin: 0 auto;">
           <div class="content-card" style="padding: var(--sp-6);">
             <div style="color: #EE1D52; font-size: 1.5rem; margin-bottom: var(--sp-3);">★★★★★</div>
             <p style="font-style: italic; margin-bottom: var(--sp-4);">"我找到的最好的TikTok下载器！快速、简单，而且确实去除了水印。我每天都用它进行内容创作。"</p>

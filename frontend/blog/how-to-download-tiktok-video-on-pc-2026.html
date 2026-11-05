@@ -194,7 +194,20 @@
     .related-card:hover {
       background: #e9ecef;
     }
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 24px 0;
+    }
+    .table-scroll table {
+      margin: 0;
+      min-width: 520px;
+    }
     @media (max-width: 768px) {
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
       .pros-cons {
         grid-template-columns: 1fr;
       }
@@ -225,12 +238,18 @@
         </svg>
         <span data-i18n="logo_text">DLTK</span>
       </div>
-      <nav class="site-nav" aria-label="Main navigation">
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" aria-label="Main navigation" id="siteNav">
         <a href="/" data-i18n="nav_video">Video</a>
         <a href="/mp3" data-i18n="nav_mp3">MP3</a>
         <a href="/thumbnail" data-i18n="nav_thumbnail">Thumbnail</a>
         <a href="/story" data-i18n="nav_story">Story</a>
-        <div class="lang-switcher" id="langSwitcher">
+      </nav>
+      <div class="lang-switcher" id="langSwitcher">
           <button class="lang-current" id="langCurrent" aria-label="Select language">
             <span id="currentLangText">EN</span>
           </button>
@@ -243,7 +262,7 @@
             <button class="lang-btn" data-lang="de" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
           </div>
         </div>
-      </nav>
+      
     </div>
   </header>
 
@@ -463,6 +482,7 @@
 
         <p>Here's a quick comparison to help you choose:</p>
 
+        <div class="table-scroll">
         <table style="width: 100%; border-collapse: collapse; margin: 24px 0;">
           <thead>
             <tr style="background: #f8f9fa;">
@@ -504,6 +524,7 @@
             </tr>
           </tbody>
         </table>
+        </div>
 
         <p><strong>Our Recommendation:</strong> For most people on a Windows or Mac PC, <a href="/">DLTK.io</a> is the simplest path — paste the link in the browser and save an HD MP4. Skip random desktop downloaders and unsigned extensions.</p>
 
