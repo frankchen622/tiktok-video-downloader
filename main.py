@@ -187,6 +187,8 @@ LEGACY_REDIRECTS = {
     "/pages/faq": "/#faq",
     "/faq": "/#faq",
     "/faq.html": "/#faq",
+    "/about": "/pages/about.html",
+    "/about.html": "/pages/about.html",
 }
 
 
@@ -218,7 +220,7 @@ async def story_standard():
 @app.get("/pages/{page_name}")
 async def serve_page(page_name: str):
     # Serve legal/info pages
-    allowed_pages = ["contact.html", "privacy.html", "terms.html", "disclaimer.html", "dmca.html", "cookies.html"]
+    allowed_pages = ["about.html", "contact.html", "privacy.html", "terms.html", "disclaimer.html", "dmca.html", "cookies.html"]
     if page_name not in allowed_pages:
         raise HTTPException(status_code=404, detail="Page not found")
     return FileResponse(os.path.join(frontend_path, "pages", page_name))
@@ -254,12 +256,13 @@ async def serve_story_zh():
 @app.get("/zh/{page_name}")
 async def serve_page_zh(page_name: str):
     """中文法律/信息页面"""
-    allowed_pages = ["lianxi", "yinsi", "tiaokuan", "mianze", "banquan", "cookie"]
+    allowed_pages = ["guanyu", "lianxi", "yinsi", "tiaokuan", "mianze", "banquan", "cookie"]
     if page_name not in allowed_pages:
         raise HTTPException(status_code=404, detail="页面不存在")
     
     # 映射到对应的HTML文件
     page_map = {
+        "guanyu": "guanyu.html",        # 关于我们
         "lianxi": "lianxi.html",      # 联系我们
         "yinsi": "yinsi.html",          # 隐私政策
         "tiaokuan": "tiaokuan.html",    # 使用条款
@@ -302,12 +305,13 @@ async def es_story_standard():
 @app.get("/es/{page_name}")
 async def serve_page_es(page_name: str):
     """西班牙语法律/信息页面"""
-    allowed_pages = ["contacto", "privacidad", "terminos", "descargo", "dmca", "cookies"]
+    allowed_pages = ["acerca", "contacto", "privacidad", "terminos", "descargo", "dmca", "cookies"]
     if page_name not in allowed_pages:
         raise HTTPException(status_code=404, detail="Página no encontrada")
     
     # 映射到对应的HTML文件
     page_map = {
+        "acerca": "acerca.html",           # Sobre nosotros
         "contacto": "contacto.html",       # Contacto
         "privacidad": "privacidad.html",   # Política de Privacidad
         "terminos": "terminos.html",       # Términos de Servicio
@@ -349,12 +353,13 @@ async def pt_story_standard():
 @app.get("/pt/{page_name}")
 async def serve_page_pt(page_name: str):
     """葡萄牙语法律/信息页面"""
-    allowed_pages = ["contato", "privacidade", "termos", "aviso-legal", "dmca", "cookies"]
+    allowed_pages = ["sobre", "contato", "privacidade", "termos", "aviso-legal", "dmca", "cookies"]
     if page_name not in allowed_pages:
         raise HTTPException(status_code=404, detail="Página não encontrada")
     
     # 映射到对应的HTML文件
     page_map = {
+        "sobre": "sobre.html",               # Sobre nós
         "contato": "contato.html",           # Contato
         "privacidade": "privacidade.html",   # Política de Privacidade
         "termos": "termos.html",             # Termos de Serviço
@@ -396,12 +401,13 @@ async def fr_story_standard():
 @app.get("/fr/{page_name}")
 async def serve_page_fr(page_name: str):
     """法语法律/信息页面"""
-    allowed_pages = ["contact", "confidentialite", "conditions", "avertissement", "dmca", "cookies"]
+    allowed_pages = ["a-propos", "contact", "confidentialite", "conditions", "avertissement", "dmca", "cookies"]
     if page_name not in allowed_pages:
         raise HTTPException(status_code=404, detail="Page non trouvée")
     
     # 映射到对应的HTML文件
     page_map = {
+        "a-propos": "a-propos.html",                   # À propos
         "contact": "contact.html",                     # Contact
         "confidentialite": "confidentialite.html",     # Politique de Confidentialité
         "conditions": "conditions.html",               # Conditions de Service
@@ -444,12 +450,13 @@ async def de_thumbnail_standard():
 @app.get("/de/{page_name}")
 async def serve_page_de(page_name: str):
     """德语法律/信息页面"""
-    allowed_pages = ["kontakt", "datenschutz", "nutzungsbedingungen", "haftungsausschluss", "dmca", "cookies"]
+    allowed_pages = ["ueber-uns", "kontakt", "datenschutz", "nutzungsbedingungen", "haftungsausschluss", "dmca", "cookies"]
     if page_name not in allowed_pages:
         raise HTTPException(status_code=404, detail="Seite nicht gefunden")
     
     # 映射到对应的HTML文件
     page_map = {
+        "ueber-uns": "ueber-uns.html",                       # Über uns
         "kontakt": "kontakt.html",                           # Kontakt
         "datenschutz": "datenschutz.html",                   # Datenschutz
         "nutzungsbedingungen": "nutzungsbedingungen.html",   # Nutzungsbedingungen

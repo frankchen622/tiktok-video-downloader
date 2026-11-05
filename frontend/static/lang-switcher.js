@@ -20,6 +20,7 @@
     'mp3':        { en: '/mp3',                    zh: '/zh/yinpin',   es: '/es/mp3',        pt: '/pt/mp3',         fr: '/fr/mp3',             de: '/de/mp3' },
     'thumbnail':  { en: '/thumbnail',              zh: '/zh/fengmian', es: '/es/thumbnail',  pt: '/pt/thumbnail',   fr: '/fr/thumbnail',       de: '/de/thumbnail' },
     'story':      { en: '/story',                  zh: '/zh/kuaipai',  es: '/es/story',      pt: '/pt/story',       fr: '/fr/story',           de: '/de/story' },
+    'about':      { en: '/pages/about.html',       zh: '/zh/guanyu',   es: '/es/acerca',     pt: '/pt/sobre',       fr: '/fr/a-propos',        de: '/de/ueber-uns' },
     'contact':    { en: '/pages/contact.html',     zh: '/zh/lianxi',   es: '/es/contacto',   pt: '/pt/contato',     fr: '/fr/contact',         de: '/de/kontakt' },
     'privacy':    { en: '/pages/privacy.html',     zh: '/zh/yinsi',    es: '/es/privacidad', pt: '/pt/privacidade', fr: '/fr/confidentialite', de: '/de/datenschutz' },
     'terms':      { en: '/pages/terms.html',       zh: '/zh/tiaokuan', es: '/es/terminos',   pt: '/pt/termos',      fr: '/fr/conditions',      de: '/de/nutzungsbedingungen' },
@@ -31,6 +32,7 @@
   // 旧URL，仅用于识别页面类型（服务端会301到标准URL）
   const legacyPaths = {
     '/mp3.html': 'mp3', '/thumbnail.html': 'thumbnail', '/story.html': 'story',
+    '/about': 'about', '/about.html': 'about',
     '/es/miniatura': 'thumbnail', '/pt/miniatura': 'thumbnail', '/fr/miniatura': 'thumbnail', '/de/miniatur': 'thumbnail',
     '/es/historia': 'story', '/pt/historia': 'story', '/fr/historia': 'story'
   };
