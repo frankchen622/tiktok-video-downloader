@@ -766,3 +766,31 @@ async def blog_article_3():
 @app.get("/blog/how-to-download-tiktok-video-on-pc-2026.html")
 async def blog_article_4():
     return FileResponse(os.path.join(frontend_path, "blog", "how-to-download-tiktok-video-on-pc-2026.html"))
+
+@app.get("/blog/how-to-download-tiktok-videos-on-iphone-2026.html")
+async def blog_article_5():
+    return FileResponse(os.path.join(frontend_path, "blog", "how-to-download-tiktok-videos-on-iphone-2026.html"))
+
+@app.get("/blog/how-to-download-tiktok-videos-on-android-2026.html")
+async def blog_article_6():
+    return FileResponse(os.path.join(frontend_path, "blog", "how-to-download-tiktok-videos-on-android-2026.html"))
+
+@app.get("/blog/how-to-download-tiktok-videos-in-hd-2026.html")
+async def blog_article_7():
+    return FileResponse(os.path.join(frontend_path, "blog", "how-to-download-tiktok-videos-in-hd-2026.html"))
+
+@app.get("/blog/how-to-convert-tiktok-videos-to-mp4-2026.html")
+async def blog_article_8():
+    return FileResponse(os.path.join(frontend_path, "blog", "how-to-convert-tiktok-videos-to-mp4-2026.html"))
+
+@app.get("/blog/why-cant-i-download-a-tiktok-video-2026.html")
+async def blog_article_9():
+    return FileResponse(os.path.join(frontend_path, "blog", "why-cant-i-download-a-tiktok-video-2026.html"))
+
+@app.get("/blog/tiktok-video-downloader-vs-built-in-download-2026.html")
+async def blog_article_10():
+    return FileResponse(os.path.join(frontend_path, "blog", "tiktok-video-downloader-vs-built-in-download-2026.html"))
+
+@app.get("/blog/how-to-download-tiktok-videos-online-for-free-2026.html")
+async def blog_article_11():
+    return FileResponse(os.path.join(frontend_path, "blog", "how-to-download-tiktok-videos-online-for-free-2026.html"))
