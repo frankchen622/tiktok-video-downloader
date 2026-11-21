@@ -798,3 +798,7 @@ async def blog_article_11():
 @app.get("/blog/how-to-download-tiktok-photo-slideshow-2026.html")
 async def blog_article_12():
     return FileResponse(os.path.join(frontend_path, "blog", "how-to-download-tiktok-photo-slideshow-2026.html"))
+
+@app.get("/blog/how-to-save-capcut-video-without-watermark-2026.html")
+async def blog_article_13():
+    return FileResponse(os.path.join(frontend_path, "blog", "how-to-save-capcut-video-without-watermark-2026.html"))
