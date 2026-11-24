@@ -810,3 +810,7 @@ async def blog_article_14():
 @app.get("/blog/how-to-download-tiktok-notes-photos-2026.html")
 async def blog_article_15():
     return FileResponse(os.path.join(frontend_path, "blog", "how-to-download-tiktok-notes-photos-2026.html"))
+
+@app.get("/blog/download-tiktok-stories-by-username-2026.html")
+async def blog_article_16():
+    return FileResponse(os.path.join(frontend_path, "blog", "download-tiktok-stories-by-username-2026.html"))
