@@ -159,9 +159,15 @@
   <!-- Blog -->
   <url>
     <loc>https://dltk.io/blog/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dltk.io/blog/tiktok-downloader-browser-extension-safety-2026.html</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://dltk.io/blog/download-tiktok-stories-by-username-2026.html</loc>
