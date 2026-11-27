@@ -822,3 +822,7 @@ async def blog_article_17():
 @app.get("/blog/how-to-download-long-tiktok-videos-2026.html")
 async def blog_article_18():
     return FileResponse(os.path.join(frontend_path, "blog", "how-to-download-long-tiktok-videos-2026.html"))
+
+@app.get("/blog/tiktok-link-formats-explained-2026.html")
+async def blog_article_19():
+    return FileResponse(os.path.join(frontend_path, "blog", "tiktok-link-formats-explained-2026.html"))
