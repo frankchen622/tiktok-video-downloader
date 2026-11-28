@@ -826,3 +826,7 @@ async def blog_article_18():
 @app.get("/blog/tiktok-link-formats-explained-2026.html")
 async def blog_article_19():
     return FileResponse(os.path.join(frontend_path, "blog", "tiktok-link-formats-explained-2026.html"))
+
+@app.get("/blog/is-it-legal-to-download-tiktok-videos-2026.html")
+async def blog_article_20():
+    return FileResponse(os.path.join(frontend_path, "blog", "is-it-legal-to-download-tiktok-videos-2026.html"))
